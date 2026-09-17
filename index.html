@@ -1,15 +1,3 @@
-這就為您更新程式碼！我調整了以下內容：
- * 掉落動畫速度：將掉落動畫時間從 3.5 秒加快至 1.8 ~ 2.4 秒，讓速度更加輕快適中。
- * Day 2 行程結束後：新增了「中山／圓山／信義區 三選一」的夜間自由活動。
- * Day 3 時間軸與細節調整：
-   * 刪除阜杭豆漿與中正紀念堂後的括號內容。
-   * 永康商圈僅保留地名。
-   * 18:00-19:30 改為「陽明山 The Top」。
-   * 新增「20:00後 台北夜間自由活動（中山／圓山／西門町／信義區 四選一）」。
-   * 景點介紹更新為：中正紀念堂、永康商圈、故宮博物院、陽明山。
-   * 今日亮點改為：「跟我吃飯 ❤️」。
-   * 今日備註調整為 5 項，第一項改為「阜杭豆漿很有名，要預留排隊時間 (雖然我不喜歡）」，最後一項改為「伴手禮可以在永康商圈買，這裡有很多文創小物」。
-💻 更新後的完整 HTML 程式碼
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
@@ -77,7 +65,7 @@
     <!-- 頂部 Header -->
     <header class="bg-[#2C3E35] text-[#F7F5F0] py-12 px-4 text-center relative overflow-hidden shadow-lg">
         <div class="max-w-4xl mx-auto relative z-10">
-            <span class="text-xs tracking-widest uppercase bg-[#4A6B5D] px-3.5 py-1.5 rounded-full text-[#E2DDD5] mb-3 inline-block shadow-sm">Taiwan Grand Traverse App 2026</span>
+            <span class="text-xs tracking-widest uppercase bg-[#4A6B5D] px-3.5 py-1.5 rounded-full text-[#E2DDD5] mb-3 inline-block shadow-sm">SYD’s TAIWAN GRAND TRAVERSE APP 2026</span>
             <h1 class="text-3xl md:text-5xl font-bold tracking-tight mb-3">邵奶奶快樂遊台灣👵🏻🏝️</h1>
             <p class="text-sm md:text-base text-[#D1D8D2] font-light max-w-2xl mx-auto leading-relaxed">
                 10日山海縱走手札：桃園進 ➔ 台北 ➔ 日月潭 ➔ 武嶺 ➔ 台南 ➔ 墾丁 ➔ 高雄出<br>
@@ -90,16 +78,16 @@
     <!-- 頂部主選單導覽列 -->
     <nav class="sticky top-0 z-50 bg-[#F7F5F0]/95 backdrop-blur-md border-b border-[#E2DDD5] py-3 px-4 shadow-sm">
         <div class="max-w-7xl mx-auto flex overflow-x-auto space-x-2 no-scrollbar py-1">
-            <button onclick="toggleDayMenu(1)" class="day-main-btn px-4 py-2 rounded-lg text-xs font-semibold transition shrink-0 bg-[#2C3E35] text-white shadow-md" id="main-btn-1">📍 Day 1 台北</button>
-            <button onclick="toggleDayMenu(2)" class="day-main-btn px-4 py-2 rounded-lg text-xs font-semibold transition shrink-0 bg-white text-[#2C3E35] hover:bg-[#E2DDD5] border border-[#E2DDD5]" id="main-btn-2">📍 Day 2 北海岸</button>
-            <button onclick="toggleDayMenu(3)" class="day-main-btn px-4 py-2 rounded-lg text-xs font-semibold transition shrink-0 bg-white text-[#2C3E35] hover:bg-[#E2DDD5] border border-[#E2DDD5]" id="main-btn-3">📍 Day 3 故宮陽明</button>
-            <button onclick="toggleDayMenu(4)" class="day-main-btn px-4 py-2 rounded-lg text-xs font-semibold transition shrink-0 bg-white text-[#2C3E35] hover:bg-[#E2DDD5] border border-[#E2DDD5]" id="main-btn-4">📍 Day 4 日月潭</button>
-            <button onclick="toggleDayMenu(5)" class="day-main-btn px-4 py-2 rounded-lg text-xs font-semibold transition shrink-0 bg-white text-[#2C3E35] hover:bg-[#E2DDD5] border border-[#E2DDD5]" id="main-btn-5">📍 Day 5 九族高美</button>
-            <button onclick="toggleDayMenu(6)" class="day-main-btn px-4 py-2 rounded-lg text-xs font-semibold transition shrink-0 bg-white text-[#2C3E35] hover:bg-[#E2DDD5] border border-[#E2DDD5]" id="main-btn-6">📍 Day 6 武嶺台南</button>
-            <button onclick="toggleDayMenu(7)" class="day-main-btn px-4 py-2 rounded-lg text-xs font-semibold transition shrink-0 bg-white text-[#2C3E35] hover:bg-[#E2DDD5] border border-[#E2DDD5]" id="main-btn-7">📍 Day 7 安平月世界</button>
-            <button onclick="toggleDayMenu(8)" class="day-main-btn px-4 py-2 rounded-lg text-xs font-semibold transition shrink-0 bg-white text-[#2C3E35] hover:bg-[#E2DDD5] border border-[#E2DDD5]" id="main-btn-8">📍 Day 8 墾丁海生</button>
-            <button onclick="toggleDayMenu(9)" class="day-main-btn px-4 py-2 rounded-lg text-xs font-semibold transition shrink-0 bg-white text-[#2C3E35] hover:bg-[#E2DDD5] border border-[#E2DDD5]" id="main-btn-9">📍 Day 9 西子灣旗津</button>
-            <button onclick="toggleDayMenu(10)" class="day-main-btn px-4 py-2 rounded-lg text-xs font-semibold transition shrink-0 bg-white text-[#2C3E35] hover:bg-[#E2DDD5] border border-[#E2DDD5]" id="main-btn-10">📍 Day 10 賦歸</button>
+            <button onclick="changeDay(1)" class="day-main-btn px-4 py-2 rounded-lg text-xs font-semibold transition shrink-0 bg-[#2C3E35] text-white shadow-md" id="main-btn-1">📍 Day 1 台北</button>
+            <button onclick="changeDay(2)" class="day-main-btn px-4 py-2 rounded-lg text-xs font-semibold transition shrink-0 bg-white text-[#2C3E35] hover:bg-[#E2DDD5] border border-[#E2DDD5]" id="main-btn-2">📍 Day 2 北海岸</button>
+            <button onclick="changeDay(3)" class="day-main-btn px-4 py-2 rounded-lg text-xs font-semibold transition shrink-0 bg-white text-[#2C3E35] hover:bg-[#E2DDD5] border border-[#E2DDD5]" id="main-btn-3">📍 Day 3 故宮陽明</button>
+            <button onclick="changeDay(4)" class="day-main-btn px-4 py-2 rounded-lg text-xs font-semibold transition shrink-0 bg-white text-[#2C3E35] hover:bg-[#E2DDD5] border border-[#E2DDD5]" id="main-btn-4">📍 Day 4 日月潭</button>
+            <button onclick="changeDay(5)" class="day-main-btn px-4 py-2 rounded-lg text-xs font-semibold transition shrink-0 bg-white text-[#2C3E35] hover:bg-[#E2DDD5] border border-[#E2DDD5]" id="main-btn-5">📍 Day 5 九族高美</button>
+            <button onclick="changeDay(6)" class="day-main-btn px-4 py-2 rounded-lg text-xs font-semibold transition shrink-0 bg-white text-[#2C3E35] hover:bg-[#E2DDD5] border border-[#E2DDD5]" id="main-btn-6">📍 Day 6 武嶺台南</button>
+            <button onclick="changeDay(7)" class="day-main-btn px-4 py-2 rounded-lg text-xs font-semibold transition shrink-0 bg-white text-[#2C3E35] hover:bg-[#E2DDD5] border border-[#E2DDD5]" id="main-btn-7">📍 Day 7 安平月世界</button>
+            <button onclick="changeDay(8)" class="day-main-btn px-4 py-2 rounded-lg text-xs font-semibold transition shrink-0 bg-white text-[#2C3E35] hover:bg-[#E2DDD5] border border-[#E2DDD5]" id="main-btn-8">📍 Day 8 墾丁海生</button>
+            <button onclick="changeDay(9)" class="day-main-btn px-4 py-2 rounded-lg text-xs font-semibold transition shrink-0 bg-white text-[#2C3E35] hover:bg-[#E2DDD5] border border-[#E2DDD5]" id="main-btn-9">📍 Day 9 西子灣旗津</button>
+            <button onclick="changeDay(10)" class="day-main-btn px-4 py-2 rounded-lg text-xs font-semibold transition shrink-0 bg-white text-[#2C3E35] hover:bg-[#E2DDD5] border border-[#E2DDD5]" id="main-btn-10">📍 Day 10 賦歸</button>
             <button onclick="switchTab('tips')" class="tab-btn px-4 py-2 rounded-lg text-xs font-semibold transition shrink-0 bg-[#C66914] text-white shadow-md" id="btn-tips">📌 全程提醒</button>
             <button onclick="switchTab('food')" class="tab-btn px-4 py-2 rounded-lg text-xs font-semibold transition shrink-0 bg-[#C66914] text-white shadow-md" id="btn-food">🍜 美食清單</button>
             <button onclick="switchTab('sos')" class="tab-btn px-4 py-2 rounded-lg text-xs font-semibold transition shrink-0 bg-[#2C3E35] text-white shadow-md" id="btn-sos">💰 交通急救包</button>
@@ -109,9 +97,7 @@
     <!-- 子選單導覽列 -->
     <div id="sub-nav-container" class="bg-[#EFECE6] border-b border-[#E2DDD5] py-2 px-4 shadow-inner">
         <div class="max-w-7xl mx-auto flex overflow-x-auto space-x-2 no-scrollbar py-1 items-center" id="sub-nav-buttons">
-            <button onclick="switchTab('d1-time')" class="sub-btn px-3 py-1.5 rounded-md text-xs font-medium bg-[#2C3E35] text-white shadow-sm" id="btn-d1-time">🕒 行程時間軸</button>
-            <button onclick="switchTab('d1-trans')" class="sub-btn px-3 py-1.5 rounded-md text-xs font-medium bg-white text-[#2C3E35] border border-[#E2DDD5]" id="btn-d1-trans">🚗 交通方式與住宿</button>
-            <button onclick="switchTab('d1-link')" class="sub-btn px-3 py-1.5 rounded-md text-xs font-medium bg-white text-[#2C3E35] border border-[#E2DDD5]" id="btn-d1-link">🔗 參考連結</button>
+            <!-- 動態載入 -->
         </div>
     </div>
 
@@ -119,14 +105,13 @@
     <main class="max-w-4xl mx-auto px-4 py-8 flex-grow w-full">
 
         <!-- ==================== DAY 1 ==================== -->
-        <div id="tab-d1-time" class="tab-content fade-in space-y-6">
+        <div id="tab-d1-time" class="tab-content hidden fade-in space-y-6">
             <div class="taiwan-card rounded-2xl overflow-hidden p-6 md:p-8 space-y-6">
                 <div>
                     <span class="text-xs bg-[#E89344]/20 text-[#C66914] px-3 py-1 rounded-md font-bold">9/27（日）｜抵達台灣・台北</span>
                     <h2 class="text-3xl font-bold mt-2 text-[#2C3E35]">第一天：抵達台灣與台北夜生活</h2>
                 </div>
 
-                <!-- 小地圖 -->
                 <details class="bg-[#F9F8F6] border border-[#E2DDD5] rounded-xl p-4 shadow-sm">
                     <summary class="cursor-pointer font-bold text-[#2C3E35] flex justify-between items-center select-none">
                         <span>🗺️ 【今日小地圖】（點擊展開/收合，點圖片可放大）</span>
@@ -146,18 +131,16 @@
                     </div>
                 </details>
 
-                <!-- 完整時間軸 -->
                 <div class="bg-[#F0EDEA] p-5 rounded-xl space-y-3">
                     <h3 class="font-bold text-base text-[#2C3E35]">🕒 今日時間軸</h3>
-                    <ul class="space-y-2 text-sm text-gray-700">
-                        <li><b>14:30</b> 抵達桃園國際機場</li>
-                        <li><b>14:30 - 16:00</b> 入境、領行李、交通準備</li>
-                        <li><b>約 16:00 - 17:15</b> 桃園機場 ➔ 台北住宿</li>
-                        <li><b>17:30後</b> 晚餐＋台北夜間自由活動（中山／圓山／西門町／信義區 四選一～二）</li>
-                    </ul>
+                    <div class="space-y-2 text-sm text-gray-700">
+                        <div><b>14:30</b> 抵達桃園國際機場</div>
+                        <div><b>14:30 - 16:00</b> 入境、領行李、交通準備</div>
+                        <div><b>約 16:00 - 17:15</b> 桃園機場 ➔ 台北住宿</div>
+                        <div><b>17:30後</b> 晚餐＋台北夜間自由活動（中山／圓山／西門町／信義區 四選一～二）</div>
+                    </div>
                 </div>
 
-                <!-- 景點介紹 -->
                 <div class="space-y-3">
                     <h3 class="font-bold text-base text-[#2C3E35]">📍 景點介紹／推薦理由</h3>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
@@ -168,7 +151,6 @@
                     </div>
                 </div>
 
-                <!-- 今日備註（預設收合） -->
                 <details class="bg-orange-50 border border-orange-200 rounded-xl p-4 shadow-sm">
                     <summary class="cursor-pointer font-bold text-orange-950 flex justify-between items-center select-none text-sm">
                         <span>⚠️ 【今日特殊備註】（點擊展開）</span>
@@ -188,8 +170,6 @@
                     <span class="text-xs bg-[#E89344]/20 text-[#C66914] px-3 py-1 rounded-md font-bold">9/27（日）｜交通方式與住宿</span>
                     <h2 class="text-3xl font-bold mt-2 text-[#2C3E35]">第一天交通與住宿指南</h2>
                 </div>
-
-                <!-- 車程攻略（預設展開） -->
                 <details class="bg-[#F0EDEA] p-5 rounded-xl space-y-3 border border-[#E2DDD5]" open>
                     <summary class="cursor-pointer font-bold text-base text-[#2C3E35] flex justify-between items-center select-none">
                         <span>🚗 車程攻略（點擊可收合）</span>
@@ -201,8 +181,6 @@
                         <p class="text-xs text-gray-500">總車程：桃園機場 ➔ 台北市區約 40～75 分鐘。</p>
                     </div>
                 </details>
-
-                <!-- 推薦住宿（預設關閉/收合） -->
                 <details class="bg-[#EFECE6] p-5 rounded-xl space-y-3 border border-[#E2DDD5]">
                     <summary class="cursor-pointer font-bold text-base text-[#2C3E35] flex justify-between items-center select-none">
                         <span>🏨 推薦住宿區域（點擊展開）</span>
@@ -257,11 +235,12 @@
 
                 <div class="bg-[#F0EDEA] p-5 rounded-xl space-y-3">
                     <h3 class="font-bold text-base text-[#2C3E35]">🕒 今日時間軸</h3>
-                    <ul class="space-y-2 text-sm text-gray-700">
-                        <li><b>上午</b> 睡飽、早餐、台北自由活動</li>
-                        <li><b>11:15</b> Klook 一日遊集合出發 ➔ 北海岸／九份／十分一日遊</li>
-                        <li><b>約 20:30</b> 返回台北車站 ➔ <b>21:00後</b> 台北夜間自由活動（中山／圓山／信義區 三選一）</li>
-                    </ul>
+                    <div class="space-y-2 text-sm text-gray-700">
+                        <div><b>上午</b> 睡飽、早餐、台北自由活動</div>
+                        <div><b>11:15</b> Klook 一日遊集合出發 ➔ 北海岸／九份／十分一日遊</div>
+                        <div><b>約 20:30</b> 返回台北車站</div>
+                        <div><b>21:00後</b> 台北夜間自由活動（中山／圓山／信義區 三選一）</div>
+                    </div>
                 </div>
 
                 <div class="space-y-3">
@@ -360,13 +339,16 @@
 
                 <div class="bg-[#F0EDEA] p-5 rounded-xl space-y-3">
                     <h3 class="font-bold text-base text-[#2C3E35]">🕒 今日時間軸</h3>
-                    <ul class="space-y-2 text-sm text-gray-700">
-                        <li><b>09:00</b> 住宿出發 ➔ <b>09:15-10:00</b> 阜杭豆漿</li>
-                        <li><b>10:00-11:30</b> 二二八公園、總統府外圍、中正紀念堂</li>
-                        <li><b>11:30-13:00</b> 永康商圈午餐 ➔ <b>14:00-17:00</b> 國立故宮博物院</li>
-                        <li><b>17:30</b> 士林捷運站集合 ➔ <b>18:00-19:30</b> 陽明山 The Top ➔ 下山</li>
-                        <li><b>20:00後</b> 台北夜間自由活動（中山／圓山／西門町／信義區 四選一）</li>
-                    </ul>
+                    <div class="space-y-2 text-sm text-gray-700">
+                        <div><b>09:00</b> 住宿出發</div>
+                        <div><b>09:15-10:00</b> 阜杭豆漿</div>
+                        <div><b>10:00-11:30</b> 二二八公園、總統府外圍、中正紀念堂</div>
+                        <div><b>11:30-13:00</b> 永康商圈午餐</div>
+                        <div><b>14:00-17:00</b> 國立故宮博物院</div>
+                        <div><b>17:30</b> 士林捷運站集合</div>
+                        <div><b>18:00-19:30</b> 陽明山 The Top ➔ 下山</div>
+                        <div><b>20:00後</b> 台北夜間自由活動（中山／圓山／西門町／信義區 四選一）</div>
+                    </div>
                 </div>
 
                 <div class="space-y-3">
@@ -398,8 +380,7 @@
                         <p>1. 阜杭豆漿很有名，要預留排隊時間 (雖然我不喜歡）</p>
                         <p>2. 故宮外籍成人普通票NT$350；國籍優惠折抵票NT$150。</p>
                         <p>3. 永康商圈推薦：搖滾牛冰淇淋、鼎泰豐、白水豆花、芒果冰。</p>
-                        <p>4. 陽明山 The Top 視野極佳，夜景浪漫。</p>
-                        <p>5. 伴手禮可以在永康商圈買，這裡有很多文創小物</p>
+                        <p>4. 伴手禮可以在永康商圈買，這裡有很多文創小物</p>
                     </div>
                 </details>
             </div>
@@ -471,13 +452,13 @@
 
                 <div class="bg-[#F0EDEA] p-5 rounded-xl space-y-3">
                     <h3 class="font-bold text-base text-[#2C3E35]">🕒 今日時間軸</h3>
-                    <ul class="space-y-2 text-sm text-gray-700">
-                        <li><b>09:30-11:30</b> Cookinn 台灣糕點DIY</li>
-                        <li><b>12:30-13:30</b> 台北高鐵 ➔ 台中高鐵</li>
-                        <li><b>14:10</b> 高鐵台中站搭台灣好行日月潭線</li>
-                        <li><b>15:25-15:30</b> 抵達日月潭／水社，Check-in 自由活動</li>
-                        <li><b>晚間</b> 飯店會合、晚餐、欣賞湖景</li>
-                    </ul>
+                    <div class="space-y-2 text-sm text-gray-700">
+                        <div><b>09:30-11:30</b> Cookinn 台灣糕點DIY</div>
+                        <div><b>12:30-13:30</b> 台北高鐵 ➔ 台中高鐵</div>
+                        <div><b>14:10</b> 高鐵台中站搭台灣好行日月潭線</div>
+                        <div><b>15:25-15:30</b> 抵達日月潭／水社，Check-in 自由活動</div>
+                        <div><b>晚間</b> 飯店會合、晚餐、欣賞湖景</div>
+                    </div>
                 </div>
 
                 <div class="space-y-3">
@@ -577,13 +558,15 @@
 
                 <div class="bg-[#F0EDEA] p-5 rounded-xl space-y-3">
                     <h3 class="font-bold text-base text-[#2C3E35]">🕒 今日時間軸</h3>
-                    <ul class="space-y-2 text-sm text-gray-700">
-                        <li><b>05:50</b> 日月潭日出 (自由欣賞) ➔ <b>09:00-14:00</b> 九族文化村</li>
-                        <li><b>14:00</b> 纜車返回日月潭，回住宿取行李</li>
-                        <li><b>14:40</b> 日月潭站搭台灣好行往台中干城</li>
-                        <li><b>16:20</b> 楊於干城會合，轉自駕前往高美濕地</li>
-                        <li><b>17:00-18:30</b> 高美濕地夕陽 ➔ <b>18:30後</b> 台中燒肉與休息</li>
-                    </ul>
+                    <div class="space-y-2 text-sm text-gray-700">
+                        <div><b>05:50</b> 日月潭日出 (自由欣賞)</div>
+                        <div><b>09:00-14:00</b> 九族文化村</div>
+                        <div><b>14:00</b> 纜車返回日月潭，回住宿取行李</div>
+                        <div><b>14:40</b> 日月潭站搭台灣好行往台中干城</div>
+                        <div><b>16:20</b> 楊於干城會合，轉自駕前往高美濕地</div>
+                        <div><b>17:00-18:30</b> 高美濕地夕陽</div>
+                        <div><b>18:30後</b> 台中燒肉與休息</div>
+                    </div>
                 </div>
 
                 <div class="space-y-3">
@@ -682,13 +665,16 @@
 
                 <div class="bg-[#F0EDEA] p-5 rounded-xl space-y-3">
                     <h3 class="font-bold text-base text-[#2C3E35]">🕒 今日時間軸</h3>
-                    <ul class="space-y-2 text-sm text-gray-700">
-                        <li><b>02:30</b> 台中住宿出發 ➔ <b>05:20-06:20</b> 武嶺日出 ➔ 下山</li>
-                        <li><b>09:00-12:00</b> 返回台中住宿補眠、洗澡、退房</li>
-                        <li><b>13:00</b> 台中出發南下台南</li>
-                        <li><b>15:00</b> 正統鹿耳門聖母廟 ➔ <b>15:30</b> 四草綠色隧道搭船</li>
-                        <li><b>17:00</b> 漁光島夕陽 ➔ <b>18:30</b> 東來理髮廳洗頭 ➔ 入住台南中西區</li>
-                    </ul>
+                    <div class="space-y-2 text-sm text-gray-700">
+                        <div><b>02:30</b> 台中住宿出發</div>
+                        <div><b>05:20-06:20</b> 武嶺日出 ➔ 下山</div>
+                        <div><b>09:00-12:00</b> 返回台中住宿補眠、洗澡、退房</div>
+                        <div><b>13:00</b> 台中出發南下台南</div>
+                        <div><b>15:00</b> 正統鹿耳門聖母廟</div>
+                        <div><b>15:30</b> 四草綠色隧道搭船</div>
+                        <div><b>17:00</b> 漁光島夕陽</div>
+                        <div><b>18:30</b> 東來理髮廳洗頭 ➔ 入住台南中西區</div>
+                    </div>
                 </div>
 
                 <div class="space-y-3">
@@ -788,12 +774,13 @@
 
                 <div class="bg-[#F0EDEA] p-5 rounded-xl space-y-3">
                     <h3 class="font-bold text-base text-[#2C3E35]">🕒 今日時間軸</h3>
-                    <ul class="space-y-2 text-sm text-gray-700">
-                        <li><b>09:00-12:30</b> 安平古堡、安平老街慢慢逛、早餐午餐</li>
-                        <li><b>12:30-14:00</b> 回住宿取行李／彈性休息 ➔ <b>14:00</b> 台南出發</li>
-                        <li><b>15:30-17:30</b> 2026高雄愛・月熱氣球／月世界</li>
-                        <li><b>19:30後</b> 高雄美麗島站附近住宿 Check-in 與晚餐</li>
-                    </ul>
+                    <div class="space-y-2 text-sm text-gray-700">
+                        <div><b>09:00-12:30</b> 安平古堡、安平老街慢慢逛、早餐午餐</div>
+                        <div><b>12:30-14:00</b> 回住宿取行李／彈性休息</div>
+                        <div><b>14:00</b> 台南出發</div>
+                        <div><b>15:30-17:30</b> 2026高雄愛・月熱氣球／月世界</div>
+                        <div><b>19:30後</b> 高雄美麗島站附近住宿 Check-in 與晚餐</div>
+                    </div>
                 </div>
 
                 <div class="space-y-3">
@@ -894,12 +881,12 @@
 
                 <div class="bg-[#F0EDEA] p-5 rounded-xl space-y-3">
                     <h3 class="font-bold text-base text-[#2C3E35]">🕒 今日時間軸</h3>
-                    <ul class="space-y-2 text-sm text-gray-700">
-                        <li><b>09:00</b> 高雄住宿整理行李，大行李寄放飯店櫃檯（僅帶隨身小行李）</li>
-                        <li><b>10:00</b> 高鐵左營站搭墾丁快線南下</li>
-                        <li><b>12:10-15:40</b> 墾丁包車遊覽（後壁湖生魚片午餐、龍磐公園、鵝鑾鼻燈塔等）</li>
-                        <li><b>16:00</b> 國立海洋生物博物館夜宿報到與活動</li>
-                    </ul>
+                    <div class="space-y-2 text-sm text-gray-700">
+                        <div><b>09:00</b> 高雄住宿整理行李，大行李寄放飯店櫃檯（僅帶隨身小行李）</div>
+                        <div><b>10:00</b> 高鐵左營站搭墾丁快線南下</div>
+                        <div><b>12:10-15:40</b> 墾丁包車遊覽（後壁湖生魚片午餐、龍磐公園、鵝鑾鼻燈塔等）</div>
+                        <div><b>16:00</b> 國立海洋生物博物館夜宿報到與活動</div>
+                    </div>
                 </div>
 
                 <div class="space-y-3">
@@ -998,12 +985,14 @@
 
                 <div class="bg-[#F0EDEA] p-5 rounded-xl space-y-3">
                     <h3 class="font-bold text-base text-[#2C3E35]">🕒 今日時間軸</h3>
-                    <ul class="space-y-2 text-sm text-gray-700">
-                        <li><b>11:20-11:30</b> 海生館夜宿活動結束</li>
-                        <li><b>12:01</b> 搭墾丁快線北返 ➔ <b>13:50</b> 抵達左營站回飯店拿行李再次 Check-in</li>
-                        <li><b>15:00</b> 西子灣賞景 ➔ <b>16:00</b> 鼓山渡輪站搭船至旗津</li>
-                        <li><b>16:00-18:00</b> 旗津老街、旗后砲台、燈塔欣賞夕陽 ➔ 晚餐</li>
-                    </ul>
+                    <div class="space-y-2 text-sm text-gray-700">
+                        <div><b>11:20-11:30</b> 海生館夜宿活動結束</div>
+                        <div><b>12:01</b> 搭墾丁快線北返</div>
+                        <div><b>13:50</b> 抵達左營站回飯店拿行李再次 Check-in</div>
+                        <div><b>15:00</b> 西子灣賞景</div>
+                        <div><b>16:00</b> 鼓山渡輪站搭船至旗津</div>
+                        <div><b>16:00-18:00</b> 旗津老街、旗后砲台、燈塔欣賞夕陽 ➔ 晚餐</div>
+                    </div>
                 </div>
 
                 <div class="space-y-3">
@@ -1102,12 +1091,13 @@
 
                 <div class="bg-[#F0EDEA] p-5 rounded-xl space-y-3">
                     <h3 class="font-bold text-base text-[#2C3E35]">🕒 今日時間軸</h3>
-                    <ul class="space-y-2 text-sm text-gray-700">
-                        <li><b>06:30</b> 起床 ➔ <b>06:45-07:00</b> 退房離開住宿</li>
-                        <li><b>07:10-07:30</b> 美麗島站 ➔ 高雄國際機場站</li>
-                        <li><b>07:30</b> 抵達高雄國際機場，報到／托運行李／出境</li>
-                        <li><b>10:15</b> 香港快運航班起飛 ➔ 返回香港</li>
-                    </ul>
+                    <div class="space-y-2 text-sm text-gray-700">
+                        <div><b>06:30</b> 起床</div>
+                        <div><b>06:45-07:00</b> 退房離開住宿</div>
+                        <div><b>07:10-07:30</b> 美麗島站 ➔ 高雄國際機場站</div>
+                        <div><b>07:30</b> 抵達高雄國際機場，報到／托運行李／出境</div>
+                        <div><b>10:15</b> 香港快運航班起飛 ➔ 返回香港</div>
+                    </div>
                 </div>
 
                 <details class="bg-[#FEF6EE] border border-[#FAD6B8] rounded-xl p-4 shadow-sm">
@@ -1126,7 +1116,7 @@
                         <span class="text-xs font-medium bg-orange-200/60 text-orange-900 px-2.5 py-1 rounded">展開 ▼</span>
                     </summary>
                     <div class="mt-3 text-xs text-orange-900 leading-relaxed pt-2 border-t border-orange-200 space-y-1.5">
-                        <p>・住宿選美麗島附近的最大優點：最後一天不需轉線，直達機場。</p>
+                        <p>・住宿選美麗島附近的主要優點：最後一天不需轉線，直達機場。</p>
                         <p>・07:30 抵達機場可預留約 2 小時 45 分鐘，從容不迫。</p>
                     </div>
                 </details>
@@ -1271,12 +1261,14 @@
     <!-- 頁尾 Footer -->
     <footer class="bg-[#2C3E35] text-[#D1D8D2] text-center py-8 mt-12 text-sm">
         <p>邵奶奶快樂遊台灣👵🏻🏝️ • Taiwan Grand Traverse Web App</p>
-        <p class="text-xs mt-1 text-gray-400">Designed with Taiwanese Aesthetic UI/UX & Smooth Animations 🚀</p>
+        <p class="text-xs mt-1 text-gray-400">Designed by Chechen Wu 🚀</p>
     </footer>
 
-    <!-- JavaScript 階層選單、適中速度掉落動畫邏輯 -->
+    <!-- JavaScript 階層選單、重新整理記憶狀態邏輯 -->
     <script>
         const emojis = ['🍠', '🧋', '👵🏻', '🏝️'];
+        let currentDayNum = 1;
+        let currentTabId = 'd1-time';
 
         function triggerSingleEmojiRain() {
             const chosenEmoji = emojis[Math.floor(Math.random() * emojis.length)];
@@ -1287,7 +1279,6 @@
                 span.className = 'floating-emoji';
                 span.textContent = chosenEmoji;
                 span.style.left = (Math.random() * 92 + 2) + 'vw';
-                // 調整為速度適中的掉落時間 (1.8秒 ~ 2.4秒)
                 span.style.animationDuration = (Math.random() * 0.6 + 1.8) + 's';
                 span.style.animationDelay = (Math.random() * 0.3) + 's';
                 document.body.appendChild(span);
@@ -1298,9 +1289,14 @@
             }
         }
 
-        function toggleDayMenu(dayNum) {
+        function changeDay(dayNum) {
             triggerSingleEmojiRain();
+            currentDayNum = dayNum;
+            updateDayMenuUI(dayNum);
+            switchTab('d' + dayNum + '-time', false);
+        }
 
+        function updateDayMenuUI(dayNum) {
             const mainButtons = document.querySelectorAll('.day-main-btn');
             mainButtons.forEach(btn => {
                 btn.classList.remove('bg-[#2C3E35]', 'text-white', 'shadow-md');
@@ -1314,15 +1310,16 @@
 
             const subNavContainer = document.getElementById('sub-nav-buttons');
             subNavContainer.innerHTML = `
-                <button onclick="switchTab('d${dayNum}-time')" class="sub-btn px-3 py-1.5 rounded-md text-xs font-medium bg-[#2C3E35] text-white shadow-sm" id="btn-d${dayNum}-time">🕒 行程時間軸</button>
+                <button onclick="switchTab('d${dayNum}-time')" class="sub-btn px-3 py-1.5 rounded-md text-xs font-medium bg-white text-[#2C3E35] border border-[#E2DDD5]" id="btn-d${dayNum}-time">🕒 行程時間軸</button>
                 <button onclick="switchTab('d${dayNum}-trans')" class="sub-btn px-3 py-1.5 rounded-md text-xs font-medium bg-white text-[#2C3E35] border border-[#E2DDD5]" id="btn-d${dayNum}-trans">🚗 交通方式與住宿</button>
                 <button onclick="switchTab('d${dayNum}-link')" class="sub-btn px-3 py-1.5 rounded-md text-xs font-medium bg-white text-[#2C3E35] border border-[#E2DDD5]" id="btn-d${dayNum}-link">🔗 參考連結</button>
             `;
-
-            switchTab('d' + dayNum + '-time');
         }
 
-        function switchTab(tabId) {
+        function switchTab(tabId, shouldScroll = true) {
+            currentTabId = tabId;
+            window.location.hash = tabId; // 記錄狀態到 URL hash
+
             const contents = document.querySelectorAll('.tab-content');
             contents.forEach(el => el.classList.add('hidden'));
 
@@ -1342,6 +1339,18 @@
                 target.classList.add('fade-in');
             }
 
+            // 如果切換的是其他日子底下的子分頁，自動反推對應的 dayNum 並更新上方主選單
+            if (tabId.startsWith('d')) {
+                const match = tabId.match(/d(\d+)-/);
+                if (match) {
+                    const dayNum = parseInt(match[1]);
+                    if (dayNum !== currentDayNum) {
+                        currentDayNum = dayNum;
+                        updateDayMenuUI(dayNum);
+                    }
+                }
+            }
+
             const subBtns = document.querySelectorAll('.sub-btn');
             subBtns.forEach(btn => {
                 btn.classList.remove('bg-[#2C3E35]', 'text-white', 'shadow-sm');
@@ -1358,7 +1367,9 @@
                 if(specBtn) specBtn.classList.add('ring-4', 'ring-[#E89344]');
             }
 
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            if (shouldScroll) {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
         }
 
         function openImageModal(imgSrc, title) {
@@ -1375,10 +1386,23 @@
             modal.classList.add('hidden');
         }
 
+        // 頁面載入時檢查 Hash，若有紀錄則恢復該頁面，否則預設 Day 1
         window.onload = function() {
-            toggleDayMenu(1);
+            const hash = window.location.hash.replace('#', '');
+            if (hash) {
+                if (hash.startsWith('d')) {
+                    const match = hash.match(/d(\d+)-/);
+                    if (match) {
+                        const dayNum = parseInt(match[1]);
+                        currentDayNum = dayNum;
+                        updateDayMenuUI(dayNum);
+                    }
+                }
+                switchTab(hash, false);
+            } else {
+                changeDay(1);
+            }
         };
     </script>
 </body>
 </html>
-
