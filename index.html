@@ -27,17 +27,17 @@
         .fade-in {
             animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
-        /* 掉落動畫特效 */
-        @keyframes fallDown {
-            0% { transform: translateY(-30px) rotate(0deg); opacity: 1; }
-            100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+        /* 滿版中慢速掉落動畫特效 */
+        @keyframes fallDownSlow {
+            0% { transform: translateY(-60px) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(105vh) rotate(540deg); opacity: 0; }
         }
         .floating-emoji {
             position: fixed;
-            top: -50px;
+            top: -60px;
             z-index: 9999;
-            font-size: 28px;
-            animation: fallDown 1.8s linear forwards;
+            font-size: 32px;
+            animation: fallDownSlow 2.6s linear forwards;
             pointer-events: none;
         }
         .no-scrollbar::-webkit-scrollbar {
@@ -155,13 +155,18 @@
                     </div>
                 </div>
 
-                <!-- 特殊備註 -->
-                <div class="bg-orange-50 border border-orange-200 p-4 rounded-xl text-xs text-orange-900 space-y-1.5">
-                    <h3 class="font-bold text-sm text-orange-950">⚠️ 今日特殊備註</h3>
-                    <p>・第一天不安排高強度景點。</p>
-                    <p>・中山、圓山、西門町、信義區四選一～二即可。</p>
-                    <p>・若行李較多或多人同行，計程車方便程度比機捷高；若住中山站，機捷至A1後轉計程車最省力。</p>
-                </div>
+                <!-- 今日備註（預設收合） -->
+                <details class="bg-orange-50 border border-orange-200 rounded-xl p-4 shadow-sm">
+                    <summary class="cursor-pointer font-bold text-orange-950 flex justify-between items-center select-none text-sm">
+                        <span>⚠️ 【今日特殊備註】（點擊展開）</span>
+                        <span class="text-xs font-medium bg-orange-200/60 text-orange-900 px-2.5 py-1 rounded">展開 ▼</span>
+                    </summary>
+                    <div class="mt-3 text-xs text-orange-900 leading-relaxed pt-2 border-t border-orange-200 space-y-1.5">
+                        <p>・第一天不安排高強度景點。</p>
+                        <p>・中山、圓山、西門町、信義區四選一～二即可。</p>
+                        <p>・若行李較多或多人同行，計程車方便程度比機捷高；若住中山站，機捷至A1後轉計程車最省力。</p>
+                    </div>
+                </details>
             </div>
         </div>
         <div id="tab-d1-trans" class="tab-content hidden fade-in space-y-6">
@@ -171,22 +176,30 @@
                     <h2 class="text-3xl font-bold mt-2 text-[#2C3E35]">第一天交通與住宿指南</h2>
                 </div>
 
-                <!-- 車程攻略 -->
-                <div class="bg-[#F0EDEA] p-5 rounded-xl space-y-3">
-                    <h3 class="font-bold text-base text-[#2C3E35]">🚗 車程攻略</h3>
-                    <p class="text-sm"><b>方案1｜機場捷運：</b>桃園機場 ➔ A1 台北車站 ➔ 轉捷運／計程車至住宿（約35-40分，票價約NT$160）。</p>
-                    <p class="text-sm"><b>方案2｜計程車：</b>桃園機場直接搭乘計程車前往市中心住宿（約NT$1,200～1,700／車）。</p>
-                    <p class="text-xs text-gray-500">總車程：桃園機場 ➔ 台北市區約 40～75 分鐘。</p>
-                </div>
+                <!-- 車程攻略（預設展開） -->
+                <details class="bg-[#F0EDEA] p-5 rounded-xl space-y-3 border border-[#E2DDD5]" open>
+                    <summary class="cursor-pointer font-bold text-base text-[#2C3E35] flex justify-between items-center select-none">
+                        <span>🚗 車程攻略（點擊可收合）</span>
+                        <span class="text-xs text-gray-500 font-medium">收合 ▲</span>
+                    </summary>
+                    <div class="mt-3 space-y-2 text-sm pt-2 border-t border-[#E2DDD5]/60">
+                        <p><b>方案1｜機場捷運：</b>桃園機場 ➔ A1 台北車站 ➔ 轉捷運／計程車至住宿（約35-40分，票價約NT$160）。</p>
+                        <p><b>方案2｜計程車：</b>桃園機場直接搭乘計程車前往市中心住宿（約NT$1,200～1,700／車）。</p>
+                        <p class="text-xs text-gray-500">總車程：桃園機場 ➔ 台北市區約 40～75 分鐘。</p>
+                    </div>
+                </details>
 
-                <!-- 推薦住宿 -->
-                <div class="bg-[#EFECE6] p-5 rounded-xl space-y-3 border border-[#E2DDD5]">
-                    <h3 class="font-bold text-base text-[#2C3E35]">🏨 推薦住宿區域</h3>
-                    <ul class="space-y-2 text-sm text-gray-700">
-                        <li><b>捷運中山站（首選）：</b>美食、購物機能極佳，機捷至 A1 轉乘方便。</li>
-                        <li><b>中正紀念堂站／東門站：</b>鄰近永康商圈與文化景點，交通四通八達。</li>
-                    </ul>
-                </div>
+                <!-- 推薦住宿（預設關閉/收合） -->
+                <details class="bg-[#EFECE6] p-5 rounded-xl space-y-3 border border-[#E2DDD5]">
+                    <summary class="cursor-pointer font-bold text-base text-[#2C3E35] flex justify-between items-center select-none">
+                        <span>🏨 推薦住宿區域（點擊展開）</span>
+                        <span class="text-xs text-[#C66914] font-medium bg-[#E89344]/10 px-2.5 py-1 rounded">展開 ▼</span>
+                    </summary>
+                    <div class="mt-3 space-y-2 text-sm text-gray-700 pt-2 border-t border-[#E2DDD5]/60">
+                        <p><b>捷運中山站（首選）：</b>美食、購物機能極佳，機捷至 A1 轉乘方便。</p>
+                        <p><b>中正紀念堂站／東門站：</b>鄰近永康商圈與文化景點，交通四通八達。</p>
+                    </div>
+                </details>
             </div>
         </div>
         <div id="tab-d1-link" class="tab-content hidden fade-in space-y-6">
@@ -258,11 +271,16 @@
                     </div>
                 </details>
 
-                <div class="bg-orange-50 border border-orange-200 p-4 rounded-xl text-xs text-orange-900 space-y-1.5">
-                    <h3 class="font-bold text-sm text-orange-950">⚠️ 今日特殊備註</h3>
-                    <p>・2026/9/28為教師節國定假日，九份與十分人潮可能增加，可考慮與9/29互換。</p>
-                    <p><b>必吃推薦：</b>九份芋圓、草仔粿。</p>
-                </div>
+                <details class="bg-orange-50 border border-orange-200 rounded-xl p-4 shadow-sm">
+                    <summary class="cursor-pointer font-bold text-orange-950 flex justify-between items-center select-none text-sm">
+                        <span>⚠️ 【今日特殊備註】（點擊展開）</span>
+                        <span class="text-xs font-medium bg-orange-200/60 text-orange-900 px-2.5 py-1 rounded">展開 ▼</span>
+                    </summary>
+                    <div class="mt-3 text-xs text-orange-900 leading-relaxed pt-2 border-t border-orange-200 space-y-1.5">
+                        <p>・2026/9/28為教師節國定假日，九份與十分人潮可能增加，可考慮與9/29互換。</p>
+                        <p><b>必吃推薦：</b>九份芋圓、草仔粿。</p>
+                    </div>
+                </details>
             </div>
         </div>
         <div id="tab-d2-trans" class="tab-content hidden fade-in space-y-6">
@@ -271,14 +289,24 @@
                     <span class="text-xs bg-[#E89344]/20 text-[#C66914] px-3 py-1 rounded-md font-bold">9/28（一）｜交通方式與住宿</span>
                     <h2 class="text-3xl font-bold mt-2 text-[#2C3E35]">第二天交通與住宿指南</h2>
                 </div>
-                <div class="bg-[#F0EDEA] p-5 rounded-xl space-y-3">
-                    <h3 class="font-bold text-base text-[#2C3E35]">🚗 車程攻略</h3>
-                    <p class="text-sm">白天全程以 Klook 預訂之一日遊專車巴士為主，免去山路轉車煩惱。晚上返回台北車站後使用捷運／計程車移動。</p>
-                </div>
-                <div class="bg-[#EFECE6] p-5 rounded-xl space-y-3 border border-[#E2DDD5]">
-                    <h3 class="font-bold text-base text-[#2C3E35]">🏨 推薦住宿區域</h3>
-                    <p class="text-sm">續住台北市區（建議捷運紅線或台北車站附近，方便參加一日遊集合與隔天行程）。</p>
-                </div>
+                <details class="bg-[#F0EDEA] p-5 rounded-xl space-y-3 border border-[#E2DDD5]" open>
+                    <summary class="cursor-pointer font-bold text-base text-[#2C3E35] flex justify-between items-center select-none">
+                        <span>🚗 車程攻略（點擊可收合）</span>
+                        <span class="text-xs text-gray-500 font-medium">收合 ▲</span>
+                    </summary>
+                    <div class="mt-3 space-y-2 text-sm pt-2 border-t border-[#E2DDD5]/60">
+                        <p>白天全程以 Klook 預訂之一日遊專車巴士為主，免去山路轉車煩惱。晚上返回台北車站後使用捷運／計程車移動。</p>
+                    </div>
+                </details>
+                <details class="bg-[#EFECE6] p-5 rounded-xl space-y-3 border border-[#E2DDD5]">
+                    <summary class="cursor-pointer font-bold text-base text-[#2C3E35] flex justify-between items-center select-none">
+                        <span>🏨 推薦住宿區域（點擊展開）</span>
+                        <span class="text-xs text-[#C66914] font-medium bg-[#E89344]/10 px-2.5 py-1 rounded">展開 ▼</span>
+                    </summary>
+                    <div class="mt-3 space-y-2 text-sm text-gray-700 pt-2 border-t border-[#E2DDD5]/60">
+                        <p>續住台北市區（建議捷運紅線或台北車站附近，方便參加一日遊集合與隔天行程）。</p>
+                    </div>
+                </details>
             </div>
         </div>
         <div id="tab-d2-link" class="tab-content hidden fade-in space-y-6">
@@ -347,11 +375,16 @@
                     </div>
                 </details>
 
-                <div class="bg-orange-50 border border-orange-200 p-4 rounded-xl text-xs text-orange-900 space-y-1.5">
-                    <h3 class="font-bold text-sm text-orange-950">⚠️ 今日特殊備註</h3>
-                    <p>・故宮外籍成人普通票NT$350；國籍優惠折抵票NT$150。</p>
-                    <p>・永康商圈推薦：搖滾牛冰淇淋、鼎泰豐、白水豆花、芒果冰。</p>
-                </div>
+                <details class="bg-orange-50 border border-orange-200 rounded-xl p-4 shadow-sm">
+                    <summary class="cursor-pointer font-bold text-orange-950 flex justify-between items-center select-none text-sm">
+                        <span>⚠️ 【今日特殊備註】（點擊展開）</span>
+                        <span class="text-xs font-medium bg-orange-200/60 text-orange-900 px-2.5 py-1 rounded">展開 ▼</span>
+                    </summary>
+                    <div class="mt-3 text-xs text-orange-900 leading-relaxed pt-2 border-t border-orange-200 space-y-1.5">
+                        <p>・故宮外籍成人普通票NT$350；國籍優惠折抵票NT$150。</p>
+                        <p>・永康商圈推薦：搖滾牛冰淇淋、鼎泰豐、白水豆花、芒果冰。</p>
+                    </div>
+                </details>
             </div>
         </div>
         <div id="tab-d3-trans" class="tab-content hidden fade-in space-y-6">
@@ -360,15 +393,25 @@
                     <span class="text-xs bg-[#E89344]/20 text-[#C66914] px-3 py-1 rounded-md font-bold">9/29（二）｜交通方式與住宿</span>
                     <h2 class="text-3xl font-bold mt-2 text-[#2C3E35]">第三天交通與住宿指南</h2>
                 </div>
-                <div class="bg-[#F0EDEA] p-5 rounded-xl space-y-3">
-                    <h3 class="font-bold text-base text-[#2C3E35]">🚗 車程攻略</h3>
-                    <p class="text-sm"><b>市區移動：</b>台北捷運＋步行。<b>東門 ➔ 故宮：</b>捷運至士林站，轉公車／計程車。<b>士林 ➔ 屋頂上：</b>建議計程車／接送上山。</p>
-                    <p class="text-xs text-gray-500">車程參考：東門至故宮約40-60分；故宮至士林站約15-25分；士林至屋頂上約20-30分。</p>
-                </div>
-                <div class="bg-[#EFECE6] p-5 rounded-xl space-y-3 border border-[#E2DDD5]">
-                    <h3 class="font-bold text-base text-[#2C3E35]">🏨 推薦住宿區域</h3>
-                    <p class="text-sm">續住台北市區（捷運沿線即可）。</p>
-                </div>
+                <details class="bg-[#F0EDEA] p-5 rounded-xl space-y-3 border border-[#E2DDD5]" open>
+                    <summary class="cursor-pointer font-bold text-base text-[#2C3E35] flex justify-between items-center select-none">
+                        <span>🚗 車程攻略（點擊可收合）</span>
+                        <span class="text-xs text-gray-500 font-medium">收合 ▲</span>
+                    </summary>
+                    <div class="mt-3 space-y-2 text-sm pt-2 border-t border-[#E2DDD5]/60">
+                        <p><b>市區移動：</b>台北捷運＋步行。<b>東門 ➔ 故宮：</b>捷運至士林站，轉公車／計程車。<b>士林 ➔ 屋頂上：</b>建議計程車／接送上山。</p>
+                        <p class="text-xs text-gray-500">車程參考：東門至故宮約40-60分；故宮至士林站約15-25分；士林至屋頂上約20-30分。</p>
+                    </div>
+                </details>
+                <details class="bg-[#EFECE6] p-5 rounded-xl space-y-3 border border-[#E2DDD5]">
+                    <summary class="cursor-pointer font-bold text-base text-[#2C3E35] flex justify-between items-center select-none">
+                        <span>🏨 推薦住宿區域（點擊展開）</span>
+                        <span class="text-xs text-[#C66914] font-medium bg-[#E89344]/10 px-2.5 py-1 rounded">展開 ▼</span>
+                    </summary>
+                    <div class="mt-3 space-y-2 text-sm text-gray-700 pt-2 border-t border-[#E2DDD5]/60">
+                        <p>續住台北市區（捷運沿線即可）。</p>
+                    </div>
+                </details>
             </div>
         </div>
         <div id="tab-d3-link" class="tab-content hidden fade-in space-y-6">
@@ -440,11 +483,16 @@
                     </div>
                 </details>
 
-                <div class="bg-orange-50 border border-orange-200 p-4 rounded-xl text-xs text-orange-900 space-y-1.5">
-                    <h3 class="font-bold text-sm text-orange-950">⚠️ 今日特殊備註</h3>
-                    <p>・今天抵達日月潭後自由行，晚上到飯店會合；隔天要玩九族，今晚不排夜生活。</p>
-                    <p><b>必吃推薦：</b>阿薩姆紅茶、茶葉蛋、山豬肉。</p>
-                </div>
+                <details class="bg-orange-50 border border-orange-200 rounded-xl p-4 shadow-sm">
+                    <summary class="cursor-pointer font-bold text-orange-950 flex justify-between items-center select-none text-sm">
+                        <span>⚠️ 【今日特殊備註】（點擊展開）</span>
+                        <span class="text-xs font-medium bg-orange-200/60 text-orange-900 px-2.5 py-1 rounded">展開 ▼</span>
+                    </summary>
+                    <div class="mt-3 text-xs text-orange-900 leading-relaxed pt-2 border-t border-orange-200 space-y-1.5">
+                        <p>・今天抵達日月潭後自由行，晚上到飯店會合；隔天要玩九族，今晚不排夜生活。</p>
+                        <p><b>必吃推薦：</b>阿薩姆紅茶、茶葉蛋、山豬肉。</p>
+                    </div>
+                </details>
             </div>
         </div>
         <div id="tab-d4-trans" class="tab-content hidden fade-in space-y-6">
@@ -453,14 +501,24 @@
                     <span class="text-xs bg-[#E89344]/20 text-[#C66914] px-3 py-1 rounded-md font-bold">9/30（三）｜交通方式與住宿</span>
                     <h2 class="text-3xl font-bold mt-2 text-[#2C3E35]">第四天交通與住宿指南</h2>
                 </div>
-                <div class="bg-[#F0EDEA] p-5 rounded-xl space-y-3">
-                    <h3 class="font-bold text-base text-[#2C3E35]">🚗 車程攻略</h3>
-                    <p class="text-sm"><b>高鐵＋台灣好行【建議】：</b>台北搭高鐵至台中 (約50-70分) ➔ 高鐵台中站 14:10 搭台灣好行 6670 至日月潭 (約1.5小時)。</p>
-                </div>
-                <div class="bg-[#EFECE6] p-5 rounded-xl space-y-3 border border-[#E2DDD5]">
-                    <h3 class="font-bold text-base text-[#2C3E35]">🏨 推薦住宿區域</h3>
-                    <p class="text-sm"><b>日月潭水社碼頭附近湖景飯店：</b>方便隔天搭乘纜車前往九族文化村。</p>
-                </div>
+                <details class="bg-[#F0EDEA] p-5 rounded-xl space-y-3 border border-[#E2DDD5]" open>
+                    <summary class="cursor-pointer font-bold text-base text-[#2C3E35] flex justify-between items-center select-none">
+                        <span>🚗 車程攻略（點擊可收合）</span>
+                        <span class="text-xs text-gray-500 font-medium">收合 ▲</span>
+                    </summary>
+                    <div class="mt-3 space-y-2 text-sm pt-2 border-t border-[#E2DDD5]/60">
+                        <p><b>高鐵＋台灣好行【建議】：</b>台北搭高鐵至台中 (約50-70分) ➔ 高鐵台中站 14:10 搭台灣好行 6670 至日月潭 (約1.5小時)。</p>
+                    </div>
+                </details>
+                <details class="bg-[#EFECE6] p-5 rounded-xl space-y-3 border border-[#E2DDD5]">
+                    <summary class="cursor-pointer font-bold text-base text-[#2C3E35] flex justify-between items-center select-none">
+                        <span>🏨 推薦住宿區域（點擊展開）</span>
+                        <span class="text-xs text-[#C66914] font-medium bg-[#E89344]/10 px-2.5 py-1 rounded">展開 ▼</span>
+                    </summary>
+                    <div class="mt-3 space-y-2 text-sm text-gray-700 pt-2 border-t border-[#E2DDD5]/60">
+                        <p><b>日月潭水社碼頭附近湖景飯店：</b>方便隔天搭乘纜車前往九族文化村。</p>
+                    </div>
+                </details>
             </div>
         </div>
         <div id="tab-d4-link" class="tab-content hidden fade-in space-y-6">
@@ -530,10 +588,15 @@
                     </div>
                 </details>
 
-                <div class="bg-orange-50 border border-orange-200 p-4 rounded-xl text-xs text-orange-900 space-y-1.5">
-                    <h3 class="font-bold text-sm text-orange-950">⚠️ 今日特殊備註與死線</h3>
-                    <p><b>⚠️ 絕對死線：</b>最晚 14:00 必須離開九族，否則趕不上回台中的客運與高美濕地夕陽！</p>
-                </div>
+                <details class="bg-orange-50 border border-orange-200 rounded-xl p-4 shadow-sm">
+                    <summary class="cursor-pointer font-bold text-orange-950 flex justify-between items-center select-none text-sm">
+                        <span>⚠️ 【今日特殊備註與死線】（點擊展開）</span>
+                        <span class="text-xs font-medium bg-orange-200/60 text-orange-900 px-2.5 py-1 rounded">展開 ▼</span>
+                    </summary>
+                    <div class="mt-3 text-xs text-orange-900 leading-relaxed pt-2 border-t border-orange-200 space-y-1.5">
+                        <p><b>⚠️ 絕對死線：</b>最晚 14:00 必須離開九族，否則趕不上回台中的客運與高美濕地夕陽！</p>
+                    </div>
+                </details>
             </div>
         </div>
         <div id="tab-d5-trans" class="tab-content hidden fade-in space-y-6">
@@ -542,14 +605,24 @@
                     <span class="text-xs bg-[#E89344]/20 text-[#C66914] px-3 py-1 rounded-md font-bold">10/1（四）｜交通方式與住宿</span>
                     <h2 class="text-3xl font-bold mt-2 text-[#2C3E35]">第五天交通與住宿指南</h2>
                 </div>
-                <div class="bg-[#F0EDEA] p-5 rounded-xl space-y-3">
-                    <h3 class="font-bold text-base text-[#2C3E35]">🚗 車程攻略</h3>
-                    <p class="text-sm"><b>日月潭 ⇄ 九族：</b>去程車、回程纜車。<b>日月潭 ➔ 台中：</b>台灣好行 6670。<b>台中 ➔ 高美濕地：</b>自駕（約40-50分）。</p>
-                </div>
-                <div class="bg-[#EFECE6] p-5 rounded-xl space-y-3 border border-[#E2DDD5]">
-                    <h3 class="font-bold text-base text-[#2C3E35]">🏨 推薦住宿區域</h3>
-                    <p class="text-sm"><b>星漾商旅中清館：</b>靠近 74 快速道路，隔天 02:30 上武嶺非常方便。</p>
-                </div>
+                <details class="bg-[#F0EDEA] p-5 rounded-xl space-y-3 border border-[#E2DDD5]" open>
+                    <summary class="cursor-pointer font-bold text-base text-[#2C3E35] flex justify-between items-center select-none">
+                        <span>🚗 車程攻略（點擊可收合）</span>
+                        <span class="text-xs text-gray-500 font-medium">收合 ▲</span>
+                    </summary>
+                    <div class="mt-3 space-y-2 text-sm pt-2 border-t border-[#E2DDD5]/60">
+                        <p><b>日月潭 ⇄ 九族：</b>去程車、回程纜車。<b>日月潭 ➔ 台中：</b>台灣好行 6670。<b>台中 ➔ 高美濕地：</b>自駕（約40-50分）。</p>
+                    </div>
+                </details>
+                <details class="bg-[#EFECE6] p-5 rounded-xl space-y-3 border border-[#E2DDD5]">
+                    <summary class="cursor-pointer font-bold text-base text-[#2C3E35] flex justify-between items-center select-none">
+                        <span>🏨 推薦住宿區域（點擊展開）</span>
+                        <span class="text-xs text-[#C66914] font-medium bg-[#E89344]/10 px-2.5 py-1 rounded">展開 ▼</span>
+                    </summary>
+                    <div class="mt-3 space-y-2 text-sm text-gray-700 pt-2 border-t border-[#E2DDD5]/60">
+                        <p><b>星漾商旅中清館：</b>靠近 74 快速道路，隔天 02:30 上武嶺非常方便。</p>
+                    </div>
+                </details>
             </div>
         </div>
         <div id="tab-d5-link" class="tab-content hidden fade-in space-y-6">
@@ -621,11 +694,16 @@
                     </div>
                 </details>
 
-                <div class="bg-orange-50 border border-orange-200 p-4 rounded-xl text-xs text-orange-900 space-y-1.5">
-                    <h3 class="font-bold text-sm text-orange-950">⚠️ 今日特殊備註與最高強度防護</h3>
-                    <p><b>⚠️ 全程最高強度日：</b>務必完整保留 09:00-12:00 補眠時間，睡眠與安全第一！</p>
-                    <p>・四草綠色隧道15:30前須購票候船（16:00結束營運）。</p>
-                </div>
+                <details class="bg-orange-50 border border-orange-200 rounded-xl p-4 shadow-sm">
+                    <summary class="cursor-pointer font-bold text-orange-950 flex justify-between items-center select-none text-sm">
+                        <span>⚠️ 【今日特殊備註與最高強度防護】（點擊展開）</span>
+                        <span class="text-xs font-medium bg-orange-200/60 text-orange-900 px-2.5 py-1 rounded">展開 ▼</span>
+                    </summary>
+                    <div class="mt-3 text-xs text-orange-900 leading-relaxed pt-2 border-t border-orange-200 space-y-1.5">
+                        <p><b>⚠️ 全程最高強度日：</b>務必完整保留 09:00-12:00 補眠時間，睡眠與安全第一！</p>
+                        <p>・四草綠色隧道15:30前須購票候船（16:00結束營運）。</p>
+                    </div>
+                </details>
             </div>
         </div>
         <div id="tab-d6-trans" class="tab-content hidden fade-in space-y-6">
@@ -634,14 +712,24 @@
                     <span class="text-xs bg-[#E89344]/20 text-[#C66914] px-3 py-1 rounded-md font-bold">10/2（五）｜交通方式與住宿</span>
                     <h2 class="text-3xl font-bold mt-2 text-[#2C3E35]">第六天交通與住宿指南</h2>
                 </div>
-                <div class="bg-[#F0EDEA] p-5 rounded-xl space-y-3">
-                    <h3 class="font-bold text-base text-[#2C3E35]">🚗 車程攻略</h3>
-                    <p class="text-sm">全程自駕。台中 ⇄ 武嶺單程約2.5-3小時；台中 ➔ 台南約2小時；台南市區景點間約10-30分鐘。</p>
-                </div>
-                <div class="bg-[#EFECE6] p-5 rounded-xl space-y-3 border border-[#E2DDD5]">
-                    <h3 class="font-bold text-base text-[#2C3E35]">🏨 推薦住宿區域</h3>
-                    <p class="text-sm"><b>台南中西區：</b>方便晚上前往品嚐在地小吃與宵夜。</p>
-                </div>
+                <details class="bg-[#F0EDEA] p-5 rounded-xl space-y-3 border border-[#E2DDD5]" open>
+                    <summary class="cursor-pointer font-bold text-base text-[#2C3E35] flex justify-between items-center select-none">
+                        <span>🚗 車程攻略（點擊可收合）</span>
+                        <span class="text-xs text-gray-500 font-medium">收合 ▲</span>
+                    </summary>
+                    <div class="mt-3 space-y-2 text-sm pt-2 border-t border-[#E2DDD5]/60">
+                        <p>全程自駕。台中 ⇄ 武嶺單程約2.5-3小時；台中 ➔ 台南約2小時；台南市區景點間約10-30分鐘。</p>
+                    </div>
+                </details>
+                <details class="bg-[#EFECE6] p-5 rounded-xl space-y-3 border border-[#E2DDD5]">
+                    <summary class="cursor-pointer font-bold text-base text-[#2C3E35] flex justify-between items-center select-none">
+                        <span>🏨 推薦住宿區域（點擊展開）</span>
+                        <span class="text-xs text-[#C66914] font-medium bg-[#E89344]/10 px-2.5 py-1 rounded">展開 ▼</span>
+                    </summary>
+                    <div class="mt-3 space-y-2 text-sm text-gray-700 pt-2 border-t border-[#E2DDD5]/60">
+                        <p><b>台南中西區：</b>方便晚上前往品嚐在地小吃與宵夜。</p>
+                    </div>
+                </details>
             </div>
         </div>
         <div id="tab-d6-link" class="tab-content hidden fade-in space-y-6">
@@ -711,11 +799,16 @@
                     </div>
                 </details>
 
-                <div class="bg-orange-50 border border-orange-200 p-4 rounded-xl text-xs text-orange-900 space-y-1.5">
-                    <h3 class="font-bold text-sm text-orange-950">⚠️ 今日特殊備註</h3>
-                    <p>・熱氣球下午場約16:00-17:30，建議15:00-15:30提早到場。</p>
-                    <p><b>必吃推薦：</b>安平蝦捲、豆花、蝦餅。</p>
-                </div>
+                <details class="bg-orange-50 border border-orange-200 rounded-xl p-4 shadow-sm">
+                    <summary class="cursor-pointer font-bold text-orange-950 flex justify-between items-center select-none text-sm">
+                        <span>⚠️ 【今日特殊備註】（點擊展開）</span>
+                        <span class="text-xs font-medium bg-orange-200/60 text-orange-900 px-2.5 py-1 rounded">展開 ▼</span>
+                    </summary>
+                    <div class="mt-3 text-xs text-orange-900 leading-relaxed pt-2 border-t border-orange-200 space-y-1.5">
+                        <p>・熱氣球下午場約16:00-17:30，建議15:00-15:30提早到場。</p>
+                        <p><b>必吃推薦：</b>安平蝦捲、豆花、蝦餅。</p>
+                    </div>
+                </details>
             </div>
         </div>
         <div id="tab-d7-trans" class="tab-content hidden fade-in space-y-6">
@@ -724,14 +817,24 @@
                     <span class="text-xs bg-[#E89344]/20 text-[#C66914] px-3 py-1 rounded-md font-bold">10/3（六）｜交通方式與住宿</span>
                     <h2 class="text-3xl font-bold mt-2 text-[#2C3E35]">第七天交通與住宿指南</h2>
                 </div>
-                <div class="bg-[#F0EDEA] p-5 rounded-xl space-y-3">
-                    <h3 class="font-bold text-base text-[#2C3E35]">🚗 車程攻略</h3>
-                    <p class="text-sm">台南 ➔ 安平 ➔ 月世界自駕（安平至月世界約1-1.5小時）。月世界至高雄市區後續轉大眾交通。</p>
-                </div>
-                <div class="bg-[#EFECE6] p-5 rounded-xl space-y-3 border border-[#E2DDD5]">
-                    <h3 class="font-bold text-base text-[#2C3E35]">🏨 推薦住宿區域</h3>
-                    <p class="text-sm"><b>高雄美麗島站／六合夜市附近：</b>紅橘線交會點，10/4寄放行李、10/5續住、10/6直達機場。</p>
-                </div>
+                <details class="bg-[#F0EDEA] p-5 rounded-xl space-y-3 border border-[#E2DDD5]" open>
+                    <summary class="cursor-pointer font-bold text-base text-[#2C3E35] flex justify-between items-center select-none">
+                        <span>🚗 車程攻略（點擊可收合）</span>
+                        <span class="text-xs text-gray-500 font-medium">收合 ▲</span>
+                    </summary>
+                    <div class="mt-3 space-y-2 text-sm pt-2 border-t border-[#E2DDD5]/60">
+                        <p>台南 ➔ 安平 ➔ 月世界自駕（安平至月世界約1-1.5小時）。月世界至高雄市區後續轉大眾交通。</p>
+                    </div>
+                </details>
+                <details class="bg-[#EFECE6] p-5 rounded-xl space-y-3 border border-[#E2DDD5]">
+                    <summary class="cursor-pointer font-bold text-base text-[#2C3E35] flex justify-between items-center select-none">
+                        <span>🏨 推薦住宿區域（點擊展開）</span>
+                        <span class="text-xs text-[#C66914] font-medium bg-[#E89344]/10 px-2.5 py-1 rounded">展開 ▼</span>
+                    </summary>
+                    <div class="mt-3 space-y-2 text-sm text-gray-700 pt-2 border-t border-[#E2DDD5]/60">
+                        <p><b>高雄美麗島站／六合夜市附近：</b>紅橘線交會點，10/4寄放行李、10/5續住、10/6直達機場。</p>
+                    </div>
+                </details>
             </div>
         </div>
         <div id="tab-d7-link" class="tab-content hidden fade-in space-y-6">
@@ -802,10 +905,15 @@
                     </div>
                 </details>
 
-                <div class="bg-orange-50 border border-orange-200 p-4 rounded-xl text-xs text-orange-900 space-y-1.5">
-                    <h3 class="font-bold text-sm text-orange-950">⚠️ 今日特殊備註與死線</h3>
-                    <p><b>⚠️ 海生館 16:00 報到是固定死線：</b>包車景點寧願少一個（選3-4個點），絕不準壓線遲到！</p>
-                </div>
+                <details class="bg-orange-50 border border-orange-200 rounded-xl p-4 shadow-sm">
+                    <summary class="cursor-pointer font-bold text-orange-950 flex justify-between items-center select-none text-sm">
+                        <span>⚠️ 【今日特殊備註與死線】（點擊展開）</span>
+                        <span class="text-xs font-medium bg-orange-200/60 text-orange-900 px-2.5 py-1 rounded">展開 ▼</span>
+                    </summary>
+                    <div class="mt-3 text-xs text-orange-900 leading-relaxed pt-2 border-t border-orange-200 space-y-1.5">
+                        <p><b>⚠️ 海生館 16:00 報到是固定死線：</b>包車景點寧願少一個（選3-4個點），絕不準壓線遲到！</p>
+                    </div>
+                </details>
             </div>
         </div>
         <div id="tab-d8-trans" class="tab-content hidden fade-in space-y-6">
@@ -814,14 +922,24 @@
                     <span class="text-xs bg-[#E89344]/20 text-[#C66914] px-3 py-1 rounded-md font-bold">10/4（日）｜交通方式與住宿</span>
                     <h2 class="text-3xl font-bold mt-2 text-[#2C3E35]">第八天交通與住宿指南</h2>
                 </div>
-                <div class="bg-[#F0EDEA] p-5 rounded-xl space-y-3">
-                    <h3 class="font-bold text-base text-[#2C3E35]">🚗 車程攻略</h3>
-                    <p class="text-sm"><b>左營 ➔ 墾丁：</b>台灣好行9189墾丁快線 (10:00 發車，左營至恆春約2小時05分)。<b>墾丁區域：</b>包車約4小時（景點選3-4個）。</p>
-                </div>
-                <div class="bg-[#EFECE6] p-5 rounded-xl space-y-3 border border-[#E2DDD5]">
-                    <h3 class="font-bold text-base text-[#2C3E35]">🏨 推薦住宿區域</h3>
-                    <p class="text-sm"><b>國立海洋生物博物館（夜宿海生館專屬容納區）：</b>當晚直接夜宿館內與魚群共眠。</p>
-                </div>
+                <details class="bg-[#F0EDEA] p-5 rounded-xl space-y-3 border border-[#E2DDD5]" open>
+                    <summary class="cursor-pointer font-bold text-base text-[#2C3E35] flex justify-between items-center select-none">
+                        <span>🚗 車程攻略（點擊可收合）</span>
+                        <span class="text-xs text-gray-500 font-medium">收合 ▲</span>
+                    </summary>
+                    <div class="mt-3 space-y-2 text-sm pt-2 border-t border-[#E2DDD5]/60">
+                        <p><b>左營 ➔ 墾丁：</b>台灣好行9189墾丁快線 (10:00 發車，左營至恆春約2小時05分)。<b>墾丁區域：</b>包車約4小時（景點選3-4個）。</p>
+                    </div>
+                </details>
+                <details class="bg-[#EFECE6] p-5 rounded-xl space-y-3 border border-[#E2DDD5]">
+                    <summary class="cursor-pointer font-bold text-base text-[#2C3E35] flex justify-between items-center select-none">
+                        <span>🏨 推薦住宿區域（點擊展開）</span>
+                        <span class="text-xs text-[#C66914] font-medium bg-[#E89344]/10 px-2.5 py-1 rounded">展開 ▼</span>
+                    </summary>
+                    <div class="mt-3 space-y-2 text-sm text-gray-700 pt-2 border-t border-[#E2DDD5]/60">
+                        <p><b>國立海洋生物博物館（夜宿海生館專屬容納區）：</b>當晚直接夜宿館內與魚群共眠。</p>
+                    </div>
+                </details>
             </div>
         </div>
         <div id="tab-d8-link" class="tab-content hidden fade-in space-y-6">
@@ -890,11 +1008,16 @@
                     </div>
                 </details>
 
-                <div class="bg-orange-50 border border-orange-200 p-4 rounded-xl text-xs text-orange-900 space-y-1.5">
-                    <h3 class="font-bold text-sm text-orange-950">⚠️ 今日特殊備註</h3>
-                    <p>・海生館11:31班次非常緊，推薦搭12:01班次較保守。</p>
-                    <p>・高雄日落約17:43-17:47，建議17:15前抵達觀景位置。</p>
-                </div>
+                <details class="bg-orange-50 border border-orange-200 rounded-xl p-4 shadow-sm">
+                    <summary class="cursor-pointer font-bold text-orange-950 flex justify-between items-center select-none text-sm">
+                        <span>⚠️ 【今日特殊備註】（點擊展開）</span>
+                        <span class="text-xs font-medium bg-orange-200/60 text-orange-900 px-2.5 py-1 rounded">展開 ▼</span>
+                    </summary>
+                    <div class="mt-3 text-xs text-orange-900 leading-relaxed pt-2 border-t border-orange-200 space-y-1.5">
+                        <p>・海生館11:31班次非常緊，推薦搭12:01班次較保守。</p>
+                        <p>・高雄日落約17:43-17:47，建議17:15前抵達觀景位置。</p>
+                    </div>
+                </details>
             </div>
         </div>
         <div id="tab-d9-trans" class="tab-content hidden fade-in space-y-6">
@@ -903,14 +1026,24 @@
                     <span class="text-xs bg-[#E89344]/20 text-[#C66914] px-3 py-1 rounded-md font-bold">10/5（一）｜交通方式與住宿</span>
                     <h2 class="text-3xl font-bold mt-2 text-[#2C3E35]">第九天交通與住宿指南</h2>
                 </div>
-                <div class="bg-[#F0EDEA] p-5 rounded-xl space-y-3">
-                    <h3 class="font-bold text-base text-[#2C3E35]">🚗 車程攻略</h3>
-                    <p class="text-sm"><b>海生館 ➔ 高雄：</b>墾丁快線（建議12:01班次）。<b>左營 ➔ 住宿 ➔ 西子灣：</b>高雄捷運紅橘線。<b>鼓山 ➔ 旗津：</b>旗鼓渡輪（刷悠遊卡NT$30）。</p>
-                </div>
-                <div class="bg-[#EFECE6] p-5 rounded-xl space-y-3 border border-[#E2DDD5]">
-                    <h3 class="font-bold text-base text-[#2C3E35]">🏨 推薦住宿區域</h3>
-                    <p class="text-sm"><b>高雄美麗島站附近：</b>再次入住同一家飯店，免去換飯店的行李搬運麻煩。</p>
-                </div>
+                <details class="bg-[#F0EDEA] p-5 rounded-xl space-y-3 border border-[#E2DDD5]" open>
+                    <summary class="cursor-pointer font-bold text-base text-[#2C3E35] flex justify-between items-center select-none">
+                        <span>🚗 車程攻略（點擊可收合）</span>
+                        <span class="text-xs text-gray-500 font-medium">收合 ▲</span>
+                    </summary>
+                    <div class="mt-3 space-y-2 text-sm pt-2 border-t border-[#E2DDD5]/60">
+                        <p><b>海生館 ➔ 高雄：</b>墾丁快線（建議12:01班次）。<b>左營 ➔ 住宿 ➔ 西子灣：</b>高雄捷運紅橘線。<b>鼓山 ➔ 旗津：</b>旗鼓渡輪（刷悠遊卡NT$30）。</p>
+                    </div>
+                </details>
+                <details class="bg-[#EFECE6] p-5 rounded-xl space-y-3 border border-[#E2DDD5]">
+                    <summary class="cursor-pointer font-bold text-base text-[#2C3E35] flex justify-between items-center select-none">
+                        <span>🏨 推薦住宿區域（點擊展開）</span>
+                        <span class="text-xs text-[#C66914] font-medium bg-[#E89344]/10 px-2.5 py-1 rounded">展開 ▼</span>
+                    </summary>
+                    <div class="mt-3 space-y-2 text-sm text-gray-700 pt-2 border-t border-[#E2DDD5]/60">
+                        <p><b>高雄美麗島站附近：</b>再次入住同一家飯店，免去換飯店的行李搬運麻煩。</p>
+                    </div>
+                </details>
             </div>
         </div>
         <div id="tab-d9-link" class="tab-content hidden fade-in space-y-6">
@@ -970,11 +1103,16 @@
                     </div>
                 </details>
 
-                <div class="bg-orange-50 border border-orange-200 p-4 rounded-xl text-xs text-orange-900 space-y-1.5">
-                    <h3 class="font-bold text-sm text-orange-950">⚠️ 今日特殊備註</h3>
-                    <p>・住宿選美麗島附近的最大優點：最後一天不需轉線，直達機場。</p>
-                    <p>・07:30 抵達機場可預留約 2 小時 45 分鐘，從容不迫。</p>
-                </div>
+                <details class="bg-orange-50 border border-orange-200 rounded-xl p-4 shadow-sm">
+                    <summary class="cursor-pointer font-bold text-orange-950 flex justify-between items-center select-none text-sm">
+                        <span>⚠️ 【今日特殊備註】（點擊展開）</span>
+                        <span class="text-xs font-medium bg-orange-200/60 text-orange-900 px-2.5 py-1 rounded">展開 ▼</span>
+                    </summary>
+                    <div class="mt-3 text-xs text-orange-900 leading-relaxed pt-2 border-t border-orange-200 space-y-1.5">
+                        <p>・住宿選美麗島附近的最大優點：最後一天不需轉線，直達機場。</p>
+                        <p>・07:30 抵達機場可預留約 2 小時 45 分鐘，從容不迫。</p>
+                    </div>
+                </details>
             </div>
         </div>
         <div id="tab-d10-trans" class="tab-content hidden fade-in space-y-6">
@@ -983,14 +1121,24 @@
                     <span class="text-xs bg-[#E89344]/20 text-[#C66914] px-3 py-1 rounded-md font-bold">10/6（二）｜交通方式與住宿</span>
                     <h2 class="text-3xl font-bold mt-2 text-[#2C3E35]">第十天交通與住宿指南</h2>
                 </div>
-                <div class="bg-[#F0EDEA] p-5 rounded-xl space-y-3">
-                    <h3 class="font-bold text-base text-[#2C3E35]">🚗 車程攻略</h3>
-                    <p class="text-sm">美麗島站搭乘高雄捷運紅線往小港方向直達，約15-20分鐘（全程不需轉線）。</p>
-                </div>
-                <div class="bg-[#EFECE6] p-5 rounded-xl space-y-3 border border-[#E2DDD5]">
-                    <h3 class="font-bold text-base text-[#2C3E35]">🏨 推薦住宿區域</h3>
-                    <p class="text-sm">行程圓滿結束，準備搭機返回香港！</p>
-                </div>
+                <details class="bg-[#F0EDEA] p-5 rounded-xl space-y-3 border border-[#E2DDD5]" open>
+                    <summary class="cursor-pointer font-bold text-base text-[#2C3E35] flex justify-between items-center select-none">
+                        <span>🚗 車程攻略（點擊可收合）</span>
+                        <span class="text-xs text-gray-500 font-medium">收合 ▲</span>
+                    </summary>
+                    <div class="mt-3 space-y-2 text-sm pt-2 border-t border-[#E2DDD5]/60">
+                        <p>美麗島站搭乘高雄捷運紅線往小港方向直達，約15-20分鐘（全程不需轉線）。</p>
+                    </div>
+                </details>
+                <details class="bg-[#EFECE6] p-5 rounded-xl space-y-3 border border-[#E2DDD5]">
+                    <summary class="cursor-pointer font-bold text-base text-[#2C3E35] flex justify-between items-center select-none">
+                        <span>🏨 推薦住宿區域（點擊展開）</span>
+                        <span class="text-xs text-[#C66914] font-medium bg-[#E89344]/10 px-2.5 py-1 rounded">展開 ▼</span>
+                    </summary>
+                    <div class="mt-3 space-y-2 text-sm text-gray-700 pt-2 border-t border-[#E2DDD5]/60">
+                        <p>行程圓滿結束，準備搭機返回香港！</p>
+                    </div>
+                </details>
             </div>
         </div>
         <div id="tab-d10-link" class="tab-content hidden fade-in space-y-6">
@@ -1109,29 +1257,37 @@
         <p class="text-xs mt-1 text-gray-400">Designed with Taiwanese Aesthetic UI/UX & Smooth Animations 🚀</p>
     </footer>
 
-    <!-- JavaScript 階層選單、隨機掉落符號與互動邏輯 -->
+    <!-- JavaScript 階層選單、滿版單一符號中慢速掉落動畫邏輯 -->
     <script>
         const emojis = ['🍠', '🧋', '👵🏻', '🏝️'];
 
-        function triggerRandomEmojiRain() {
-            // 隨機掉落 3 到 5 個符號
-            const count = Math.floor(Math.random() * 3) + 3;
+        function triggerSingleEmojiRain() {
+            // 隨機選出其中一種符號
+            const chosenEmoji = emojis[Math.floor(Math.random() * emojis.length)];
+            // 滿版產生 12 到 18 個符號
+            const count = Math.floor(Math.random() * 7) + 12;
+            
             for (let i = 0; i < count; i++) {
                 const span = document.createElement('div');
                 span.className = 'floating-emoji';
-                span.textContent = emojis[Math.floor(Math.random() * emojis.length)];
-                span.style.left = Math.random() * 85 + 5 + 'vw';
-                span.style.animationDuration = (Math.random() * 0.8 + 1.2) + 's';
+                span.textContent = chosenEmoji;
+                // 橫向隨機分佈滿版
+                span.style.left = (Math.random() * 92 + 2) + 'vw';
+                // 亂數錯開掉落時間差 (約 2.2 秒到 3.2 秒之間，達成中慢速)
+                span.style.animationDuration = (Math.random() * 1.0 + 2.2) + 's';
+                span.style.animationDelay = (Math.random() * 0.4) + 's';
                 document.body.appendChild(span);
 
                 setTimeout(() => {
                     span.remove();
-                }, 2000);
+                }, 3500);
             }
         }
 
         function toggleDayMenu(dayNum) {
-            triggerRandomEmojiRain();
+            // 只有點擊大分頁(Day 1 ~ Day 10)時才觸發掉落動畫
+            triggerSingleEmojiRain();
+
             const mainButtons = document.querySelectorAll('.day-main-btn');
             mainButtons.forEach(btn => {
                 btn.classList.remove('bg-[#2C3E35]', 'text-white', 'shadow-md');
@@ -1154,7 +1310,7 @@
         }
 
         function switchTab(tabId) {
-            triggerRandomEmojiRain();
+            // 子分頁切換不觸發掉落動畫，保持專注流暢
             const contents = document.querySelectorAll('.tab-content');
             contents.forEach(el => el.classList.add('hidden'));
 
@@ -1213,5 +1369,4 @@
         };
     </script>
 </body>
-</html>
 </html>
