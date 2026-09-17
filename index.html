@@ -84,7 +84,7 @@
             <button onclick="changeDay(4)" class="day-main-btn px-4 py-2 rounded-lg text-xs font-semibold transition shrink-0 bg-white text-[#2C3E35] hover:bg-[#E2DDD5] border border-[#E2DDD5]" id="main-btn-4">📍 Day 4 日月潭</button>
             <button onclick="changeDay(5)" class="day-main-btn px-4 py-2 rounded-lg text-xs font-semibold transition shrink-0 bg-white text-[#2C3E35] hover:bg-[#E2DDD5] border border-[#E2DDD5]" id="main-btn-5">📍 Day 5 九族高美</button>
             <button onclick="changeDay(6)" class="day-main-btn px-4 py-2 rounded-lg text-xs font-semibold transition shrink-0 bg-white text-[#2C3E35] hover:bg-[#E2DDD5] border border-[#E2DDD5]" id="main-btn-6">📍 Day 6 武嶺台南</button>
-            <button onclick="changeDay(7)" class="day-main-btn px-4 py-2 rounded-lg text-xs font-semibold transition shrink-0 bg-white text-[#2C3E35] hover:bg-[#E2DDD5] border border-[#E2DDD5]" id="main-btn-7">📍 Day 7 四草月世界</button>
+            <button onclick="changeDay(7)" class="day-main-btn px-4 py-2 rounded-lg text-xs font-semibold transition shrink-0 bg-white text-[#2C3E35] hover:bg-[#E2DDD5] border border-[#E2DDD5]" id="main-btn-7">📍 Day 7 安平月世界</button>
             <button onclick="changeDay(8)" class="day-main-btn px-4 py-2 rounded-lg text-xs font-semibold transition shrink-0 bg-white text-[#2C3E35] hover:bg-[#E2DDD5] border border-[#E2DDD5]" id="main-btn-8">📍 Day 8 墾丁海生</button>
             <button onclick="changeDay(9)" class="day-main-btn px-4 py-2 rounded-lg text-xs font-semibold transition shrink-0 bg-white text-[#2C3E35] hover:bg-[#E2DDD5] border border-[#E2DDD5]" id="main-btn-9">📍 Day 9 西子灣旗津</button>
             <button onclick="changeDay(10)" class="day-main-btn px-4 py-2 rounded-lg text-xs font-semibold transition shrink-0 bg-white text-[#2C3E35] hover:bg-[#E2DDD5] border border-[#E2DDD5]" id="main-btn-10">📍 Day 10 賦歸</button>
@@ -111,7 +111,7 @@
                     <span class="text-xs bg-[#E89344]/20 text-[#C66914] px-3 py-1 rounded-md font-bold">9/27（日）｜抵達台灣・台北</span>
                     <h2 class="text-3xl font-bold mt-2 text-[#2C3E35]">第一天：抵達台灣與台北夜生活</h2>
                 </div>
-                <!-- 省略其他天數相同結構，確保完整保留 -->
+
                 <details class="bg-[#F9F8F6] border border-[#E2DDD5] rounded-xl p-4 shadow-sm">
                     <summary class="cursor-pointer font-bold text-[#2C3E35] flex justify-between items-center select-none">
                         <span>🗺️ 【今日小地圖】（點擊展開/收合，點圖片可放大）</span>
@@ -120,62 +120,534 @@
                     <div class="mt-4 space-y-4 pt-3 border-t border-[#E2DDD5]">
                         <div class="rounded-xl overflow-hidden shadow-md border border-gray-200 bg-white p-2 cursor-pointer relative group" onclick="openImageModal('1.PNG', 'DAY 1 小地圖')">
                             <img src="1.PNG" alt="DAY 1 行程地圖" class="w-full h-auto object-contain rounded-lg transition group-hover:opacity-95">
-                            <div class="absolute bottom-4 right-4 bg-black/60 text-white text-xs px-2.5 py-1 rounded-md flex items-center gap-1 shadow">🔍 點擊放大</div>
+                            <div class="absolute bottom-4 right-4 bg-black/60 text-white text-xs px-2.5 py-1 rounded-md flex items-center gap-1 shadow">
+                                🔍 點擊放大
+                            </div>
                         </div>
                         <div class="text-sm bg-white p-4 rounded-lg border border-[#E2DDD5] leading-relaxed">
                             <p>桃園國際機場 ➔ 台北住宿 ➔ 中山／圓山／西門町／信義區・台北101</p>
+                            <p class="text-xs text-gray-500 mt-1">※依抵達後精神狀況選1～2個區域</p>
                         </div>
                     </div>
                 </details>
+
                 <div class="bg-[#F0EDEA] p-5 rounded-xl space-y-3">
                     <h3 class="font-bold text-base text-[#2C3E35]">🕒 今日時間軸</h3>
                     <div class="space-y-2 text-sm text-gray-700">
                         <div><b>14:30</b> 抵達桃園國際機場</div>
                         <div><b>14:30 - 16:00</b> 入境、領行李、交通準備</div>
                         <div><b>約 16:00 - 17:15</b> 桃園機場 ➔ 台北住宿</div>
-                        <div><b>17:30後</b> 晚餐＋台北夜間自由活動</div>
+                        <div><b>17:30後</b> 晚餐＋台北夜間自由活動（中山／圓山／西門町／信義區 四選一～二）</div>
                     </div>
                 </div>
+
                 <div class="space-y-3">
                     <h3 class="font-bold text-base text-[#2C3E35]">📍 景點介紹／推薦理由</h3>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
                         <div class="bg-[#F9F8F6] p-3.5 rounded-xl border border-[#E2DDD5]"><b>中山：</b>百貨、選物店、咖啡店、餐廳與寧夏夜市。</div>
-                        <div class="bg-[#F9F8F6] p-3.5 rounded-xl border border-[#E2DDD5]"><b>圓山：</b>花博園區、市集與餐酒館。</div>
-                        <div class="bg-[#F9F8F6] p-3.5 rounded-xl border border-[#E2DDD5]"><b>西門町：</b>年輕商圈，動漫、購物與宵夜。</div>
-                        <div class="bg-[#F9F8F6] p-3.5 rounded-xl border border-[#E2DDD5]"><b>信義區／台北101：</b>現代城市景觀與夜景。</div>
+                        <div class="bg-[#F9F8F6] p-3.5 rounded-xl border border-[#E2DDD5]"><b>圓山：</b>花博園區、市集與餐酒館較多，適合輕鬆散步、喝酒聊天。</div>
+                        <div class="bg-[#F9F8F6] p-3.5 rounded-xl border border-[#E2DDD5]"><b>西門町：</b>台北代表性年輕商圈，街頭文化、動漫、購物與宵夜選擇多。</div>
+                        <div class="bg-[#F9F8F6] p-3.5 rounded-xl border border-[#E2DDD5]"><b>信義區／台北101：</b>現代城市景觀，夜間百貨、酒吧及101夜景集中。</div>
                     </div>
+                </div>
+
+                <details class="bg-orange-50 border border-orange-200 rounded-xl p-4 shadow-sm">
+                    <summary class="cursor-pointer font-bold text-orange-950 flex justify-between items-center select-none text-sm">
+                        <span>⚠️ 【今日特殊備註】（點擊展開）</span>
+                        <span class="text-xs font-medium bg-orange-200/60 text-orange-900 px-2.5 py-1 rounded">展開 ▼</span>
+                    </summary>
+                    <div class="mt-3 text-xs text-orange-900 leading-relaxed pt-2 border-t border-orange-200 space-y-1.5">
+                        <p>・第一天不安排高強度景點。</p>
+                        <p>・中山、圓山、西門町、信義區四選一～二即可。</p>
+                        <p>・若行李較多或多人同行，計程車方便程度比機捷高；若住中山站，機捷至A1後轉計程車最省力。</p>
+                    </div>
+                </details>
+            </div>
+        </div>
+        <div id="tab-d1-trans" class="tab-content hidden fade-in space-y-6">
+            <div class="taiwan-card rounded-2xl overflow-hidden p-6 md:p-8 space-y-6">
+                <div>
+                    <span class="text-xs bg-[#E89344]/20 text-[#C66914] px-3 py-1 rounded-md font-bold">9/27（日）｜交通方式與住宿</span>
+                    <h2 class="text-3xl font-bold mt-2 text-[#2C3E35]">第一天交通與住宿指南</h2>
+                </div>
+                <details class="bg-[#F0EDEA] p-5 rounded-xl space-y-3 border border-[#E2DDD5]" open>
+                    <summary class="cursor-pointer font-bold text-base text-[#2C3E35] flex justify-between items-center select-none">
+                        <span>🚗 車程攻略（點擊可收合）</span>
+                        <span class="text-xs text-gray-500 font-medium">收合 ▲</span>
+                    </summary>
+                    <div class="mt-3 space-y-2 text-sm pt-2 border-t border-[#E2DDD5]/60">
+                        <p><b>方案1｜機場捷運：</b>桃園機場 ➔ A1 台北車站 ➔ 轉捷運／計程車至住宿（約35-40分，票價約NT$160）。</p>
+                        <p><b>方案2｜計程車：</b>桃園機場直接搭乘計程車前往市中心住宿（約NT$1,200～1,700／車）。</p>
+                        <p class="text-xs text-gray-500">總車程：桃園機場 ➔ 台北市區約 40～75 分鐘。</p>
+                    </div>
+                </details>
+                <details class="bg-[#EFECE6] p-5 rounded-xl space-y-3 border border-[#E2DDD5]">
+                    <summary class="cursor-pointer font-bold text-base text-[#2C3E35] flex justify-between items-center select-none">
+                        <span>🏨 推薦住宿區域（點擊展開）</span>
+                        <span class="text-xs text-[#C66914] font-medium bg-[#E89344]/10 px-2.5 py-1 rounded">展開 ▼</span>
+                    </summary>
+                    <div class="mt-3 space-y-2 text-sm text-gray-700 pt-2 border-t border-[#E2DDD5]/60">
+                        <p><b>捷運中山站（首選）：</b>美食、購物機能極佳，機捷至 A1 轉乘方便。</p>
+                        <p><b>中正紀念堂站／東門站：</b>鄰近永康商圈與文化景點，交通四通八達。</p>
+                    </div>
+                </details>
+            </div>
+        </div>
+        <div id="tab-d1-link" class="tab-content hidden fade-in space-y-6">
+            <div class="taiwan-card rounded-2xl overflow-hidden p-6 md:p-8">
+                <span class="text-xs bg-[#E89344]/20 text-[#C66914] px-3 py-1 rounded-md font-bold">9/27（日）｜參考連結</span>
+                <h2 class="text-3xl font-bold mt-2 mb-4 text-[#2C3E35]">第一天相關官方網站</h2>
+                <div class="flex flex-wrap gap-3 mt-4">
+                    <a href="https://www.taoyuan-airport.com/" target="_blank" class="text-sm bg-white border border-[#2C3E35] px-4 py-2 rounded-xl hover:bg-[#2C3E35] hover:text-white transition shadow-sm">桃園機場官網 ➔</a>
+                    <a href="https://www.tymetro.com.tw/" target="_blank" class="text-sm bg-white border border-[#2C3E35] px-4 py-2 rounded-xl hover:bg-[#2C3E35] hover:text-white transition shadow-sm">機場捷運時刻表 ➔</a>
+                    <a href="https://www.metro.taipei/" target="_blank" class="text-sm bg-white border border-[#2C3E35] px-4 py-2 rounded-xl hover:bg-[#2C3E35] hover:text-white transition shadow-sm">台北捷運 ➔</a>
+                    <a href="https://www.taipei-101.com.tw/" target="_blank" class="text-sm bg-white border border-[#2C3E35] px-4 py-2 rounded-xl hover:bg-[#2C3E35] hover:text-white transition shadow-sm">台北101 ➔</a>
                 </div>
             </div>
         </div>
-        <div id="tab-d1-trans" class="tab-content hidden fade-in space-y-6"><div class="taiwan-card rounded-2xl p-6 md:p-8"><p class="text-sm">機場捷運或計程車至市區住宿。</p></div></div>
-        <div id="tab-d1-link" class="tab-content hidden fade-in space-y-6"><div class="taiwan-card rounded-2xl p-6 md:p-8"><p class="text-sm">請參閱桃園機場官網。</p></div></div>
 
         <!-- ==================== DAY 2 ==================== -->
-        <div id="tab-d2-time" class="tab-content hidden fade-in space-y-6"><div class="taiwan-card rounded-2xl p-6 md:p-8"><p class="text-sm">第二天北海岸行程。</p></div></div>
-        <div id="tab-d2-trans" class="tab-content hidden fade-in space-y-6"><div class="taiwan-card rounded-2xl p-6 md:p-8"><p class="text-sm">Klook 一日遊巴士。</p></div></div>
-        <div id="tab-d2-link" class="tab-content hidden fade-in space-y-6"><div class="taiwan-card rounded-2xl p-6 md:p-8"><p class="text-sm">Klook 連結。</p></div></div>
+        <div id="tab-d2-time" class="tab-content hidden fade-in space-y-6">
+            <div class="taiwan-card rounded-2xl overflow-hidden p-6 md:p-8 space-y-6">
+                <div>
+                    <span class="text-xs bg-[#E89344]/20 text-[#C66914] px-3 py-1 rounded-md font-bold">9/28（一）｜北海岸・九份・十分一日遊</span>
+                    <h2 class="text-3xl font-bold mt-2 text-[#2C3E35]">第二天：北海岸・九份・十分一日遊</h2>
+                </div>
+
+                <details class="bg-[#F9F8F6] border border-[#E2DDD5] rounded-xl p-4 shadow-sm">
+                    <summary class="cursor-pointer font-bold text-[#2C3E35] flex justify-between items-center select-none">
+                        <span>🗺️ 【今日小地圖】（點擊展開/收合，點圖片可放大）</span>
+                        <span class="text-xs text-[#C66914] font-medium bg-[#E89344]/10 px-2.5 py-1 rounded">展開 ▼</span>
+                    </summary>
+                    <div class="mt-4 space-y-4 pt-3 border-t border-[#E2DDD5]">
+                        <div class="rounded-xl overflow-hidden shadow-md border border-gray-200 bg-white p-2 cursor-pointer relative group" onclick="openImageModal('2.PNG', 'DAY 2 小地圖')">
+                            <img src="2.PNG" alt="DAY 2 行程地圖" class="w-full h-auto object-contain rounded-lg transition group-hover:opacity-95">
+                            <div class="absolute bottom-4 right-4 bg-black/60 text-white text-xs px-2.5 py-1 rounded-md flex items-center gap-1 shadow">
+                                🔍 點擊放大
+                            </div>
+                        </div>
+                        <div class="text-sm bg-white p-4 rounded-lg border border-[#E2DDD5] leading-relaxed">
+                            <p>台北 ➔ 野柳 ➔ 陰陽海 ➔ 黃金瀑布 ➔ 九份 ➔ 十分 ➔ 台北</p>
+                            <p class="text-xs text-gray-500 mt-1">※實際順序與停留時間依Klook當日安排為準。</p>
+                        </div>
+                    </div>
+                </details>
+
+                <div class="bg-[#F0EDEA] p-5 rounded-xl space-y-3">
+                    <h3 class="font-bold text-base text-[#2C3E35]">🕒 今日時間軸</h3>
+                    <div class="space-y-2 text-sm text-gray-700">
+                        <div><b>上午</b> 睡飽、早餐、台北自由活動</div>
+                        <div><b>11:15</b> Klook 一日遊集合出發 ➔ 北海岸／九份／十分一日遊</div>
+                        <div><b>約 20:30</b> 返回台北車站</div>
+                        <div><b>21:00後</b> 台北夜間自由活動（中山／圓山／信義區 三選一）</div>
+                    </div>
+                </div>
+
+                <div class="space-y-3">
+                    <h3 class="font-bold text-base text-[#2C3E35]">📍 景點介紹／推薦理由</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
+                        <div class="bg-[#F9F8F6] p-3.5 rounded-xl border border-[#E2DDD5]"><b>野柳：</b>北海岸最具代表性的海蝕地形景觀（女王頭）。</div>
+                        <div class="bg-[#F9F8F6] p-3.5 rounded-xl border border-[#E2DDD5]"><b>陰陽海／黃金瀑布：</b>金瓜石礦業地景形成的特殊景致。</div>
+                        <div class="bg-[#F9F8F6] p-3.5 rounded-xl border border-[#E2DDD5]"><b>九份：</b>山城巷弄, 茶樓、老街及海景經典必訪。</div>
+                        <div class="bg-[#F9F8F6] p-3.5 rounded-xl border border-[#E2DDD5]"><b>十分：</b>老街鐵道放天燈體驗。</div>
+                    </div>
+                </div>
+
+                <details class="bg-[#FEF6EE] border border-[#FAD6B8] rounded-xl p-4 shadow-sm">
+                    <summary class="cursor-pointer font-bold text-[#C66914] flex justify-between items-center select-none text-sm">
+                        <span>✨ 【今日亮點】（點擊展開）</span>
+                        <span class="text-xs font-medium bg-[#C66914]/10 px-2.5 py-1 rounded">展開 ▼</span>
+                    </summary>
+                    <div class="mt-3 text-xs text-gray-700 leading-relaxed pt-2 border-t border-[#FAD6B8]">
+                        <p><b>北台灣經典山海景色＋九份山城＋十分天燈</b></p>
+                    </div>
+                </details>
+
+                <details class="bg-orange-50 border border-orange-200 rounded-xl p-4 shadow-sm">
+                    <summary class="cursor-pointer font-bold text-orange-950 flex justify-between items-center select-none text-sm">
+                        <span>⚠️ 【今日特殊備註】（點擊展開）</span>
+                        <span class="text-xs font-medium bg-orange-200/60 text-orange-900 px-2.5 py-1 rounded">展開 ▼</span>
+                    </summary>
+                    <div class="mt-3 text-xs text-orange-900 leading-relaxed pt-2 border-t border-orange-200 space-y-1.5">
+                        <p>・2026/9/28為教師節國定假日，九份與十分人潮可能增加，可考慮與9/29互換。</p>
+                        <p><b>必吃推薦：</b>九份芋圓、草仔粿。</p>
+                    </div>
+                </details>
+            </div>
+        </div>
+        <div id="tab-d2-trans" class="tab-content hidden fade-in space-y-6">
+            <div class="taiwan-card rounded-2xl overflow-hidden p-6 md:p-8 space-y-6">
+                <div>
+                    <span class="text-xs bg-[#E89344]/20 text-[#C66914] px-3 py-1 rounded-md font-bold">9/28（一）｜交通方式與住宿</span>
+                    <h2 class="text-3xl font-bold mt-2 text-[#2C3E35]">第二天交通與住宿指南</h2>
+                </div>
+                <details class="bg-[#F0EDEA] p-5 rounded-xl space-y-3 border border-[#E2DDD5]" open>
+                    <summary class="cursor-pointer font-bold text-base text-[#2C3E35] flex justify-between items-center select-none">
+                        <span>🚗 車程攻略（點擊可收合）</span>
+                        <span class="text-xs text-gray-500 font-medium">收合 ▲</span>
+                    </summary>
+                    <div class="mt-3 space-y-2 text-sm pt-2 border-t border-[#E2DDD5]/60">
+                        <p>白天全程以 Klook 預訂之一日遊專車巴士為主，免去山路轉車煩惱。晚上返回台北車站後使用捷運／計程車移動。</p>
+                    </div>
+                </details>
+                <details class="bg-[#EFECE6] p-5 rounded-xl space-y-3 border border-[#E2DDD5]">
+                    <summary class="cursor-pointer font-bold text-base text-[#2C3E35] flex justify-between items-center select-none">
+                        <span>🏨 推薦住宿區域（點擊展開）</span>
+                        <span class="text-xs text-[#C66914] font-medium bg-[#E89344]/10 px-2.5 py-1 rounded">展開 ▼</span>
+                    </summary>
+                    <div class="mt-3 space-y-2 text-sm text-gray-700 pt-2 border-t border-[#E2DDD5]/60">
+                        <p>續住台北市區（建議捷運紅線或台北車站附近，方便參加一日遊集合與隔天行程）。</p>
+                    </div>
+                </details>
+            </div>
+        </div>
+        <div id="tab-d2-link" class="tab-content hidden fade-in space-y-6">
+            <div class="taiwan-card rounded-2xl overflow-hidden p-6 md:p-8">
+                <span class="text-xs bg-[#E89344]/20 text-[#C66914] px-3 py-1 rounded-md font-bold">9/28（一）｜參考連結</span>
+                <h2 class="text-3xl font-bold mt-2 mb-4 text-[#2C3E35]">第二天相關行程連結</h2>
+                <div class="mt-4">
+                    <a href="https://s.klook.com/c/mXkdmYbMyQ" target="_blank" class="text-sm bg-white border border-[#2C3E35] px-4 py-2 rounded-xl inline-block hover:bg-[#2C3E35] hover:text-white transition shadow-sm">Klook 北海岸一日遊預訂頁面 ➔</a>
+                </div>
+            </div>
+        </div>
 
         <!-- ==================== DAY 3 ==================== -->
-        <div id="tab-d3-time" class="tab-content hidden fade-in space-y-6"><div class="taiwan-card rounded-2xl p-6 md:p-8"><p class="text-sm">第三天故宮陽明山。</p></div></div>
-        <div id="tab-d3-trans" class="tab-content hidden fade-in space-y-6"><div class="taiwan-card rounded-2xl p-6 md:p-8"><p class="text-sm">捷運與計程車。</p></div></div>
-        <div id="tab-d3-link" class="tab-content hidden fade-in space-y-6"><div class="taiwan-card rounded-2xl p-6 md:p-8"><p class="text-sm">故宮官網。</p></div></div>
+        <div id="tab-d3-time" class="tab-content hidden fade-in space-y-6">
+            <div class="taiwan-card rounded-2xl overflow-hidden p-6 md:p-8 space-y-6">
+                <div>
+                    <span class="text-xs bg-[#E89344]/20 text-[#C66914] px-3 py-1 rounded-md font-bold">9/29（二）｜台北經典文化＋故宮＋陽明山夜景</span>
+                    <h2 class="text-3xl font-bold mt-2 text-[#2C3E35]">第三天：台北經典文化與百萬夜景</h2>
+                </div>
+
+                <details class="bg-[#F9F8F6] border border-[#E2DDD5] rounded-xl p-4 shadow-sm">
+                    <summary class="cursor-pointer font-bold text-[#2C3E35] flex justify-between items-center select-none">
+                        <span>🗺️ 【今日小地圖】（點擊展開/收合，點圖片可放大）</span>
+                        <span class="text-xs text-[#C66914] font-medium bg-[#E89344]/10 px-2.5 py-1 rounded">展開 ▼</span>
+                    </summary>
+                    <div class="mt-4 space-y-4 pt-3 border-t border-[#E2DDD5]">
+                        <div class="rounded-xl overflow-hidden shadow-md border border-gray-200 bg-white p-2 cursor-pointer relative group" onclick="openImageModal('3.PNG', 'DAY 3 小地圖')">
+                            <img src="3.PNG" alt="DAY 3 行程地圖" class="w-full h-auto object-contain rounded-lg transition group-hover:opacity-95">
+                            <div class="absolute bottom-4 right-4 bg-black/60 text-white text-xs px-2.5 py-1 rounded-md flex items-center gap-1 shadow">
+                                🔍 點擊放大
+                            </div>
+                        </div>
+                        <div class="text-sm bg-white p-4 rounded-lg border border-[#E2DDD5] leading-relaxed">
+                            <p>住宿 ➔ 阜杭豆漿 ➔ 二二八公園 ➔ 總統府外圍 ➔ 中正紀念堂 ➔ 永康商圈 ➔ 故宮 ➔ 士林捷運站集合 ➔ 陽明山夜景</p>
+                        </div>
+                    </div>
+                </details>
+
+                <div class="bg-[#F0EDEA] p-5 rounded-xl space-y-3">
+                    <h3 class="font-bold text-base text-[#2C3E35]">🕒 今日時間軸</h3>
+                    <div class="space-y-2 text-sm text-gray-700">
+                        <div><b>09:00</b> 住宿出發</div>
+                        <div><b>09:15-10:00</b> 阜杭豆漿</div>
+                        <div><b>10:00-11:30</b> 二二八公園、總統府外圍、中正紀念堂</div>
+                        <div><b>11:30-13:00</b> 永康商圈午餐</div>
+                        <div><b>14:00-17:00</b> 國立故宮博物院</div>
+                        <div><b>17:30</b> 士林捷運站集合</div>
+                        <div><b>18:00-19:30</b> 陽明山 The Top ➔ 下山</div>
+                        <div><b>20:00後</b> 台北夜間自由活動（中山／圓山／西門町／信義區 四選一）</div>
+                    </div>
+                </div>
+
+                <div class="space-y-3">
+                    <h3 class="font-bold text-base text-[#2C3E35]">📍 景點介紹／推薦理由</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
+                        <div class="bg-[#F9F8F6] p-3.5 rounded-xl border border-[#E2DDD5]"><b>中正紀念堂：</b>代表性地標與衛兵交接。</div>
+                        <div class="bg-[#F9F8F6] p-3.5 rounded-xl border border-[#E2DDD5]"><b>永康商圈：</b>知名美食與文創特色商圈。</div>
+                        <div class="bg-[#F9F8F6] p-3.5 rounded-xl border border-[#E2DDD5]"><b>故宮博物院：</b>收藏豐富的中華歷史藝術文物。</div>
+                        <div class="bg-[#F9F8F6] p-3.5 rounded-xl border border-[#E2DDD5]"><b>陽明山：</b>欣賞台北盆地百萬夜景的勝地。</div>
+                    </div>
+                </div>
+
+                <details class="bg-[#FEF6EE] border border-[#FAD6B8] rounded-xl p-4 shadow-sm">
+                    <summary class="cursor-pointer font-bold text-[#C66914] flex justify-between items-center select-none text-sm">
+                        <span>✨ 【今日亮點】（點擊展開）</span>
+                        <span class="text-xs font-medium bg-[#C66914]/10 px-2.5 py-1 rounded">展開 ▼</span>
+                    </summary>
+                    <div class="mt-3 text-xs text-gray-700 leading-relaxed pt-2 border-t border-[#FAD6B8]">
+                        <p><b>跟我吃飯 ❤️</b></p>
+                    </div>
+                </details>
+
+                <details class="bg-orange-50 border border-orange-200 rounded-xl p-4 shadow-sm">
+                    <summary class="cursor-pointer font-bold text-orange-950 flex justify-between items-center select-none text-sm">
+                        <span>⚠️ 【今日特殊備註】（點擊展開）</span>
+                        <span class="text-xs font-medium bg-orange-200/60 text-orange-900 px-2.5 py-1 rounded">展開 ▼</span>
+                    </summary>
+                    <div class="mt-3 text-xs text-orange-900 leading-relaxed pt-2 border-t border-orange-200 space-y-1.5">
+                        <p>1. 阜杭豆漿很有名，要預留排隊時間 (雖然我不喜歡）</p>
+                        <p>2. 故宮外籍成人普通票NT$350；國籍優惠折抵票NT$150。</p>
+                        <p>3. 永康商圈推薦：搖滾牛冰淇淋、鼎泰豐、白水豆花、芒果冰。</p>
+                        <p>4. 伴手禮可以在永康商圈買，這裡有很多文創小物</p>
+                    </div>
+                </details>
+            </div>
+        </div>
+        <div id="tab-d3-trans" class="tab-content hidden fade-in space-y-6">
+            <div class="taiwan-card rounded-2xl overflow-hidden p-6 md:p-8 space-y-6">
+                <div>
+                    <span class="text-xs bg-[#E89344]/20 text-[#C66914] px-3 py-1 rounded-md font-bold">9/29（二）｜交通方式與住宿</span>
+                    <h2 class="text-3xl font-bold mt-2 text-[#2C3E35]">第三天交通與住宿指南</h2>
+                </div>
+                <details class="bg-[#F0EDEA] p-5 rounded-xl space-y-3 border border-[#E2DDD5]" open>
+                    <summary class="cursor-pointer font-bold text-base text-[#2C3E35] flex justify-between items-center select-none">
+                        <span>🚗 車程攻略（點擊可收合）</span>
+                        <span class="text-xs text-gray-500 font-medium">收合 ▲</span>
+                    </summary>
+                    <div class="mt-3 space-y-2 text-sm pt-2 border-t border-[#E2DDD5]/60">
+                        <p><b>市區移動：</b>台北捷運＋步行。<b>東門 ➔ 故宮：</b>捷運至士林站，轉公車／計程車。<b>士林 ➔ 屋頂上：</b>建議計程車／接送上山。</p>
+                        <p class="text-xs text-gray-500">車程參考：東門至故宮約40-60分；故宮至士林站約15-25分；士林至屋頂上約20-30分。</p>
+                    </div>
+                </details>
+                <details class="bg-[#EFECE6] p-5 rounded-xl space-y-3 border border-[#E2DDD5]">
+                    <summary class="cursor-pointer font-bold text-base text-[#2C3E35] flex justify-between items-center select-none">
+                        <span>🏨 推薦住宿區域（點擊展開）</span>
+                        <span class="text-xs text-[#C66914] font-medium bg-[#E89344]/10 px-2.5 py-1 rounded">展開 ▼</span>
+                    </summary>
+                    <div class="mt-3 space-y-2 text-sm text-gray-700 pt-2 border-t border-[#E2DDD5]/60">
+                        <p>續住台北市區（捷運沿線即可）。</p>
+                    </div>
+                </details>
+            </div>
+        </div>
+        <div id="tab-d3-link" class="tab-content hidden fade-in space-y-6">
+            <div class="taiwan-card rounded-2xl overflow-hidden p-6 md:p-8">
+                <span class="text-xs bg-[#E89344]/20 text-[#C66914] px-3 py-1 rounded-md font-bold">9/29（二）｜參考連結</span>
+                <h2 class="text-3xl font-bold mt-2 mb-4 text-[#2C3E35]">第三天相關景點連結</h2>
+                <div class="flex flex-wrap gap-3 mt-4">
+                    <a href="https://www.npm.gov.tw/" target="_blank" class="text-sm bg-white border border-[#2C3E35] px-4 py-2 rounded-xl hover:bg-[#2C3E35] hover:text-white transition shadow-sm">故宮博物院 ➔</a>
+                    <a href="https://www.cksmh.gov.tw/" target="_blank" class="text-sm bg-white border border-[#2C3E35] px-4 py-2 rounded-xl hover:bg-[#2C3E35] hover:text-white transition shadow-sm">中正紀念堂 ➔</a>
+                    <a href="https://www.travel.taipei/zh-tw/attraction/details/1587" target="_blank" class="text-sm bg-white border border-[#2C3E35] px-4 py-2 rounded-xl hover:bg-[#2C3E35] hover:text-white transition shadow-sm">永康商圈 ➔</a>
+                </div>
+            </div>
+        </div>
 
         <!-- ==================== DAY 4 ==================== -->
-        <div id="tab-d4-time" class="tab-content hidden fade-in space-y-6"><div class="taiwan-card rounded-2xl p-6 md:p-8"><p class="text-sm">第四天日月潭。</p></div></div>
-        <div id="tab-d4-trans" class="tab-content hidden fade-in space-y-6"><div class="taiwan-card rounded-2xl p-6 md:p-8"><p class="text-sm">高鐵與台灣好行。</p></div></div>
-        <div id="tab-d4-link" class="tab-content hidden fade-in space-y-6"><div class="taiwan-card rounded-2xl p-6 md:p-8"><p class="text-sm">日月潭風景區。</p></div></div>
+        <div id="tab-d4-time" class="tab-content hidden fade-in space-y-6">
+            <div class="taiwan-card rounded-2xl overflow-hidden p-6 md:p-8 space-y-6">
+                <div>
+                    <span class="text-xs bg-[#E89344]/20 text-[#C66914] px-3 py-1 rounded-md font-bold">9/30（三）｜台北糕點DIY → 日月潭</span>
+                    <h2 class="text-3xl font-bold mt-2 text-[#2C3E35]">第四天：手作糕點與日月潭湖景</h2>
+                </div>
+
+                <details class="bg-[#F9F8F6] border border-[#E2DDD5] rounded-xl p-4 shadow-sm">
+                    <summary class="cursor-pointer font-bold text-[#2C3E35] flex justify-between items-center select-none">
+                        <span>🗺️ 【今日小地圖】（點擊展開/收合，點圖片可放大）</span>
+                        <span class="text-xs text-[#C66914] font-medium bg-[#E89344]/10 px-2.5 py-1 rounded">展開 ▼</span>
+                    </summary>
+                    <div class="mt-4 space-y-4 pt-3 border-t border-[#E2DDD5]">
+                        <div class="rounded-xl overflow-hidden shadow-md border border-gray-200 bg-white p-2 cursor-pointer relative group" onclick="openImageModal('4.PNG', 'DAY 4 小地圖')">
+                            <img src="4.PNG" alt="DAY 4 行程地圖" class="w-full h-auto object-contain rounded-lg transition group-hover:opacity-95">
+                            <div class="absolute bottom-4 right-4 bg-black/60 text-white text-xs px-2.5 py-1 rounded-md flex items-center gap-1 shadow">
+                                🔍 點擊放大
+                            </div>
+                        </div>
+                        <div class="text-sm bg-white p-4 rounded-lg border border-[#E2DDD5] leading-relaxed">
+                            <p>台北住宿 ➔ Cookinn ➔ 台北車站 ➔ 高鐵台中站 ➔ 日月潭／水社 ➔ 遊湖船 ➔ 伊達邵 ➔ 日月潭湖景住宿</p>
+                        </div>
+                    </div>
+                </details>
+
+                <div class="bg-[#F0EDEA] p-5 rounded-xl space-y-3">
+                    <h3 class="font-bold text-base text-[#2C3E35]">🕒 今日時間軸</h3>
+                    <div class="space-y-2 text-sm text-gray-700">
+                        <div><b>09:30-11:30</b> Cookinn 台灣糕點DIY</div>
+                        <div><b>12:30-13:30</b> 台北高鐵 ➔ 台中高鐵</div>
+                        <div><b>14:10</b> 高鐵台中站搭台灣好行日月潭線</div>
+                        <div><b>15:25-15:30</b> 抵達日月潭／水社，Check-in 自由活動</div>
+                        <div><b>晚間</b> 飯店會合、晚餐、欣賞湖景</div>
+                    </div>
+                </div>
+
+                <div class="space-y-3">
+                    <h3 class="font-bold text-base text-[#2C3E35]">📍 景點介紹／推薦理由</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
+                        <div class="bg-[#F9F8F6] p-3.5 rounded-xl border border-[#E2DDD5]"><b>向山遊客中心：</b>清水模建築與絕美日月潭湖景視野。</div>
+                        <div class="bg-[#F9F8F6] p-3.5 rounded-xl border border-[#E2DDD5]"><b>玄光寺：</b>俯瞰潭水與拉魯島的經典地標。</div>
+                        <div class="bg-[#F9F8F6] p-3.5 rounded-xl border border-[#E2DDD5]"><b>環湖車道／遊湖船：</b>水陸雙重視角欣賞日月潭。</div>
+                        <div class="bg-[#F9F8F6] p-3.5 rounded-xl border border-[#E2DDD5]"><b>伊達邵：</b>原住民文化風情與美食街區。</div>
+                    </div>
+                </div>
+
+                <details class="bg-[#FEF6EE] border border-[#FAD6B8] rounded-xl p-4 shadow-sm">
+                    <summary class="cursor-pointer font-bold text-[#C66914] flex justify-between items-center select-none text-sm">
+                        <span>✨ 【今日亮點】（點擊展開）</span>
+                        <span class="text-xs font-medium bg-[#C66914]/10 px-2.5 py-1 rounded">展開 ▼</span>
+                    </summary>
+                    <div class="mt-3 text-xs text-gray-700 leading-relaxed pt-2 border-t border-[#FAD6B8]">
+                        <p><b>特別安排少奶奶專屬烹飪行程 🍰</b></p>
+                    </div>
+                </details>
+
+                <details class="bg-orange-50 border border-orange-200 rounded-xl p-4 shadow-sm">
+                    <summary class="cursor-pointer font-bold text-orange-950 flex justify-between items-center select-none text-sm">
+                        <span>⚠️ 【今日特殊備註】（點擊展開）</span>
+                        <span class="text-xs font-medium bg-orange-200/60 text-orange-900 px-2.5 py-1 rounded">展開 ▼</span>
+                    </summary>
+                    <div class="mt-3 text-xs text-orange-900 leading-relaxed pt-2 border-t border-orange-200 space-y-1.5">
+                        <p>・抵達日月潭後自由行，晚上飯店會合</p>
+                        <p>・隔天可以看日出、玩遊樂園要保留體力</p>
+                        <p><b>必吃推薦：</b>阿薩姆紅茶、茶葉蛋、山豬肉、小米麻糬、飯飯雞翅</p>
+                    </div>
+                </details>
+            </div>
+        </div>
+        <div id="tab-d4-trans" class="tab-content hidden fade-in space-y-6">
+            <div class="taiwan-card rounded-2xl overflow-hidden p-6 md:p-8 space-y-6">
+                <div>
+                    <span class="text-xs bg-[#E89344]/20 text-[#C66914] px-3 py-1 rounded-md font-bold">9/30（三）｜交通方式與住宿</span>
+                    <h2 class="text-3xl font-bold mt-2 text-[#2C3E35]">第四天交通與住宿指南</h2>
+                </div>
+                <details class="bg-[#F0EDEA] p-5 rounded-xl space-y-3 border border-[#E2DDD5]" open>
+                    <summary class="cursor-pointer font-bold text-base text-[#2C3E35] flex justify-between items-center select-none">
+                        <span>🚗 車程攻略（點擊可收合）</span>
+                        <span class="text-xs text-gray-500 font-medium">收合 ▲</span>
+                    </summary>
+                    <div class="mt-3 space-y-2 text-sm pt-2 border-t border-[#E2DDD5]/60">
+                        <p><b>高鐵＋台灣好行【建議】：</b>台北搭高鐵至台中 (約50-70分) ➔ 高鐵台中站 14:10 搭台灣好行 6670 至日月潭 (約1.5小時)。</p>
+                    </div>
+                </details>
+                <details class="bg-[#EFECE6] p-5 rounded-xl space-y-3 border border-[#E2DDD5]">
+                    <summary class="cursor-pointer font-bold text-base text-[#2C3E35] flex justify-between items-center select-none">
+                        <span>🏨 推薦住宿區域（點擊展開）</span>
+                        <span class="text-xs text-[#C66914] font-medium bg-[#E89344]/10 px-2.5 py-1 rounded">展開 ▼</span>
+                    </summary>
+                    <div class="mt-3 space-y-2 text-sm text-gray-700 pt-2 border-t border-[#E2DDD5]/60">
+                        <p><b>日月潭水社碼頭附近湖景飯店：</b>方便隔天搭乘纜車前往九族文化村。</p>
+                    </div>
+                </details>
+            </div>
+        </div>
+        <div id="tab-d4-link" class="tab-content hidden fade-in space-y-6">
+            <div class="taiwan-card rounded-2xl overflow-hidden p-6 md:p-8">
+                <span class="text-xs bg-[#E89344]/20 text-[#C66914] px-3 py-1 rounded-md font-bold">9/30（三）｜參考連結</span>
+                <h2 class="text-3xl font-bold mt-2 mb-4 text-[#2C3E35]">第四天相關交通與景點連結</h2>
+                <div class="flex flex-wrap gap-3 mt-4">
+                    <a href="https://cookinn.tw/" target="_blank" class="text-sm bg-white border border-[#C66914] px-4 py-2 rounded-xl hover:bg-[#C66914] hover:text-white transition shadow-sm">Cookinn 官網 ➔</a>
+                    <a href="https://www.sunmoonlake.gov.tw/" target="_blank" class="text-sm bg-white border border-[#2C3E35] px-4 py-2 rounded-xl hover:bg-[#2C3E35] hover:text-white transition shadow-sm">日月潭風景區 ➔</a>
+                </div>
+            </div>
+        </div>
 
         <!-- ==================== DAY 5 ==================== -->
-        <div id="tab-d5-time" class="tab-content hidden fade-in space-y-6"><div class="taiwan-card rounded-2xl p-6 md:p-8"><p class="text-sm">第五天九族高美。</p></div></div>
-        <div id="tab-d5-trans" class="tab-content hidden fade-in space-y-6"><div class="taiwan-card rounded-2xl p-6 md:p-8"><p class="text-sm">自駕與台灣好行。</p></div></div>
-        <div id="tab-d5-link" class="tab-content hidden fade-in space-y-6"><div class="taiwan-card rounded-2xl p-6 md:p-8"><p class="text-sm">九族與高美濕地官網。</p></div></div>
+        <div id="tab-d5-time" class="tab-content hidden fade-in space-y-6">
+            <div class="taiwan-card rounded-2xl overflow-hidden p-6 md:p-8 space-y-6">
+                <div>
+                    <span class="text-xs bg-[#E89344]/20 text-[#C66914] px-3 py-1 rounded-md font-bold">10/1（四）｜九族文化村 → 台中 → 春水堂</span>
+                    <h2 class="text-3xl font-bold mt-2 text-[#2C3E35]">第五天：九族文化村與春水堂珍奶</h2>
+                </div>
 
-        <!-- ==================== DAY 6 (UPDATED) ==================== -->
+                <details class="bg-[#F9F8F6] border border-[#E2DDD5] rounded-xl p-4 shadow-sm">
+                    <summary class="cursor-pointer font-bold text-[#2C3E35] flex justify-between items-center select-none">
+                        <span>🗺️ 【今日小地圖】（點擊展開/收合，點圖片可放大）</span>
+                        <span class="text-xs text-[#C66914] font-medium bg-[#E89344]/10 px-2.5 py-1 rounded">展開 ▼</span>
+                    </summary>
+                    <div class="mt-4 space-y-4 pt-3 border-t border-[#E2DDD5]">
+                        <div class="rounded-xl overflow-hidden shadow-md border border-gray-200 bg-white p-2 cursor-pointer relative group" onclick="openImageModal('5.jpg', 'DAY 5 小地圖')">
+                            <img src="5.jpg" alt="DAY 5 行程地圖" class="w-full h-auto object-contain rounded-lg transition group-hover:opacity-95">
+                            <div class="absolute bottom-4 right-4 bg-black/60 text-white text-xs px-2.5 py-1 rounded-md flex items-center gap-1 shadow">
+                                🔍 點擊放大
+                            </div>
+                        </div>
+                        <div class="text-sm bg-white p-4 rounded-lg border border-[#E2DDD5] leading-relaxed">
+                            <p>日月潭住宿 ➔ 日月潭纜車站 ➔ 九族文化村 ➔ 日月潭 ➔ 住宿取行李 ➔ 日月潭站 (14:40-16:20) ➔ 台中干城 ➔ 轉自駕 ➔ 高美濕地 ➔ 春水堂 (19:00) ➔ 台中住宿</p>
+                        </div>
+                    </div>
+                </details>
+
+                <div class="bg-[#F0EDEA] p-5 rounded-xl space-y-3">
+                    <h3 class="font-bold text-base text-[#2C3E35]">🕒 今日時間軸</h3>
+                    <div class="space-y-2 text-sm text-gray-700">
+                        <div><b>05:50</b> 日月潭日出 (自由欣賞)</div>
+                        <div><b>09:00-14:00</b> 九族文化村</div>
+                        <div><b>14:00</b> 纜車返回日月潭，回住宿取行李</div>
+                        <div><b>14:40-16:20</b> 日月潭搭台灣好行往台中</div>
+                        <div><b>16:20</b> 干城會合，轉自駕前往高美濕地</div>
+                        <div><b>17:00-18:30</b> 高美濕地夕陽</div>
+                        <div><b>19:00</b> 春水堂晚餐</div>
+                    </div>
+                </div>
+
+                <div class="space-y-3">
+                    <h3 class="font-bold text-base text-[#2C3E35]">📍 景點介紹／推薦理由</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
+                        <div class="bg-[#F9F8F6] p-3.5 rounded-xl border border-[#E2DDD5]"><b>空中纜車：</b>俯瞰日月潭與九族山林美景。</div>
+                        <div class="bg-[#F9F8F6] p-3.5 rounded-xl border border-[#E2DDD5]"><b>九族文化村：</b>原住民文化與遊樂設施。</div>
+                        <div class="bg-[#F9F8F6] p-3.5 rounded-xl border border-[#E2DDD5]"><b>高美濕地：</b>著名夕陽景點，擁有巨型白色風車與絕美「天空之鏡」生態潮間帶。</div>
+                        <div class="bg-[#F9F8F6] p-3.5 rounded-xl border border-[#E2DDD5]"><b>春水堂：</b>台灣珍奶發源地與經典茶館。</div>
+                    </div>
+                </div>
+
+                <details class="bg-[#FEF6EE] border border-[#FAD6B8] rounded-xl p-4 shadow-sm">
+                    <summary class="cursor-pointer font-bold text-[#C66914] flex justify-between items-center select-none text-sm">
+                        <span>✨ 【今日亮點】（點擊展開）</span>
+                        <span class="text-xs font-medium bg-[#C66914]/10 px-2.5 py-1 rounded">展開 ▼</span>
+                    </summary>
+                    <div class="mt-3 text-xs text-gray-700 leading-relaxed pt-2 border-t border-[#FAD6B8] space-y-1">
+                        <p>・九族原住民族服裝體驗 📸</p>
+                        <p>・台中有條武漢街 😗</p>
+                    </div>
+                </details>
+
+                <details class="bg-orange-50 border border-orange-200 rounded-xl p-4 shadow-sm">
+                    <summary class="cursor-pointer font-bold text-orange-950 flex justify-between items-center select-none text-sm">
+                        <span>⚠️ 【今日特殊備註】（點擊展開）</span>
+                        <span class="text-xs font-medium bg-orange-200/60 text-orange-900 px-2.5 py-1 rounded">展開 ▼</span>
+                    </summary>
+                    <div class="mt-3 text-xs text-orange-900 leading-relaxed pt-2 border-t border-orange-200 space-y-1.5">
+                        <p>・高美濕地日落時間：約 18:15（10/1當日）</p>
+                        <p>・木棧道開放時間：依每日潮汐時間滾動調整（通常約 08:00 至日落前，漲潮前 1.5 小時開始封閉）</p>
+                        <p>・春水堂必吃：功夫麵、珍奶、奶酥吐司（私心推薦）</p>
+                    </div>
+                </details>
+            </div>
+        </div>
+        <div id="tab-d5-trans" class="tab-content hidden fade-in space-y-6">
+            <div class="taiwan-card rounded-2xl overflow-hidden p-6 md:p-8 space-y-6">
+                <div>
+                    <span class="text-xs bg-[#E89344]/20 text-[#C66914] px-3 py-1 rounded-md font-bold">10/1（四）｜交通方式與住宿</span>
+                    <h2 class="text-3xl font-bold mt-2 text-[#2C3E35]">第五天交通與住宿指南</h2>
+                </div>
+                <details class="bg-[#F0EDEA] p-5 rounded-xl space-y-3 border border-[#E2DDD5]" open>
+                    <summary class="cursor-pointer font-bold text-base text-[#2C3E35] flex justify-between items-center select-none">
+                        <span>🚗 車程攻略（點擊可收合）</span>
+                        <span class="text-xs text-gray-500 font-medium">收合 ▲</span>
+                    </summary>
+                    <div class="mt-3 space-y-2 text-sm pt-2 border-t border-[#E2DDD5]/60">
+                        <p><b>日月潭 ⇄ 九族：</b>去程車、回程纜車。<b>日月潭 ➔ 台中：</b>台灣好行 6670。<b>台中 ➔ 高美濕地：</b>自駕（約40-50分）。</p>
+                    </div>
+                </details>
+                <details class="bg-[#EFECE6] p-5 rounded-xl space-y-3 border border-[#E2DDD5]">
+                    <summary class="cursor-pointer font-bold text-base text-[#2C3E35] flex justify-between items-center select-none">
+                        <span>🏨 推薦住宿區域（點擊展開）</span>
+                        <span class="text-xs text-[#C66914] font-medium bg-[#E89344]/10 px-2.5 py-1 rounded">展開 ▼</span>
+                    </summary>
+                    <div class="mt-3 space-y-2 text-sm text-gray-700 pt-2 border-t border-[#E2DDD5]/60">
+                        <p><b>星漾商旅中清館：</b>靠近 74 快速道路，隔天 02:30 上武嶺非常方便。</p>
+                    </div>
+                </details>
+            </div>
+        </div>
+        <div id="tab-d5-link" class="tab-content hidden fade-in space-y-6">
+            <div class="taiwan-card rounded-2xl overflow-hidden p-6 md:p-8">
+                <span class="text-xs bg-[#E89344]/20 text-[#C66914] px-3 py-1 rounded-md font-bold">10/1（四）｜參考連結</span>
+                <h2 class="text-3xl font-bold mt-2 mb-4 text-[#2C3E35]">第五天相關景點連結</h2>
+                <div class="flex flex-wrap gap-3 mt-4">
+                    <a href="https://www.sunmoonlake.gov.tw/" target="_blank" class="text-sm bg-white border border-[#2C3E35] px-4 py-2 rounded-xl hover:bg-[#2C3E35] hover:text-white transition shadow-sm">日月潭風景區 ➔</a>
+                    <a href="https://www.nine.com.tw/" target="_blank" class="text-sm bg-white border border-[#2C3E35] px-4 py-2 rounded-xl hover:bg-[#2C3E35] hover:text-white transition shadow-sm">九族文化村 ➔</a>
+                    <a href="https://gaomei.com.tw/" target="_blank" class="text-sm bg-white border border-[#2C3E35] px-4 py-2 rounded-xl hover:bg-[#2C3E35] hover:text-white transition shadow-sm">高美濕地 ➔</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== DAY 6 ==================== -->
         <div id="tab-d6-time" class="tab-content hidden fade-in space-y-6">
             <div class="taiwan-card rounded-2xl overflow-hidden p-6 md:p-8 space-y-6">
                 <div>
-                    <span class="text-xs bg-[#E89344]/20 text-[#C66914] px-3 py-1 rounded-md font-bold">10/2（五）｜武嶺日出 → 麻豆 → 台南</span>
-                    <h2 class="text-3xl font-bold mt-2 text-[#2C3E35]">第六天：武嶺高山曙光與府城美食</h2>
+                    <span class="text-xs bg-[#E89344]/20 text-[#C66914] px-3 py-1 rounded-md font-bold">10/2（五）｜武嶺日出 → 台南麻豆</span>
+                    <h2 class="text-3xl font-bold mt-2 text-[#2C3E35]">第六天：武嶺高山曙光與台南美食之都</h2>
                 </div>
 
                 <details class="bg-[#F9F8F6] border border-[#E2DDD5] rounded-xl p-4 shadow-sm">
@@ -186,10 +658,12 @@
                     <div class="mt-4 space-y-4 pt-3 border-t border-[#E2DDD5]">
                         <div class="rounded-xl overflow-hidden shadow-md border border-gray-200 bg-white p-2 cursor-pointer relative group" onclick="openImageModal('6.PNG', 'DAY 6 小地圖')">
                             <img src="6.PNG" alt="DAY 6 行程地圖" class="w-full h-auto object-contain rounded-lg transition group-hover:opacity-95">
-                            <div class="absolute bottom-4 right-4 bg-black/60 text-white text-xs px-2.5 py-1 rounded-md flex items-center gap-1 shadow">🔍 點擊放大</div>
+                            <div class="absolute bottom-4 right-4 bg-black/60 text-white text-xs px-2.5 py-1 rounded-md flex items-center gap-1 shadow">
+                                🔍 點擊放大
+                            </div>
                         </div>
                         <div class="text-sm bg-white p-4 rounded-lg border border-[#E2DDD5] leading-relaxed">
-                            <p>台中住宿 ➔ 武嶺／合歡山 ➔ 台中住宿休息補眠 ➔ 台中往麻豆 ➔ 龍泉冰店 ➔ 鹿耳門天后宮、聖母廟 ➔ 漁光島 ➔ 日落後往台南市區住宿</p>
+                            <p>台中住宿 ➔ 武嶺／合歡山 ➔ 台中住宿補眠 ➔ 台南麻豆 ➔ 龍泉冰店 ➔ 鹿耳門天后宮、聖母廟 ➔ 漁光島 ➔ 台南市區住宿</p>
                         </div>
                     </div>
                 </details>
@@ -197,7 +671,7 @@
                 <div class="bg-[#F0EDEA] p-5 rounded-xl space-y-3">
                     <h3 class="font-bold text-base text-[#2C3E35]">🕒 今日時間軸</h3>
                     <div class="space-y-2 text-sm text-gray-700">
-                        <div><b>02:30</b> 台中住宿出發</div>
+                        <div><b>02:30</b> 台中住宿出發（體力允許可以提前上山看星星，台灣追星聖地）</div>
                         <div><b>05:20-06:20</b> 武嶺日出 ➔ 下山</div>
                         <div><b>09:00-12:00</b> 返回台中住宿休息補眠</div>
                         <div><b>13:00-14:50</b> 台中往麻豆</div>
@@ -212,8 +686,8 @@
                     <h3 class="font-bold text-base text-[#2C3E35]">📍 景點介紹／推薦理由</h3>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
                         <div class="bg-[#F9F8F6] p-3.5 rounded-xl border border-[#E2DDD5]"><b>武嶺／合歡山：</b>台灣公路最高點，海拔3275公尺。</div>
-                        <div class="bg-[#F9F8F6] p-3.5 rounded-xl border border-[#E2DDD5]"><b>鹿耳門：</b>天后宮與聖母廟，歷史宗教重鎮。</div>
-                        <div class="bg-[#F9F8F6] p-3.5 rounded-xl border border-[#E2DDD5]"><b>漁光島：</b>浪漫海灘與夕陽美景。</div>
+                        <div class="bg-[#F9F8F6] p-3.5 rounded-xl border border-[#E2DDD5]"><b>鹿耳門：</b>天后宮、聖母廟，歷史與宗教文化勝地。</div>
+                        <div class="bg-[#F9F8F6] p-3.5 rounded-xl border border-[#E2DDD5]"><b>漁光島：</b>悠閒的海岸夕陽景點。</div>
                         <div class="bg-[#F9F8F6] p-3.5 rounded-xl border border-[#E2DDD5]"><b>台南：</b>100個台灣人裡有101個都認證的美食之都。</div>
                     </div>
                 </div>
@@ -234,10 +708,9 @@
                         <span class="text-xs font-medium bg-orange-200/60 text-orange-900 px-2.5 py-1 rounded">展開 ▼</span>
                     </summary>
                     <div class="mt-3 text-xs text-orange-900 leading-relaxed pt-2 border-t border-orange-200 space-y-1.5">
-                        <p>・體力允許可以提前上山看星星，台灣追星聖地 ✨</p>
-                        <p>・武嶺日出時間：約 05:47-06:01</p>
-                        <p>・高山氣溫低，請務必備妥外套保暖 🧥</p>
-                        <p>・漁光島日落時間：約 17:45 左右</p>
+                        <p>・武嶺日出時間：約 05:47 - 06:01</p>
+                        <p>・高山氣溫極低，請務必準備好<b>外套保暖</b></p>
+                        <p>・漁光島日落時間：約 17:40 - 17:45</p>
                         <p><b>台南必吃推薦：</b>牛肉湯、鼎富發、棺材板、鱔魚意麵</p>
                     </div>
                 </details>
@@ -255,7 +728,7 @@
                         <span class="text-xs text-gray-500 font-medium">收合 ▲</span>
                     </summary>
                     <div class="mt-3 space-y-2 text-sm pt-2 border-t border-[#E2DDD5]/60">
-                        <p>全程自駕。台中 ⇄ 武嶺單程約2.5-3小時；台中 ➔ 麻豆約1小時50分；台南市區移動順暢。</p>
+                        <p>全程自駕。台中 ⇄ 武嶺單程約2.5-3小時；台中 ➔ 麻豆約2小時；麻豆至台南市區約30-40分鐘。</p>
                     </div>
                 </details>
                 <details class="bg-[#EFECE6] p-5 rounded-xl space-y-3 border border-[#E2DDD5]">
@@ -264,7 +737,7 @@
                         <span class="text-xs text-[#C66914] font-medium bg-[#E89344]/10 px-2.5 py-1 rounded">展開 ▼</span>
                     </summary>
                     <div class="mt-3 space-y-2 text-sm text-gray-700 pt-2 border-t border-[#E2DDD5]/60">
-                        <p><b>台南中西區：</b>方便晚上品嚐牛肉湯與在地宵夜。</p>
+                        <p><b>台南中西區：</b>方便晚上前往品嚐在地小吃與宵夜。</p>
                     </div>
                 </details>
             </div>
@@ -280,12 +753,12 @@
             </div>
         </div>
 
-        <!-- ==================== DAY 7 (UPDATED) ==================== -->
+        <!-- ==================== DAY 7 ==================== -->
         <div id="tab-d7-time" class="tab-content hidden fade-in space-y-6">
             <div class="taiwan-card rounded-2xl overflow-hidden p-6 md:p-8 space-y-6">
                 <div>
-                    <span class="text-xs bg-[#E89344]/20 text-[#C66914] px-3 py-1 rounded-md font-bold">10/3（六）｜四草綠色隧道 → 安平 → 熱氣球 → 高雄</span>
-                    <h2 class="text-3xl font-bold mt-2 text-[#2C3E35]">第七天：台版亞馬遜與熱氣球嘉年華</h2>
+                    <span class="text-xs bg-[#E89344]/20 text-[#C66914] px-3 py-1 rounded-md font-bold">10/3（六）｜四草・安平・性格咖啡 → 高雄熱氣球</span>
+                    <h2 class="text-3xl font-bold mt-2 text-[#2C3E35]">第七天：台南綠色隧道與高雄熱氣球</h2>
                 </div>
 
                 <details class="bg-[#F9F8F6] border border-[#E2DDD5] rounded-xl p-4 shadow-sm">
@@ -296,10 +769,12 @@
                     <div class="mt-4 space-y-4 pt-3 border-t border-[#E2DDD5]">
                         <div class="rounded-xl overflow-hidden shadow-md border border-gray-200 bg-white p-2 cursor-pointer relative group" onclick="openImageModal('7.PNG', 'DAY 7 小地圖')">
                             <img src="7.PNG" alt="DAY 7 行程地圖" class="w-full h-auto object-contain rounded-lg transition group-hover:opacity-95">
-                            <div class="absolute bottom-4 right-4 bg-black/60 text-white text-xs px-2.5 py-1 rounded-md flex items-center gap-1 shadow">🔍 點擊放大</div>
+                            <div class="absolute bottom-4 right-4 bg-black/60 text-white text-xs px-2.5 py-1 rounded-md flex items-center gap-1 shadow">
+                                🔍 點擊放大
+                            </div>
                         </div>
                         <div class="text-sm bg-white p-4 rounded-lg border border-[#E2DDD5] leading-relaxed">
-                            <p>台南中西區住宿 ➔ 四草綠色隧道 ➔ 安平區 (古堡與老街午餐) ➔ 東來理髮廳 ➔ 性格咖啡 ➔ 田寮月世界 (愛・月熱氣球) ➔ 高雄美麗島住宿</p>
+                            <p>台南住宿 ➔ 四草綠色隧道 ➔ 安平區 ➔ 東來理髮廳 ➔ 性格咖啡 ➔ 愛・月熱氣球節 ➔ 高雄美麗島住宿</p>
                         </div>
                     </div>
                 </details>
@@ -308,10 +783,10 @@
                     <h3 class="font-bold text-base text-[#2C3E35]">🕒 今日時間軸</h3>
                     <div class="space-y-2 text-sm text-gray-700">
                         <div><b>10:00-11:00</b> 四草綠色隧道</div>
-                        <div><b>11:20-12:40</b> 安平區（安平古堡、安平老街午餐）</div>
+                        <div><b>11:20-12:40</b> 安平古堡、安平老街午餐</div>
                         <div><b>13:00-14:00</b> 東來理髮廳</div>
                         <div><b>14:20-15:00</b> 性格咖啡</div>
-                        <div><b>16:00-18:00</b> 愛・月熱氣球／月世界</div>
+                        <div><b>16:00-18:00</b> 2026高雄愛・月熱氣球／月世界</div>
                         <div><b>19:30後</b> 高雄美麗島站附近住宿 Check-in 與晚餐</div>
                     </div>
                 </div>
@@ -319,9 +794,9 @@
                 <div class="space-y-3">
                     <h3 class="font-bold text-base text-[#2C3E35]">📍 景點介紹／推薦理由</h3>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
-                        <div class="bg-[#F9F8F6] p-3.5 rounded-xl border border-[#E2DDD5]"><b>四草綠色隧道：</b>「台版亞馬遜」，紅樹林生態水道。</div>
-                        <div class="bg-[#F9F8F6] p-3.5 rounded-xl border border-[#E2DDD5]"><b>安平區：</b>荷治歷史起點（安平古堡）與豐富老街小吃。</div>
-                        <div class="bg-[#F9F8F6] p-3.5 rounded-xl border border-[#E2DDD5]"><b>東來理髮廳：</b>懷舊台式理容與洗頭體驗。</div>
+                        <div class="bg-[#F9F8F6] p-3.5 rounded-xl border border-[#E2DDD5]"><b>四草綠色隧道：</b>「台版亞馬遜」，紅樹林水道。</div>
+                        <div class="bg-[#F9F8F6] p-3.5 rounded-xl border border-[#E2DDD5]"><b>安平區：</b>荷治歷史起點，結合安平古堡與安平老街漫步。</div>
+                        <div class="bg-[#F9F8F6] p-3.5 rounded-xl border border-[#E2DDD5]"><b>東來理髮廳：</b>懷舊台式洗頭體驗。</div>
                         <div class="bg-[#F9F8F6] p-3.5 rounded-xl border border-[#E2DDD5]"><b>愛・月熱氣球節：</b>月世界特殊泥岩惡地地形與期間限定活動。</div>
                     </div>
                 </div>
@@ -343,9 +818,9 @@
                         <span class="text-xs font-medium bg-orange-200/60 text-orange-900 px-2.5 py-1 rounded">展開 ▼</span>
                     </summary>
                     <div class="mt-3 text-xs text-orange-900 leading-relaxed pt-2 border-t border-orange-200 space-y-1.5">
-                        <p>・四草綠色隧道票價：全票 200 元；航程時間：約 30 分鐘。</p>
-                        <p>・性格咖啡廳：請注意店內低消規定。</p>
-                        <p>・熱氣球最晚 17:30 要報到，採現場排隊制，先到先搭！</p>
+                        <p>・四草綠色隧道票價：全票 NT$200 / 兒童票 NT$100，航程時間約 30 分鐘。</p>
+                        <p>・性格咖啡廳每人低消 NT$100。</p>
+                        <p>・熱氣球最晚 17:30 要報到，採現場排隊制，先到先搭。</p>
                         <p><b>台南必吃推薦：</b>周氏蝦捲、雙生綠豆沙、安平豆花、王氏魚皮</p>
                     </div>
                 </details>
@@ -363,7 +838,7 @@
                         <span class="text-xs text-gray-500 font-medium">收合 ▲</span>
                     </summary>
                     <div class="mt-3 space-y-2 text-sm pt-2 border-t border-[#E2DDD5]/60">
-                        <p>台南市區 ➔ 四草 ➔ 安平 ➔ 東來 ➔ 性格咖啡 ➔ 月世界自駕。月世界至高雄市區後續轉大眾交通。</p>
+                        <p>台南市區 ➔ 四草 ➔ 安平 ➔ 性格咖啡 ➔ 田寮月世界自駕（月世界至高雄市區後續轉大眾交通）。</p>
                     </div>
                 </details>
                 <details class="bg-[#EFECE6] p-5 rounded-xl space-y-3 border border-[#E2DDD5]">
@@ -372,7 +847,7 @@
                         <span class="text-xs text-[#C66914] font-medium bg-[#E89344]/10 px-2.5 py-1 rounded">展開 ▼</span>
                     </summary>
                     <div class="mt-3 space-y-2 text-sm text-gray-700 pt-2 border-t border-[#E2DDD5]/60">
-                        <p><b>高雄美麗島站／六合夜市附近：</b>紅橘線交會點，交通四通八達。</p>
+                        <p><b>高雄美麗島站／六合夜市附近：</b>紅橘線交會點，10/4寄放行李、10/5續住、10/6直達機場。</p>
                     </div>
                 </details>
             </div>
@@ -382,26 +857,318 @@
                 <span class="text-xs bg-[#E89344]/20 text-[#C66914] px-3 py-1 rounded-md font-bold">10/3（六）｜參考連結</span>
                 <h2 class="text-3xl font-bold mt-2 mb-4 text-[#2C3E35]">第七天相關景點連結</h2>
                 <div class="flex flex-wrap gap-3 mt-4">
-                    <a href="https://www.4grass.com/" target="_blank" class="text-sm bg-white border border-[#2C3E35] px-4 py-2 rounded-xl hover:bg-[#2C3E35] hover:text-white transition shadow-sm">四草大眾廟 ➔</a>
+                    <a href="https://www.4grass.com/" target="_blank" class="text-sm bg-white border border-[#2C3E35] px-4 py-2 rounded-xl hover:bg-[#2C3E35] hover:text-white transition shadow-sm">四草綠色隧道 ➔</a>
                     <a href="https://khh.travel/zh-tw/event/calendardetail/8022/" target="_blank" class="text-sm bg-white border border-[#2C3E35] px-4 py-2 rounded-xl hover:bg-[#2C3E35] hover:text-white transition shadow-sm">高雄熱氣球活動 ➔</a>
+                    <a href="https://www.krtc.com.tw/" target="_blank" class="text-sm bg-white border border-[#2C3E35] px-4 py-2 rounded-xl hover:bg-[#2C3E35] hover:text-white transition shadow-sm">高雄捷運 ➔</a>
                 </div>
             </div>
         </div>
 
         <!-- ==================== DAY 8 ==================== -->
-        <div id="tab-d8-time" class="tab-content hidden fade-in space-y-6"><div class="taiwan-card rounded-2xl p-6 md:p-8"><p class="text-sm">第八天墾丁海生館。</p></div></div>
-        <div id="tab-d8-trans" class="tab-content hidden fade-in space-y-6"><div class="taiwan-card rounded-2xl p-6 md:p-8"><p class="text-sm">墾丁快線與包車。</p></div></div>
-        <div id="tab-d8-link" class="tab-content hidden fade-in space-y-6"><div class="taiwan-card rounded-2xl p-6 md:p-8"><p class="text-sm">海生館官網。</p></div></div>
+        <div id="tab-d8-time" class="tab-content hidden fade-in space-y-6">
+            <div class="taiwan-card rounded-2xl overflow-hidden p-6 md:p-8 space-y-6">
+                <div>
+                    <span class="text-xs bg-[#E89344]/20 text-[#C66914] px-3 py-1 rounded-md font-bold">10/4（日）｜高雄 → 墾丁包車 → 夜宿海生館</span>
+                    <h2 class="text-3xl font-bold mt-2 text-[#2C3E35]">第八天：墾丁海岸包車與夜宿海生館</h2>
+                </div>
+
+                <details class="bg-[#F9F8F6] border border-[#E2DDD5] rounded-xl p-4 shadow-sm">
+                    <summary class="cursor-pointer font-bold text-[#2C3E35] flex justify-between items-center select-none">
+                        <span>🗺️ 【今日小地圖】（點擊展開/收合，點圖片可放大）</span>
+                        <span class="text-xs text-[#C66914] font-medium bg-[#E89344]/10 px-2.5 py-1 rounded">展開 ▼</span>
+                    </summary>
+                    <div class="mt-4 space-y-4 pt-3 border-t border-[#E2DDD5]">
+                        <div class="rounded-xl overflow-hidden shadow-md border border-gray-200 bg-white p-2 cursor-pointer relative group" onclick="openImageModal('8.PNG', 'DAY 8 小地圖')">
+                            <img src="8.PNG" alt="DAY 8 行程地圖" class="w-full h-auto object-contain rounded-lg transition group-hover:opacity-95">
+                            <div class="absolute bottom-4 right-4 bg-black/60 text-white text-xs px-2.5 py-1 rounded-md flex items-center gap-1 shadow">
+                                🔍 點擊放大
+                            </div>
+                        </div>
+                        <div class="text-sm bg-white p-4 rounded-lg border border-[#E2DDD5] leading-relaxed">
+                            <p>高雄住宿 ➔ 美麗島站 ➔ 高鐵左營站 ➔ 墾丁快線 ➔ 恆春／墾丁 ➔ 包車遊墾丁 ➔ 國立海洋生物博物館</p>
+                        </div>
+                    </div>
+                </details>
+
+                <div class="bg-[#F0EDEA] p-5 rounded-xl space-y-3">
+                    <h3 class="font-bold text-base text-[#2C3E35]">🕒 今日時間軸</h3>
+                    <div class="space-y-2 text-sm text-gray-700">
+                        <div><b>09:00</b> 高雄住宿整理行李，大行李寄放飯店櫃檯（僅帶隨身小行李）</div>
+                        <div><b>10:00</b> 高鐵左營站搭墾丁快線南下</div>
+                        <div><b>12:10-15:40</b> 墾丁包車遊覽（後壁湖生魚片午餐、龍磐公園、鵝鑾鼻燈塔等）</div>
+                        <div><b>16:00</b> 國立海洋生物博物館夜宿報到與活動</div>
+                    </div>
+                </div>
+
+                <div class="space-y-3">
+                    <h3 class="font-bold text-base text-[#2C3E35]">📍 景點介紹／推薦理由</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
+                        <div class="bg-[#F9F8F6] p-3.5 rounded-xl border border-[#E2DDD5]"><b>後壁湖：</b>漁港與海鮮集中，本日午餐首選生魚片。</div>
+                        <div class="bg-[#F9F8F6] p-3.5 rounded-xl border border-[#E2DDD5]"><b>龍磐公園：</b>遼闊草原與太平洋海岸景觀。</div>
+                        <div class="bg-[#F9F8F6] p-3.5 rounded-xl border border-[#E2DDD5]"><b>鵝鑾鼻燈塔：</b>台灣最南端代表性燈塔。</div>
+                        <div class="bg-[#F9F8F6] p-3.5 rounded-xl border border-[#E2DDD5]"><b>夜宿海生館：</b>含導覽、夜間探索與住宿。</div>
+                    </div>
+                </div>
+
+                <details class="bg-[#FEF6EE] border border-[#FAD6B8] rounded-xl p-4 shadow-sm">
+                    <summary class="cursor-pointer font-bold text-[#C66914] flex justify-between items-center select-none text-sm">
+                        <span>✨ 【今日亮點】（點擊展開）</span>
+                        <span class="text-xs font-medium bg-[#C66914]/10 px-2.5 py-1 rounded">展開 ▼</span>
+                    </summary>
+                    <div class="mt-3 text-xs text-gray-700 leading-relaxed pt-2 border-t border-[#FAD6B8]">
+                        <p><b>夜宿海生館（與海洋生物共眠的兩天一夜深度體驗）。</b></p>
+                    </div>
+                </details>
+
+                <details class="bg-orange-50 border border-orange-200 rounded-xl p-4 shadow-sm">
+                    <summary class="cursor-pointer font-bold text-orange-950 flex justify-between items-center select-none text-sm">
+                        <span>⚠️ 【今日特殊備註與死線】（點擊展開）</span>
+                        <span class="text-xs font-medium bg-orange-200/60 text-orange-900 px-2.5 py-1 rounded">展開 ▼</span>
+                    </summary>
+                    <div class="mt-3 text-xs text-orange-900 leading-relaxed pt-2 border-t border-orange-200 space-y-1.5">
+                        <p><b>⚠️ 海生館 16:00 報到是固定死線：</b>包車景點寧願少一個（選3-4個點），絕不準壓線遲到！</p>
+                    </div>
+                </details>
+            </div>
+        </div>
+        <div id="tab-d8-trans" class="tab-content hidden fade-in space-y-6">
+            <div class="taiwan-card rounded-2xl overflow-hidden p-6 md:p-8 space-y-6">
+                <div>
+                    <span class="text-xs bg-[#E89344]/20 text-[#C66914] px-3 py-1 rounded-md font-bold">10/4（日）｜交通方式與住宿</span>
+                    <h2 class="text-3xl font-bold mt-2 text-[#2C3E35]">第八天交通與住宿指南</h2>
+                </div>
+                <details class="bg-[#F0EDEA] p-5 rounded-xl space-y-3 border border-[#E2DDD5]" open>
+                    <summary class="cursor-pointer font-bold text-base text-[#2C3E35] flex justify-between items-center select-none">
+                        <span>🚗 車程攻略（點擊可收合）</span>
+                        <span class="text-xs text-gray-500 font-medium">收合 ▲</span>
+                    </summary>
+                    <div class="mt-3 space-y-2 text-sm pt-2 border-t border-[#E2DDD5]/60">
+                        <p><b>左營 ➔ 墾丁：</b>台灣好行9189墾丁快線 (10:00 發車，左營至恆春約2小時05分)。<b>墾丁區域：</b>包車約4小時（景點選3-4個）。</p>
+                    </div>
+                </details>
+                <details class="bg-[#EFECE6] p-5 rounded-xl space-y-3 border border-[#E2DDD5]">
+                    <summary class="cursor-pointer font-bold text-base text-[#2C3E35] flex justify-between items-center select-none">
+                        <span>🏨 推薦住宿區域（點擊展開）</span>
+                        <span class="text-xs text-[#C66914] font-medium bg-[#E89344]/10 px-2.5 py-1 rounded">展開 ▼</span>
+                    </summary>
+                    <div class="mt-3 space-y-2 text-sm text-gray-700 pt-2 border-t border-[#E2DDD5]/60">
+                        <p><b>國立海洋生物博物館（夜宿海生館專屬容納區）：</b>當晚直接夜宿館內與魚群共眠。</p>
+                    </div>
+                </details>
+            </div>
+        </div>
+        <div id="tab-d8-link" class="tab-content hidden fade-in space-y-6">
+            <div class="taiwan-card rounded-2xl overflow-hidden p-6 md:p-8">
+                <span class="text-xs bg-[#E89344]/20 text-[#C66914] px-3 py-1 rounded-md font-bold">10/4（日）｜參考連結</span>
+                <h2 class="text-3xl font-bold mt-2 mb-4 text-[#2C3E35]">第八天相關交通與景點連結</h2>
+                <div class="flex flex-wrap gap-3 mt-4">
+                    <a href="https://www.taiwantrip.com.tw/Frontend/Bustime/TimeTable/R0011" target="_blank" class="text-sm bg-white border border-[#2C3E35] px-4 py-2 rounded-xl hover:bg-[#2C3E35] hover:text-white transition shadow-sm">墾丁快線時刻表 ➔</a>
+                    <a href="https://www.aquarium.com.tw/" target="_blank" class="text-sm bg-white border border-[#2C3E35] px-4 py-2 rounded-xl hover:bg-[#2C3E35] hover:text-white transition shadow-sm">夜宿海生館官網 ➔</a>
+                </div>
+            </div>
+        </div>
 
         <!-- ==================== DAY 9 ==================== -->
-        <div id="tab-d9-time" class="tab-content hidden fade-in space-y-6"><div class="taiwan-card rounded-2xl p-6 md:p-8"><p class="text-sm">第九天高雄西子灣。</p></div></div>
-        <div id="tab-d9-trans" class="tab-content hidden fade-in space-y-6"><div class="taiwan-card rounded-2xl p-6 md:p-8"><p class="text-sm">渡輪與捷運。</p></div></div>
-        <div id="tab-d9-link" class="tab-content hidden fade-in space-y-6"><div class="taiwan-card rounded-2xl p-6 md:p-8"><p class="text-sm">高雄旅遊網。</p></div></div>
+        <div id="tab-d9-time" class="tab-content hidden fade-in space-y-6">
+            <div class="taiwan-card rounded-2xl overflow-hidden p-6 md:p-8 space-y-6">
+                <div>
+                    <span class="text-xs bg-[#E89344]/20 text-[#C66914] px-3 py-1 rounded-md font-bold">10/5（一）｜海生館 → 高雄 → 西子灣／旗津</span>
+                    <h2 class="text-3xl font-bold mt-2 text-[#2C3E35]">第九天：港都夕陽與旗津渡輪</h2>
+                </div>
+
+                <details class="bg-[#F9F8F6] border border-[#E2DDD5] rounded-xl p-4 shadow-sm">
+                    <summary class="cursor-pointer font-bold text-[#2C3E35] flex justify-between items-center select-none">
+                        <span>🗺️ 【今日小地圖】（點擊展開/收合，點圖片可放大）</span>
+                        <span class="text-xs text-[#C66914] font-medium bg-[#E89344]/10 px-2.5 py-1 rounded">展開 ▼</span>
+                    </summary>
+                    <div class="mt-4 space-y-4 pt-3 border-t border-[#E2DDD5]">
+                        <div class="rounded-xl overflow-hidden shadow-md border border-gray-200 bg-white p-2 cursor-pointer relative group" onclick="openImageModal('9.PNG', 'DAY 9 小地圖')">
+                            <img src="9.PNG" alt="DAY 9 行程地圖" class="w-full h-auto object-contain rounded-lg transition group-hover:opacity-95">
+                            <div class="absolute bottom-4 right-4 bg-black/60 text-white text-xs px-2.5 py-1 rounded-md flex items-center gap-1 shadow">
+                                🔍 點擊放大
+                            </div>
+                        </div>
+                        <div class="text-sm bg-white p-4 rounded-lg border border-[#E2DDD5] leading-relaxed">
+                            <p>海生館 ➔ 海生館轉乘站 ➔ 墾丁快線 ➔ 左營站 ➔ 高雄住宿取行李／再次入住 ➔ 西子灣 ➔ 鼓山渡輪站 ➔ 旗津 ➔ 旗后砲台／燈塔 ➔ 高雄住宿</p>
+                        </div>
+                    </div>
+                </details>
+
+                <div class="bg-[#F0EDEA] p-5 rounded-xl space-y-3">
+                    <h3 class="font-bold text-base text-[#2C3E35]">🕒 今日時間軸</h3>
+                    <div class="space-y-2 text-sm text-gray-700">
+                        <div><b>11:20-11:30</b> 海生館夜宿活動結束</div>
+                        <div><b>12:01</b> 搭墾丁快線北返</div>
+                        <div><b>13:50</b> 抵達左營站回飯店拿行李再次 Check-in</div>
+                        <div><b>15:00</b> 西子灣賞景</div>
+                        <div><b>16:00</b> 鼓山渡輪站搭船至旗津</div>
+                        <div><b>16:00-18:00</b> 旗津老街、旗后砲台、燈塔欣賞夕陽 ➔ 晚餐</div>
+                    </div>
+                </div>
+
+                <div class="space-y-3">
+                    <h3 class="font-bold text-base text-[#2C3E35]">📍 景點介紹／推薦理由</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
+                        <div class="bg-[#F9F8F6] p-3.5 rounded-xl border border-[#E2DDD5]"><b>西子灣：</b>眺望高雄港出海口與夕陽。</div>
+                        <div class="bg-[#F9F8F6] p-3.5 rounded-xl border border-[#E2DDD5]"><b>鼓山渡輪：</b>跨越高雄港前往旗津。</div>
+                        <div class="bg-[#F9F8F6] p-3.5 rounded-xl border border-[#E2DDD5]"><b>旗后砲台／燈塔：</b>俯瞰高雄港與城市天際線。</div>
+                    </div>
+                </div>
+
+                <details class="bg-[#FEF6EE] border border-[#FAD6B8] rounded-xl p-4 shadow-sm">
+                    <summary class="cursor-pointer font-bold text-[#C66914] flex justify-between items-center select-none text-sm">
+                        <span>✨ 【今日亮點】（點擊展開）</span>
+                        <span class="text-xs font-medium bg-[#C66914]/10 px-2.5 py-1 rounded">展開 ▼</span>
+                    </summary>
+                    <div class="mt-3 text-xs text-gray-700 leading-relaxed pt-2 border-t border-[#FAD6B8]">
+                        <p><b>西子灣與高雄港夕陽 ＆ 旗鼓渡輪港都體驗。</b></p>
+                    </div>
+                </details>
+
+                <details class="bg-orange-50 border border-orange-200 rounded-xl p-4 shadow-sm">
+                    <summary class="cursor-pointer font-bold text-orange-950 flex justify-between items-center select-none text-sm">
+                        <span>⚠️ 【今日特殊備註】（點擊展開）</span>
+                        <span class="text-xs font-medium bg-orange-200/60 text-orange-900 px-2.5 py-1 rounded">展開 ▼</span>
+                    </summary>
+                    <div class="mt-3 text-xs text-orange-900 leading-relaxed pt-2 border-t border-orange-200 space-y-1.5">
+                        <p>・海生館11:31班次非常緊，推薦搭12:01班次較保守。</p>
+                        <p>・高雄日落約17:43-17:47，建議17:15前抵達觀景位置。</p>
+                    </div>
+                </details>
+            </div>
+        </div>
+        <div id="tab-d9-trans" class="tab-content hidden fade-in space-y-6">
+            <div class="taiwan-card rounded-2xl overflow-hidden p-6 md:p-8 space-y-6">
+                <div>
+                    <span class="text-xs bg-[#E89344]/20 text-[#C66914] px-3 py-1 rounded-md font-bold">10/5（一）｜交通方式與住宿</span>
+                    <h2 class="text-3xl font-bold mt-2 text-[#2C3E35]">第九天交通與住宿指南</h2>
+                </div>
+                <details class="bg-[#F0EDEA] p-5 rounded-xl space-y-3 border border-[#E2DDD5]" open>
+                    <summary class="cursor-pointer font-bold text-base text-[#2C3E35] flex justify-between items-center select-none">
+                        <span>🚗 車程攻略（點擊可收合）</span>
+                        <span class="text-xs text-gray-500 font-medium">收合 ▲</span>
+                    </summary>
+                    <div class="mt-3 space-y-2 text-sm pt-2 border-t border-[#E2DDD5]/60">
+                        <p><b>海生館 ➔ 高雄：</b>墾丁快線（建議12:01班次）。<b>左營 ➔ 住宿 ➔ 西子灣：</b>高雄捷運紅橘線。<b>鼓山 ➔ 旗津：</b>旗鼓渡輪（刷悠遊卡NT$30）。</p>
+                    </div>
+                </details>
+                <details class="bg-[#EFECE6] p-5 rounded-xl space-y-3 border border-[#E2DDD5]">
+                    <summary class="cursor-pointer font-bold text-base text-[#2C3E35] flex justify-between items-center select-none">
+                        <span>🏨 推薦住宿區域（點擊展開）</span>
+                        <span class="text-xs text-[#C66914] font-medium bg-[#E89344]/10 px-2.5 py-1 rounded">展開 ▼</span>
+                    </summary>
+                    <div class="mt-3 space-y-2 text-sm text-gray-700 pt-2 border-t border-[#E2DDD5]/60">
+                        <p><b>高雄美麗島站附近：</b>再次入住同一家飯店，免去換飯店的行李搬運麻煩。</p>
+                    </div>
+                </details>
+            </div>
+        </div>
+        <div id="tab-d9-link" class="tab-content hidden fade-in space-y-6">
+            <div class="taiwan-card rounded-2xl overflow-hidden p-6 md:p-8">
+                <span class="text-xs bg-[#E89344]/20 text-[#C66914] px-3 py-1 rounded-md font-bold">10/5（一）｜參考連結</span>
+                <h2 class="text-3xl font-bold mt-2 mb-4 text-[#2C3E35]">第九天相關交通與景點連結</h2>
+                <div class="flex flex-wrap gap-3 mt-4">
+                    <a href="https://khh.travel/" target="_blank" class="text-sm bg-white border border-[#2C3E35] px-4 py-2 rounded-xl hover:bg-[#2C3E35] hover:text-white transition shadow-sm">高雄旅遊網 ➔</a>
+                    <a href="https://kcs.kcg.gov.tw/" target="_blank" class="text-sm bg-white border border-[#2C3E35] px-4 py-2 rounded-xl hover:bg-[#2C3E35] hover:text-white transition shadow-sm">高雄市輪船公司 ➔</a>
+                </div>
+            </div>
+        </div>
 
         <!-- ==================== DAY 10 ==================== -->
-        <div id="tab-d10-time" class="tab-content hidden fade-in space-y-6"><div class="taiwan-card rounded-2xl p-6 md:p-8"><p class="text-sm">第十天賦歸。</p></div></div>
-        <div id="tab-d10-trans" class="tab-content hidden fade-in space-y-6"><div class="taiwan-card rounded-2xl p-6 md:p-8"><p class="text-sm">捷運紅線直達機場。</p></div></div>
-        <div id="tab-d10-link" class="tab-content hidden fade-in space-y-6"><div class="taiwan-card rounded-2xl p-6 md:p-8"><p class="text-sm">高雄機場官網。</p></div></div>
+        <div id="tab-d10-time" class="tab-content hidden fade-in space-y-6">
+            <div class="taiwan-card rounded-2xl overflow-hidden p-6 md:p-8 space-y-6">
+                <div>
+                    <span class="text-xs bg-[#E89344]/20 text-[#C66914] px-3 py-1 rounded-md font-bold">10/6（二）｜高雄 → 小港機場 → 香港</span>
+                    <h2 class="text-3xl font-bold mt-2 text-[#2C3E35]">第十天：賦歸香港・完美收尾</h2>
+                </div>
+
+                <details class="bg-[#F9F8F6] border border-[#E2DDD5] rounded-xl p-4 shadow-sm">
+                    <summary class="cursor-pointer font-bold text-[#2C3E35] flex justify-between items-center select-none">
+                        <span>🗺️ 【今日小地圖】（點擊展開/收合，點圖片可放大）</span>
+                        <span class="text-xs text-[#C66914] font-medium bg-[#E89344]/10 px-2.5 py-1 rounded">展開 ▼</span>
+                    </summary>
+                    <div class="mt-4 space-y-4 pt-3 border-t border-[#E2DDD5]">
+                        <div class="rounded-xl overflow-hidden shadow-md border border-gray-200 bg-white p-2 cursor-pointer relative group" onclick="openImageModal('10.PNG', 'DAY 10 小地圖')">
+                            <img src="10.PNG" alt="DAY 10 行程地圖" class="w-full h-auto object-contain rounded-lg transition group-hover:opacity-95">
+                            <div class="absolute bottom-4 right-4 bg-black/60 text-white text-xs px-2.5 py-1 rounded-md flex items-center gap-1 shadow">
+                                🔍 點擊放大
+                            </div>
+                        </div>
+                        <div class="text-sm bg-white p-4 rounded-lg border border-[#E2DDD5] leading-relaxed">
+                            <p>高雄住宿 ➔ 美麗島站 ➔ 高雄捷運紅線・往小港 ➔ 高雄國際機場站 ➔ 高雄國際機場 ➔ 香港</p>
+                        </div>
+                    </div>
+                </details>
+
+                <div class="bg-[#F0EDEA] p-5 rounded-xl space-y-3">
+                    <h3 class="font-bold text-base text-[#2C3E35]">🕒 今日時間軸</h3>
+                    <div class="space-y-2 text-sm text-gray-700">
+                        <div><b>06:30</b> 起床</div>
+                        <div><b>06:45-07:00</b> 退房離開住宿</div>
+                        <div><b>07:10-07:30</b> 美麗島站 ➔ 高雄國際機場站</div>
+                        <div><b>07:30</b> 抵達高雄國際機場，報到／托運行李／出境</div>
+                        <div><b>10:15</b> 香港快運航班起飛 ➔ 返回香港</div>
+                    </div>
+                </div>
+
+                <details class="bg-[#FEF6EE] border border-[#FAD6B8] rounded-xl p-4 shadow-sm">
+                    <summary class="cursor-pointer font-bold text-[#C66914] flex justify-between items-center select-none text-sm">
+                        <span>✨ 【今日亮點】（點擊展開）</span>
+                        <span class="text-xs font-medium bg-[#C66914]/10 px-2.5 py-1 rounded">展開 ▼</span>
+                    </summary>
+                    <div class="mt-3 text-xs text-gray-700 leading-relaxed pt-2 border-t border-[#FAD6B8]">
+                        <p><b>無正式景點，以輕鬆準時搭機、平安返回香港為完美收尾。</b></p>
+                    </div>
+                </details>
+
+                <details class="bg-orange-50 border border-orange-200 rounded-xl p-4 shadow-sm">
+                    <summary class="cursor-pointer font-bold text-orange-950 flex justify-between items-center select-none text-sm">
+                        <span>⚠️ 【今日特殊備註】（點擊展開）</span>
+                        <span class="text-xs font-medium bg-orange-200/60 text-orange-900 px-2.5 py-1 rounded">展開 ▼</span>
+                    </summary>
+                    <div class="mt-3 text-xs text-orange-900 leading-relaxed pt-2 border-t border-orange-200 space-y-1.5">
+                        <p>・住宿選美麗島附近的主要優點：最後一天不需轉線，直達機場。</p>
+                        <p>・07:30 抵達機場可預留約 2 小時 45 分鐘，從容不迫。</p>
+                    </div>
+                </details>
+            </div>
+        </div>
+        <div id="tab-d10-trans" class="tab-content hidden fade-in space-y-6">
+            <div class="taiwan-card rounded-2xl overflow-hidden p-6 md:p-8 space-y-6">
+                <div>
+                    <span class="text-xs bg-[#E89344]/20 text-[#C66914] px-3 py-1 rounded-md font-bold">10/6（二）｜交通方式與住宿</span>
+                    <h2 class="text-3xl font-bold mt-2 text-[#2C3E35]">第十天交通與住宿指南</h2>
+                </div>
+                <details class="bg-[#F0EDEA] p-5 rounded-xl space-y-3 border border-[#E2DDD5]" open>
+                    <summary class="cursor-pointer font-bold text-base text-[#2C3E35] flex justify-between items-center select-none">
+                        <span>🚗 車程攻略（點擊可收合）</span>
+                        <span class="text-xs text-gray-500 font-medium">收合 ▲</span>
+                    </summary>
+                    <div class="mt-3 space-y-2 text-sm pt-2 border-t border-[#E2DDD5]/60">
+                        <p>美麗島站搭乘高雄捷運紅線往小港方向直達，約15-20分鐘（全程不需轉線）。</p>
+                    </div>
+                </details>
+                <details class="bg-[#EFECE6] p-5 rounded-xl space-y-3 border border-[#E2DDD5]">
+                    <summary class="cursor-pointer font-bold text-base text-[#2C3E35] flex justify-between items-center select-none">
+                        <span>🏨 推薦住宿區域（點擊展開）</span>
+                        <span class="text-xs text-[#C66914] font-medium bg-[#E89344]/10 px-2.5 py-1 rounded">展開 ▼</span>
+                    </summary>
+                    <div class="mt-3 space-y-2 text-sm text-gray-700 pt-2 border-t border-[#E2DDD5]/60">
+                        <p>行程圓滿結束，準備搭機返回香港！</p>
+                    </div>
+                </details>
+            </div>
+        </div>
+        <div id="tab-d10-link" class="tab-content hidden fade-in space-y-6">
+            <div class="taiwan-card rounded-2xl overflow-hidden p-6 md:p-8">
+                <span class="text-xs bg-[#E89344]/20 text-[#C66914] px-3 py-1 rounded-md font-bold">10/6（二）｜參考連結</span>
+                <h2 class="text-3xl font-bold mt-2 mb-4 text-[#2C3E35]">第十天相關航空與機場連結</h2>
+                <div class="flex flex-wrap gap-3 mt-4">
+                    <a href="https://www.kia.gov.tw/" target="_blank" class="text-sm bg-white border border-[#2C3E35] px-4 py-2 rounded-xl hover:bg-[#2C3E35] hover:text-white transition shadow-sm">高雄國際機場 ➔</a>
+                    <a href="https://www.hkexpress.com/" target="_blank" class="text-sm bg-white border border-[#2C3E35] px-4 py-2 rounded-xl hover:bg-[#2C3E35] hover:text-white transition shadow-sm">香港快運航空 ➔</a>
+                </div>
+            </div>
+        </div>
 
         <!-- ==================== 📌 全程提醒 ==================== -->
         <div id="tab-tips" class="tab-content hidden fade-in space-y-6">
@@ -412,13 +1179,17 @@
                     <div class="bg-[#F0EDEA] p-3.5 rounded-xl"><b>1. 9/28教師節連假：</b>九份、十分人潮較多，可視情況與9/29故宮行程互換。</div>
                     <div class="bg-[#F0EDEA] p-3.5 rounded-xl"><b>2. 9/30日月潭：</b>建議優先採「高鐵＋台灣好行」，較能保留下午遊湖時間。</div>
                     <div class="bg-[#F0EDEA] p-3.5 rounded-xl"><b>3. 10/1九族死線：</b>最晚14:00離開，避免錯過回台中班次與高美濕地夕陽。</div>
-                    <div class="bg-[#F0EDEA] p-3.5 rounded-xl"><b>4. 10/2武嶺與台南：</b>凌晨上武嶺務必注意保暖，午後前往麻豆與台南市區品嚐美食。</div>
-                    <div class="bg-[#F0EDEA] p-3.5 rounded-xl"><b>5. 10/3四草與熱氣球：</b>四草綠色隧道現場換票排隊，熱氣球17:30前須完成報到。</div>
+                    <div class="bg-[#F0EDEA] p-3.5 rounded-xl"><b>4. 10/1晚上：</b>需早點休息，隔天02:30即出發上武嶺。</div>
+                    <div class="bg-[#F0EDEA] p-3.5 rounded-xl"><b>5. 10/2武嶺與台南：</b>夜衝武嶺賞星日出 ➔ 回台中補眠 ➔ 下午前往麻豆吃冰、鹿耳門與漁光島夕陽。</div>
+                    <div class="bg-[#F0EDEA] p-3.5 rounded-xl"><b>6. 10/3四草與熱氣球：</b>上午四草綠色隧道與安平老街，下午性格咖啡拉花，17:30前須報到搭乘愛・月熱氣球。</div>
+                    <div class="bg-[#F0EDEA] p-3.5 rounded-xl"><b>7. 10/4墾丁包車：</b>只有約4小時，景點選3-4個即可，海生館16:00報到絕不壓線。</div>
+                    <div class="bg-[#F0EDEA] p-3.5 rounded-xl"><b>8. 10/5北返：</b>海生館11:31班次非常緊，12:01班次較保守；旗津以西子灣夕陽為主。</div>
+                    <div class="bg-[#F0EDEA] p-3.5 rounded-xl"><b>9. 10/6賦歸：</b>10:15起飛，住宿美麗島站可搭紅線直達小港機場。</div>
                 </div>
             </div>
         </div>
 
-        <!-- ==================== 🍜 美食清單 (Expanded) ==================== -->
+        <!-- ==================== 🍜 美食清單 ==================== -->
         <div id="tab-food" class="tab-content hidden fade-in space-y-6">
             <div class="taiwan-card rounded-2xl overflow-hidden p-6 md:p-8 border-t-4 border-[#C66914] space-y-4">
                 <span class="text-xs bg-[#C66914]/20 text-[#C66914] px-3 py-1 rounded-md font-bold">FOOD CHECKLIST</span>
@@ -451,11 +1222,43 @@
                     </label>
                     <label class="flex items-center space-x-3 bg-[#F0EDEA] p-3.5 rounded-xl cursor-pointer hover:bg-[#E8E3DD] transition">
                         <input type="checkbox" class="w-5 h-5 accent-[#C66914]">
-                        <span><b>台南牛肉湯、鼎富發、棺材板、鱔魚意麵</b> — 台南市區</span>
+                        <span><b>麻豆龍泉冰店</b>（古早味剉冰、想見你拍攝地）— 台南麻豆</span>
                     </label>
                     <label class="flex items-center space-x-3 bg-[#F0EDEA] p-3.5 rounded-xl cursor-pointer hover:bg-[#E8E3DD] transition">
                         <input type="checkbox" class="w-5 h-5 accent-[#C66914]">
-                        <span><b>周氏蝦捲、雙生綠豆沙、安平豆花、王氏魚皮</b> — 安平與府城</span>
+                        <span><b>台南溫體牛肉湯</b>（新鮮現切直送、鮮甜肉燥飯）— 台南府城</span>
+                    </label>
+                    <label class="flex items-center space-x-3 bg-[#F0EDEA] p-3.5 rounded-xl cursor-pointer hover:bg-[#E8E3DD] transition">
+                        <input type="checkbox" class="w-5 h-5 accent-[#C66914]">
+                        <span><b>鼎富發</b>（豬油拌飯加生蛋黃）— 台南人氣排隊美食</span>
+                    </label>
+                    <label class="flex items-center space-x-3 bg-[#F0EDEA] p-3.5 rounded-xl cursor-pointer hover:bg-[#E8E3DD] transition">
+                        <input type="checkbox" class="w-5 h-5 accent-[#C66914]">
+                        <span><b>棺材板</b>（酥炸厚吐司填入濃郁奶香海鮮內餡）— 台南在地小吃</span>
+                    </label>
+                    <label class="flex items-center space-x-3 bg-[#F0EDEA] p-3.5 rounded-xl cursor-pointer hover:bg-[#E8E3DD] transition">
+                        <input type="checkbox" class="w-5 h-5 accent-[#C66914]">
+                        <span><b>鱔魚意麵</b>（大火快炒酸甜鑊氣濃郁）— 台南經典宵夜</span>
+                    </label>
+                    <label class="flex items-center space-x-3 bg-[#F0EDEA] p-3.5 rounded-xl cursor-pointer hover:bg-[#E8E3DD] transition">
+                        <input type="checkbox" class="w-5 h-5 accent-[#C66914]">
+                        <span><b>周氏蝦捲</b>（外酥內嫩鮮甜蝦肉）— 安平老字號</span>
+                    </label>
+                    <label class="flex items-center space-x-3 bg-[#F0EDEA] p-3.5 rounded-xl cursor-pointer hover:bg-[#E8E3DD] transition">
+                        <input type="checkbox" class="w-5 h-5 accent-[#C66914]">
+                        <span><b>雙生綠豆沙</b>（綿密香醇濃郁口感）— 台南排隊手搖飲</span>
+                    </label>
+                    <label class="flex items-center space-x-3 bg-[#F0EDEA] p-3.5 rounded-xl cursor-pointer hover:bg-[#E8E3DD] transition">
+                        <input type="checkbox" class="w-5 h-5 accent-[#C66914]">
+                        <span><b>安平豆花</b>（香滑綿密豆香十足）— 安平甜品</span>
+                    </label>
+                    <label class="flex items-center space-x-3 bg-[#F0EDEA] p-3.5 rounded-xl cursor-pointer hover:bg-[#E8E3DD] transition">
+                        <input type="checkbox" class="w-5 h-5 accent-[#C66914]">
+                        <span><b>王氏魚皮</b>（鮮美虱目魚肚湯、肉燥飯）— 台南道地早餐</span>
+                    </label>
+                    <label class="flex items-center space-x-3 bg-[#F0EDEA] p-3.5 rounded-xl cursor-pointer hover:bg-[#E8E3DD] transition">
+                        <input type="checkbox" class="w-5 h-5 accent-[#C66914]">
+                        <span><b>性格咖啡</b>（手作早午餐與超萌客製化拉花咖啡）— 台南巷弄咖啡</span>
                     </label>
                     <label class="flex items-center space-x-3 bg-[#F0EDEA] p-3.5 rounded-xl cursor-pointer hover:bg-[#E8E3DD] transition">
                         <input type="checkbox" class="w-5 h-5 accent-[#C66914]">
