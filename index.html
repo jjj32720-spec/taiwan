@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
     <meta charset="UTF-8">
@@ -26,8 +27,8 @@
         .fade-in {
             animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
-        /* 更慢、完全不透明的掉落動畫特效 */
-        @keyframes fallDownVerySlow {
+        /* 調整後適中、完全不透明的掉落動畫特效 (1.8s - 2.4s) */
+        @keyframes fallDownModerate {
             0% { transform: translateY(-60px) rotate(0deg); opacity: 1; }
             99% { transform: translateY(102vh) rotate(360deg); opacity: 1; }
             100% { transform: translateY(102vh) rotate(360deg); opacity: 0; }
@@ -37,7 +38,7 @@
             top: -60px;
             z-index: 9999;
             font-size: 32px;
-            animation: fallDownVerySlow 3.5s linear forwards;
+            animation: fallDownModerate 2.1s linear forwards;
             pointer-events: none;
         }
         .no-scrollbar::-webkit-scrollbar {
@@ -128,7 +129,7 @@
                         </div>
                         <div class="text-sm bg-white p-4 rounded-lg border border-[#E2DDD5] leading-relaxed">
                             <p>桃園國際機場 ➔ 台北住宿 ➔ 中山／圓山／西門町／信義區・台北101</p>
-                            <p class="text-xs text-gray-500 mt-1">※依抵達後精神狀況選1～2個區域</p>
+                            <p class="text-xs text-gray-500 mt-1">※依抵達後精神狀況選 2 個區域（Day 2與Day 3晚上可分別消化剩餘區域各一個）</p>
                         </div>
                     </div>
                 </details>
@@ -140,7 +141,7 @@
                         <li><b>14:30</b> 抵達桃園國際機場</li>
                         <li><b>14:30 - 16:00</b> 入境、領行李、交通準備</li>
                         <li><b>約 16:00 - 17:15</b> 桃園機場 ➔ 台北住宿</li>
-                        <li><b>17:30後</b> 晚餐＋台北夜間自由活動（中山／圓山／西門町／信義區 四選一～二）</li>
+                        <li><b>17:30後</b> 晚餐＋台北夜間自由活動（中山／圓山／西門町／信義區 四選二）</li>
                     </ul>
                 </div>
 
@@ -163,7 +164,7 @@
                     </summary>
                     <div class="mt-3 text-xs text-orange-900 leading-relaxed pt-2 border-t border-orange-200 space-y-1.5">
                         <p>・第一天不安排高強度景點。</p>
-                        <p>・中山、圓山、西門町、信義區四選一～二即可。</p>
+                        <p>・中山、圓山、西門町、信義區四選二即可，剩下的區域可在 Day 2 與 Day 3 行程結束後各安排一個前往！</p>
                         <p>・若行李較多或多人同行，計程車方便程度比機捷高；若住中山站，機捷至A1後轉計程車最省力。</p>
                     </div>
                 </details>
@@ -176,7 +177,6 @@
                     <h2 class="text-3xl font-bold mt-2 text-[#2C3E35]">第一天交通與住宿指南</h2>
                 </div>
 
-                <!-- 車程攻略（預設展開） -->
                 <details class="bg-[#F0EDEA] p-5 rounded-xl space-y-3 border border-[#E2DDD5]" open>
                     <summary class="cursor-pointer font-bold text-base text-[#2C3E35] flex justify-between items-center select-none">
                         <span>🚗 車程攻略（點擊可收合）</span>
@@ -189,7 +189,6 @@
                     </div>
                 </details>
 
-                <!-- 推薦住宿（預設關閉/收合） -->
                 <details class="bg-[#EFECE6] p-5 rounded-xl space-y-3 border border-[#E2DDD5]">
                     <summary class="cursor-pointer font-bold text-base text-[#2C3E35] flex justify-between items-center select-none">
                         <span>🏨 推薦住宿區域（點擊展開）</span>
@@ -236,8 +235,7 @@
                             </div>
                         </div>
                         <div class="text-sm bg-white p-4 rounded-lg border border-[#E2DDD5] leading-relaxed">
-                            <p>台北 ➔ 野柳 ➔ 陰陽海 ➔ 黃金瀑布 ➔ 九份 ➔ 十分 ➔ 台北</p>
-                            <p class="text-xs text-gray-500 mt-1">※實際順序與停留時間依Klook當日安排為準。</p>
+                            <p>台北 ➔ 野柳 ➔ 陰陽海 ➔ 黃金瀑布 ➔ 九份 ➔ 十分 ➔ 返回台北 ➔ <b>晚上可安排第一天未走完的其中一個區域（中山／圓山／西門町／信義區）</b></p>
                         </div>
                     </div>
                 </details>
@@ -247,7 +245,7 @@
                     <ul class="space-y-2 text-sm text-gray-700">
                         <li><b>上午</b> 睡飽、早餐、台北自由活動</li>
                         <li><b>11:15</b> Klook 一日遊集合出發 ➔ 北海岸／九份／十分一日遊</li>
-                        <li><b>約 20:30</b> 返回台北車站 ➔ <b>21:00後</b> 市區自由活動或回住宿</li>
+                        <li><b>約 20:30</b> 返回台北車站 ➔ <b>21:00後</b> 前往第一天剩餘的其中一個區域逛逛或回住宿</li>
                     </ul>
                 </div>
 
@@ -277,7 +275,7 @@
                         <span class="text-xs font-medium bg-orange-200/60 text-orange-900 px-2.5 py-1 rounded">展開 ▼</span>
                     </summary>
                     <div class="mt-3 text-xs text-orange-900 leading-relaxed pt-2 border-t border-orange-200 space-y-1.5">
-                        <p>・2026/9/28為教師節國定假日，九份與十分人潮可能增加，可考慮與9/29互換。</p>
+                        <p>・2026/9/28為教師節國定假日，九份與十分人潮可能增加。</p>
                         <p><b>必吃推薦：</b>九份芋圓、草仔粿。</p>
                     </div>
                 </details>
@@ -323,8 +321,8 @@
         <div id="tab-d3-time" class="tab-content hidden fade-in space-y-6">
             <div class="taiwan-card rounded-2xl overflow-hidden p-6 md:p-8 space-y-6">
                 <div>
-                    <span class="text-xs bg-[#E89344]/20 text-[#C66914] px-3 py-1 rounded-md font-bold">9/29（二）｜台北經典文化＋故宮＋陽明山夜景</span>
-                    <h2 class="text-3xl font-bold mt-2 text-[#2C3E35]">第三天：台北經典文化與百萬夜景</h2>
+                    <span class="text-xs bg-[#E89344]/20 text-[#C66914] px-3 py-1 rounded-md font-bold">9/29（二）｜博愛特區＋故宮＋陽明山夜景</span>
+                    <h2 class="text-3xl font-bold mt-2 text-[#2C3E35]">第三天：博愛特區、故宮與百萬夜景</h2>
                 </div>
 
                 <details class="bg-[#F9F8F6] border border-[#E2DDD5] rounded-xl p-4 shadow-sm">
@@ -340,7 +338,7 @@
                             </div>
                         </div>
                         <div class="text-sm bg-white p-4 rounded-lg border border-[#E2DDD5] leading-relaxed">
-                            <p>住宿 ➔ 阜杭豆漿 ➔ 二二八公園 ➔ 總統府外圍 ➔ 中正紀念堂 ➔ 永康商圈 ➔ 故宮 ➔ 士林捷運站集合 ➔ 陽明山夜景</p>
+                            <p>住宿 ➔ 阜杭豆漿 ➔ 博愛特區 ➔ 中正紀念堂 ➔ 永康商圈 (買伴手禮) ➔ 故宮 ➔ 士林捷運站集合 ➔ 陽明山夜景 ➔ <b>晚上可安排第一天剩餘的最後一個區域</b></p>
                         </div>
                     </div>
                 </details>
@@ -348,10 +346,11 @@
                 <div class="bg-[#F0EDEA] p-5 rounded-xl space-y-3">
                     <h3 class="font-bold text-base text-[#2C3E35]">🕒 今日時間軸</h3>
                     <ul class="space-y-2 text-sm text-gray-700">
-                        <li><b>09:00</b> 住宿出發 ➔ <b>09:15-10:00</b> 阜杭豆漿</li>
-                        <li><b>10:00-11:30</b> 二二八公園、總統府外圍、中正紀念堂 (看衛兵交接)</li>
-                        <li><b>11:30-13:00</b> 永康商圈午餐 ➔ <b>14:00-17:00</b> 國立故宮博物院</li>
-                        <li><b>17:30</b> 士林捷運站集合 ➔ <b>18:00-19:30</b> 陽明山屋頂上夜景 ➔ 下山</li>
+                        <li><b>09:00</b> 住宿出發 ➔ <b>09:15-10:00</b> 阜杭豆漿 (排隊早餐)</li>
+                        <li><b>10:00-11:30</b> 博愛特區、二二八公園、總統府外圍、中正紀念堂 (衛兵交接)</li>
+                        <li><b>11:30-13:00</b> 永康商圈午餐與挑選文創伴手禮</li>
+                        <li><b>14:00-17:00</b> 國立故宮博物院</li>
+                        <li><b>17:30</b> 士林捷運站集合 ➔ <b>18:00-19:30</b> 陽明山屋頂上夜景 ➔ <b>晚上</b> 可造訪 Day 1 剩餘的最後一個區域</li>
                     </ul>
                 </div>
 
@@ -359,7 +358,7 @@
                     <h3 class="font-bold text-base text-[#2C3E35]">📍 景點介紹／推薦理由</h3>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
                         <div class="bg-[#F9F8F6] p-3.5 rounded-xl border border-[#E2DDD5]"><b>阜杭豆漿：</b>台北知名的傳統早餐。</div>
-                        <div class="bg-[#F9F8F6] p-3.5 rounded-xl border border-[#E2DDD5]"><b>中正紀念堂：</b>代表性地標與衛兵交接。</div>
+                        <div class="bg-[#F9F8F6] p-3.5 rounded-xl border border-[#E2DDD5]"><b>博愛特區：</b>總統府與周邊具代表性的政治文化核心地帶。</div>
                         <div class="bg-[#F9F8F6] p-3.5 rounded-xl border border-[#E2DDD5]"><b>故宮博物院：</b>收藏豐富的中華歷史藝術文物。</div>
                         <div class="bg-[#F9F8F6] p-3.5 rounded-xl border border-[#E2DDD5]"><b>屋頂上 The Top：</b>陽明山景觀餐廳，欣賞台北盆地夜景。</div>
                     </div>
@@ -371,7 +370,7 @@
                         <span class="text-xs font-medium bg-[#C66914]/10 px-2.5 py-1 rounded">展開 ▼</span>
                     </summary>
                     <div class="mt-3 text-xs text-gray-700 leading-relaxed pt-2 border-t border-[#FAD6B8]">
-                        <p><b>永康商圈伴手禮與文創小物 ＆ 陽明山台北百萬夜景。</b></p>
+                        <p><b>跟我吃飯❤️</b></p>
                     </div>
                 </details>
 
@@ -381,8 +380,9 @@
                         <span class="text-xs font-medium bg-orange-200/60 text-orange-900 px-2.5 py-1 rounded">展開 ▼</span>
                     </summary>
                     <div class="mt-3 text-xs text-orange-900 leading-relaxed pt-2 border-t border-orange-200 space-y-1.5">
+                        <p>・阜杭豆漿很有名，要預留排隊時間 (雖然我不喜歡）。</p>
                         <p>・故宮外籍成人普通票NT$350；國籍優惠折抵票NT$150。</p>
-                        <p>・永康商圈推薦：搖滾牛冰淇淋、鼎泰豐、白水豆花、芒果冰。</p>
+                        <p>・伴手禮可以在永康商圈買，這裡有很多文創小物。</p>
                     </div>
                 </details>
             </div>
@@ -1257,35 +1257,31 @@
         <p class="text-xs mt-1 text-gray-400">Designed with Taiwanese Aesthetic UI/UX & Smooth Animations 🚀</p>
     </footer>
 
-    <!-- JavaScript 階層選單、極慢且不透明掉落動畫邏輯 -->
+    <!-- JavaScript 階層選單、適中速度掉落動畫邏輯 -->
     <script>
         const emojis = ['🍠', '🧋', '👵🏻', '🏝️'];
 
         function triggerSingleEmojiRain() {
-            // 隨機選出其中一種符號
             const chosenEmoji = emojis[Math.floor(Math.random() * emojis.length)];
-            // 滿版產生 12 到 18 個符號
             const count = Math.floor(Math.random() * 7) + 12;
             
             for (let i = 0; i < count; i++) {
                 const span = document.createElement('div');
                 span.className = 'floating-emoji';
                 span.textContent = chosenEmoji;
-                // 橫向隨機分佈滿版
                 span.style.left = (Math.random() * 92 + 2) + 'vw';
-                // 亂數錯開掉落時間差 (約 3.0 秒到 4.0 秒，速度更慢)
-                span.style.animationDuration = (Math.random() * 1.0 + 3.0) + 's';
-                span.style.animationDelay = (Math.random() * 0.4) + 's';
+                // 加快掉落速度至 1.8s - 2.4s
+                span.style.animationDuration = (Math.random() * 0.6 + 1.8) + 's';
+                span.style.animationDelay = (Math.random() * 0.3) + 's';
                 document.body.appendChild(span);
 
                 setTimeout(() => {
                     span.remove();
-                }, 4500);
+                }, 2800);
             }
         }
 
         function toggleDayMenu(dayNum) {
-            // 只有點擊大分頁(Day 1 ~ Day 10)時才觸發掉落動畫
             triggerSingleEmojiRain();
 
             const mainButtons = document.querySelectorAll('.day-main-btn');
@@ -1310,7 +1306,6 @@
         }
 
         function switchTab(tabId) {
-            // 子分頁切換不觸發掉落動畫，保持專注流暢
             const contents = document.querySelectorAll('.tab-content');
             contents.forEach(el => el.classList.add('hidden'));
 
@@ -1349,7 +1344,6 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // 圖片點擊放大彈窗邏輯
         function openImageModal(imgSrc, title) {
             const modal = document.getElementById('imageModal');
             const modalImg = document.getElementById('modalImg');
@@ -1369,4 +1363,4 @@
         };
     </script>
 </body>
-</html
+</html>
