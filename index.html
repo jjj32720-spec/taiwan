@@ -136,6 +136,50 @@
             display: none !important;
         }
 
+    
+        .achievement-jump-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            margin-top: 0.45rem;
+            font-size: 0.65rem;
+            font-weight: 700;
+            color: #C66914;
+            background: rgba(198,105,20,.08);
+            padding: 0.3rem 0.55rem;
+            border-radius: 9999px;
+            cursor: pointer;
+        }
+        .achievement-jump-link:hover {
+            background: rgba(198,105,20,.14);
+        }
+
+    
+        .day-picker-item {
+            width: 100%;
+            text-align: left;
+            background: #F7F5F0;
+            color: #2C3E35;
+            border: 1px solid #E2DDD5;
+            border-radius: 0.8rem;
+            padding: 0.65rem 0.7rem;
+            font-size: 0.68rem;
+            font-weight: 700;
+            transition: all .2s ease;
+        }
+        .day-picker-item:hover,
+        .day-picker-item.active {
+            background: #2C3E35;
+            color: white;
+            border-color: #2C3E35;
+        }
+        @media (max-width: 639px) {
+            .top-main-nav {
+                min-height: 42px;
+                line-height: 1.05;
+            }
+        }
+
     </style>
 </head>
 <body class="min-h-screen flex flex-col justify-between selection:bg-[#E89344] selection:text-white">
@@ -154,26 +198,58 @@
     </header>
 
     <!-- 頂部主選單導覽列 -->
-    <nav class="sticky top-0 z-50 bg-[#F7F5F0]/95 backdrop-blur-md border-b border-[#E2DDD5] py-3 px-4 shadow-sm">
-        <div class="max-w-7xl mx-auto flex overflow-x-auto space-x-2 no-scrollbar py-1">
-            <button onclick="switchTab('map')" class="tab-btn px-4 py-2 rounded-lg text-xs font-semibold transition shrink-0 bg-[#2C3E35] text-white shadow-md" id="btn-map">🗺️ 台灣地圖導覽</button>
+    <nav class="sticky top-0 z-50 bg-[#F7F5F0]/95 backdrop-blur-md border-b border-[#E2DDD5] py-3 px-3 shadow-sm">
+        <div class="max-w-4xl mx-auto">
+            <div class="grid grid-cols-6 gap-1.5 sm:gap-2">
+                <button onclick="switchTab('map')" class="top-main-nav px-2 py-2 rounded-xl text-[10px] sm:text-xs font-semibold transition bg-[#2C3E35] text-white shadow-md whitespace-nowrap" id="btn-map">
+                    <span class="block sm:inline">🗺️</span><span class="hidden sm:inline"> 地圖</span>
+                </button>
 
-            <button onclick="changeDay(1)" class="day-main-btn px-4 py-2 rounded-lg text-xs font-semibold transition shrink-0 bg-white text-[#2C3E35] hover:bg-[#E2DDD5] border border-[#E2DDD5]" id="main-btn-1">📍 Day 1 台北</button>
-            <button onclick="changeDay(2)" class="day-main-btn px-4 py-2 rounded-lg text-xs font-semibold transition shrink-0 bg-white text-[#2C3E35] hover:bg-[#E2DDD5] border border-[#E2DDD5]" id="main-btn-2">📍 Day 2 北海岸</button>
-            <button onclick="changeDay(3)" class="day-main-btn px-4 py-2 rounded-lg text-xs font-semibold transition shrink-0 bg-white text-[#2C3E35] hover:bg-[#E2DDD5] border border-[#E2DDD5]" id="main-btn-3">📍 Day 3 故宮陽明</button>
-            <button onclick="changeDay(4)" class="day-main-btn px-4 py-2 rounded-lg text-xs font-semibold transition shrink-0 bg-white text-[#2C3E35] hover:bg-[#E2DDD5] border border-[#E2DDD5]" id="main-btn-4">📍 Day 4 南投日月潭</button>
-            <button onclick="changeDay(5)" class="day-main-btn px-4 py-2 rounded-lg text-xs font-semibold transition shrink-0 bg-white text-[#2C3E35] hover:bg-[#E2DDD5] border border-[#E2DDD5]" id="main-btn-5">📍 Day 5 南投➔台中</button>
-            <button onclick="changeDay(6)" class="day-main-btn px-4 py-2 rounded-lg text-xs font-semibold transition shrink-0 bg-white text-[#2C3E35] hover:bg-[#E2DDD5] border border-[#E2DDD5]" id="main-btn-6">📍 Day 6 武嶺台南</button>
-            <button onclick="changeDay(7)" class="day-main-btn px-4 py-2 rounded-lg text-xs font-semibold transition shrink-0 bg-white text-[#2C3E35] hover:bg-[#E2DDD5] border border-[#E2DDD5]" id="main-btn-7">📍 Day 7 台南</button>
-            <button onclick="changeDay(8)" class="day-main-btn px-4 py-2 rounded-lg text-xs font-semibold transition shrink-0 bg-white text-[#2C3E35] hover:bg-[#E2DDD5] border border-[#E2DDD5]" id="main-btn-8">📍 Day 8 屏東墾丁</button>
-            <button onclick="changeDay(9)" class="day-main-btn px-4 py-2 rounded-lg text-xs font-semibold transition shrink-0 bg-white text-[#2C3E35] hover:bg-[#E2DDD5] border border-[#E2DDD5]" id="main-btn-9">📍 Day 9 高雄</button>
-            <button onclick="changeDay(10)" class="day-main-btn px-4 py-2 rounded-lg text-xs font-semibold transition shrink-0 bg-white text-[#2C3E35] hover:bg-[#E2DDD5] border border-[#E2DDD5]" id="main-btn-10">📍 Day 10 賦歸</button>
-            
-            <button onclick="switchTab('tips')" class="tab-btn px-4 py-2 rounded-lg text-xs font-semibold transition shrink-0 bg-[#C66914] text-white shadow-md" id="btn-tips">📌 全程提醒</button>
-            <button onclick="switchTab('food')" class="tab-btn px-4 py-2 rounded-lg text-xs font-semibold transition shrink-0 bg-[#C66914] text-white shadow-md" id="btn-food">🍜 美食清單</button>
-            <button onclick="switchTab('achievements')" class="tab-btn px-4 py-2 rounded-lg text-xs font-semibold transition shrink-0 bg-[#C66914] text-white shadow-md" id="btn-achievements">🏆 成就牆</button>
-            <button onclick="switchTab('budget')" class="tab-btn px-4 py-2 rounded-lg text-xs font-semibold transition shrink-0 bg-[#C66914] text-white shadow-md" id="btn-budget">💰 預算與記帳</button>
-            <button onclick="switchTab('sos')" class="tab-btn px-4 py-2 rounded-lg text-xs font-semibold transition shrink-0 bg-[#2C3E35] text-white shadow-md" id="btn-sos">📦 交通急救包</button>
+                <div class="relative">
+                    <button onclick="toggleDayPicker(event)" class="top-main-nav w-full px-2 py-2 rounded-xl text-[10px] sm:text-xs font-semibold transition bg-white text-[#2C3E35] border border-[#E2DDD5] shadow-sm whitespace-nowrap" id="btn-day-picker">
+                        <span id="current-day-label">📍 行程</span><span class="ml-1">⌄</span>
+                    </button>
+
+                    <div id="day-picker-panel" class="hidden absolute left-0 top-[calc(100%+0.5rem)] w-[min(88vw,330px)] bg-[#FFFDF9] border border-[#E2DDD5] rounded-2xl shadow-2xl p-3 z-[90]">
+                        <div class="text-[10px] tracking-[0.18em] text-gray-400 font-bold mb-2 px-1">SELECT DAY</div>
+                        <div class="grid grid-cols-2 gap-2">
+                            <button onclick="selectDayFromPicker(1)" class="day-picker-item">Day 1　台北</button>
+                            <button onclick="selectDayFromPicker(2)" class="day-picker-item">Day 2　北海岸</button>
+                            <button onclick="selectDayFromPicker(3)" class="day-picker-item">Day 3　故宮陽明</button>
+                            <button onclick="selectDayFromPicker(4)" class="day-picker-item">Day 4　日月潭</button>
+                            <button onclick="selectDayFromPicker(5)" class="day-picker-item">Day 5　南投➔台中</button>
+                            <button onclick="selectDayFromPicker(6)" class="day-picker-item">Day 6　武嶺台南</button>
+                            <button onclick="selectDayFromPicker(7)" class="day-picker-item">Day 7　台南</button>
+                            <button onclick="selectDayFromPicker(8)" class="day-picker-item">Day 8　墾丁</button>
+                            <button onclick="selectDayFromPicker(9)" class="day-picker-item">Day 9　高雄</button>
+                            <button onclick="selectDayFromPicker(10)" class="day-picker-item col-span-2">Day 10　賦歸</button>
+                        </div>
+                    </div>
+                </div>
+
+                <button onclick="switchTab('tips')" class="top-main-nav px-2 py-2 rounded-xl text-[10px] sm:text-xs font-semibold transition bg-white text-[#2C3E35] border border-[#E2DDD5] shadow-sm whitespace-nowrap" id="btn-tips">
+                    <span class="block sm:inline">📌</span><span class="hidden sm:inline"> 提醒</span>
+                </button>
+
+                <button onclick="switchTab('food')" class="top-main-nav px-2 py-2 rounded-xl text-[10px] sm:text-xs font-semibold transition bg-white text-[#2C3E35] border border-[#E2DDD5] shadow-sm whitespace-nowrap" id="btn-food">
+                    <span class="block sm:inline">🍜</span><span class="hidden sm:inline"> 美食</span>
+                </button>
+
+                <button onclick="switchTab('achievements')" class="top-main-nav px-2 py-2 rounded-xl text-[10px] sm:text-xs font-semibold transition bg-white text-[#2C3E35] border border-[#E2DDD5] shadow-sm whitespace-nowrap" id="btn-achievements">
+                    <span class="block sm:inline">🏆</span><span class="hidden sm:inline"> 成就</span>
+                </button>
+
+                <div class="relative">
+                    <button onclick="toggleMoreMenu(event)" class="top-main-nav w-full px-2 py-2 rounded-xl text-[10px] sm:text-xs font-semibold transition bg-white text-[#2C3E35] border border-[#E2DDD5] shadow-sm whitespace-nowrap" id="btn-more">
+                        <span class="block sm:inline">☰</span><span class="hidden sm:inline"> 更多</span>
+                    </button>
+
+                    <div id="more-menu-panel" class="hidden absolute right-0 top-[calc(100%+0.5rem)] w-48 bg-[#FFFDF9] border border-[#E2DDD5] rounded-2xl shadow-2xl p-2 z-[90]">
+                        <button onclick="openMoreTab('budget')" class="w-full text-left px-3 py-2.5 rounded-xl text-xs font-bold text-[#2C3E35] hover:bg-[#F0EDEA] transition">💰 預算與記帳</button>
+                        <button onclick="openMoreTab('sos')" class="w-full text-left px-3 py-2.5 rounded-xl text-xs font-bold text-[#2C3E35] hover:bg-[#F0EDEA] transition">📦 交通急救包</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </nav>
 
@@ -1523,14 +1599,21 @@
                 </div>
                 <div id="trip-finale-card" class="hidden mt-5 bg-[#2C3E35] text-[#F7F5F0] rounded-2xl p-6 overflow-hidden relative">
                     <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:14px_14px]"></div>
-                    <div class="relative z-10">
+                    <div class="relative z-10 text-center">
                         <div class="text-xs tracking-[0.25em] text-[#D1D8D2] mb-3">TRIP COMPLETE</div>
-                        <div class="text-4xl mb-3">👵🏻🏝️</div>
+                        <div class="text-5xl mb-3">👵🏻🏝️</div>
                         <h3 class="text-2xl font-bold">旅程完成</h3>
-                        <p class="text-sm text-[#D1D8D2] mt-3">10天・北中南制霸・<span id="final-food-count">0</span>樣美食・約 1,000+ 公里</p>
+                        <p class="text-sm text-[#D1D8D2] mt-3">10 天・北中南制霸・<span id="final-food-count">0</span> 樣美食・約 1,000+ 公里</p>
                         <div class="h-px bg-white/20 my-5"></div>
-                        <p class="text-lg font-bold">邵奶奶台灣制霸 👵🏻🏝️</p>
-                        <p class="text-sm text-[#D1D8D2] mt-2">10 個公開成就＋7 個隱藏成就＝10＋7 🎂</p>
+                        <p class="text-xl font-bold">邵奶奶台灣制霸</p>
+                        <p class="text-sm text-[#D1D8D2] mt-2">恭喜完成這趟台灣生日之旅 🎂</p>
+                        <div class="mt-5 bg-white/10 rounded-2xl p-4 border border-white/10">
+                            <p class="text-xs text-[#D1D8D2]">最後一個生日彩蛋</p>
+                            <p class="text-lg font-bold mt-1">10 個公開成就＋7 個隱藏成就</p>
+                            <p class="text-2xl font-bold mt-1">10＋7 🎂</p>
+                            <p class="text-xs text-[#D1D8D2] mt-2">生日密碼配對成功</p>
+                        </div>
+                        <p class="text-xs text-[#D1D8D2] mt-5">東台灣，等待下一次解鎖 🔒</p>
                     </div>
                 </div>
 </div>
@@ -1797,11 +1880,16 @@
                 <div>
                     <span class="text-xs bg-[#C66914]/20 text-[#C66914] px-3 py-1 rounded-md font-bold">ACHIEVEMENTS</span>
                     <h2 class="text-3xl font-bold mt-2 text-[#2C3E35]">🏆 邵奶奶台灣成就牆</h2>
-                    <p class="text-sm text-gray-600 mt-1">10 個公開成就＋7 個隱藏成就。隱藏成就解鎖前不顯示條件。</p>
+                    <p class="text-sm text-gray-600 mt-1">旅途中慢慢解鎖。隱藏成就解鎖前不顯示條件。</p>
                 </div>
-                <div class="flex items-center justify-between bg-[#F0EDEA] rounded-xl p-4">
-                    <span class="text-xs text-gray-600">目前已解鎖</span>
-                    <span class="text-sm font-bold text-[#C66914]"><span id="achievement-count">0</span> / 17</span>
+                <div class="bg-[#F0EDEA] rounded-xl p-4">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-xs font-bold text-[#2C3E35]">成就探索進度</span>
+                        <span class="text-[10px] text-gray-500">繼續探索台灣 👵🏻🏝️</span>
+                    </div>
+                    <div class="w-full h-2.5 bg-white rounded-full overflow-hidden border border-[#E2DDD5]">
+                        <div id="achievement-progress-bar" class="h-full bg-[#C66914] rounded-full transition-all duration-700" style="width:0%"></div>
+                    </div>
                 </div>
                 <div>
                     <h3 class="font-bold text-base text-[#2C3E35] mb-3">公開成就</h3>
@@ -2098,16 +2186,98 @@
             if (targetBox) targetBox.classList.add('hidden');
         }
 
+        
+        const dayNavLabels = {
+            1: '📍 Day 1',
+            2: '📍 Day 2',
+            3: '📍 Day 3',
+            4: '📍 Day 4',
+            5: '📍 Day 5',
+            6: '📍 Day 6',
+            7: '📍 Day 7',
+            8: '📍 Day 8',
+            9: '📍 Day 9',
+            10: '📍 Day 10'
+        };
+
+        function closeTopMenus() {
+            document.getElementById('day-picker-panel')?.classList.add('hidden');
+            document.getElementById('more-menu-panel')?.classList.add('hidden');
+        }
+
+        function toggleDayPicker(event) {
+            event?.stopPropagation();
+            const panel = document.getElementById('day-picker-panel');
+            const more = document.getElementById('more-menu-panel');
+            more?.classList.add('hidden');
+            panel?.classList.toggle('hidden');
+        }
+
+        function toggleMoreMenu(event) {
+            event?.stopPropagation();
+            const panel = document.getElementById('more-menu-panel');
+            const day = document.getElementById('day-picker-panel');
+            day?.classList.add('hidden');
+            panel?.classList.toggle('hidden');
+        }
+
+        function selectDayFromPicker(dayNum) {
+            closeTopMenus();
+            changeDay(dayNum);
+        }
+
+        function openMoreTab(tabId) {
+            closeTopMenus();
+            switchTab(tabId);
+        }
+
+        function setTopNavActive(type) {
+            document.querySelectorAll('.top-main-nav').forEach(btn => {
+                btn.classList.remove('bg-[#2C3E35]', 'text-white', 'shadow-md', 'ring-2', 'ring-[#E89344]');
+                btn.classList.add('bg-white', 'text-[#2C3E35]', 'border', 'border-[#E2DDD5]');
+            });
+
+            let activeId = null;
+            if (type === 'day') activeId = 'btn-day-picker';
+            else if (type === 'budget' || type === 'sos') activeId = 'btn-more';
+            else activeId = 'btn-' + type;
+
+            const active = document.getElementById(activeId);
+            if (active) {
+                active.classList.remove('bg-white', 'text-[#2C3E35]', 'border', 'border-[#E2DDD5]');
+                active.classList.add('bg-[#2C3E35]', 'text-white', 'shadow-md');
+            }
+        }
+
+        function updateCompactDayPicker(dayNum) {
+            const label = document.getElementById('current-day-label');
+            if (label) label.textContent = dayNavLabels[dayNum] || '📍 行程';
+
+            document.querySelectorAll('.day-picker-item').forEach((btn, index) => {
+                btn.classList.toggle('active', index + 1 === dayNum);
+            });
+
+            setTopNavActive('day');
+        }
+
+        document.addEventListener('click', (event) => {
+            const inDay = event.target.closest('#day-picker-panel, #btn-day-picker');
+            const inMore = event.target.closest('#more-menu-panel, #btn-more');
+            if (!inDay && !inMore) closeTopMenus();
+        });
+
         function changeDay(dayNum) {
-        markDayVisited(dayNum);
+            markDayVisited(dayNum);
             triggerSingleEmojiRain();
             currentDayNum = dayNum;
             currentTabId = 'd' + dayNum + '-time';
+            updateCompactDayPicker(dayNum);
             updateDayMenuUI(dayNum);
             switchTab('d' + dayNum + '-time', false);
         }
 
         function updateDayMenuUI(dayNum) {
+            updateCompactDayPicker(dayNum);
             const mainButtons = document.querySelectorAll('.day-main-btn');
             mainButtons.forEach(btn => {
                 btn.classList.remove('bg-[#2C3E35]', 'text-white', 'shadow-md');
@@ -2143,7 +2313,7 @@
             const contents = document.querySelectorAll('.tab-content');
             contents.forEach(el => el.classList.add('hidden'));
 
-            const specialBtns = ['tips', 'food', 'budget', 'sos'];
+            const specialBtns = ['tips', 'food', 'achievements', 'budget', 'sos'];
             specialBtns.forEach(id => {
                 const btn = document.getElementById('btn-' + id);
                 if(btn) btn.classList.remove('ring-4', 'ring-[#E89344]');
@@ -2153,6 +2323,7 @@
             const subNavContainer = document.getElementById('sub-nav-container');
 
             if (tabId === 'map') {
+                setTopNavActive('map');
                 if(mapBtn) {
                     mapBtn.classList.remove('bg-white', 'text-[#2C3E35]', 'border', 'border-[#E2DDD5]');
                     mapBtn.classList.add('bg-[#2C3E35]', 'text-white', 'shadow-md');
@@ -2163,6 +2334,7 @@
                 });
                 subNavContainer.style.display = 'none';
             } else if (specialBtns.includes(tabId)) {
+                setTopNavActive(tabId);
                 if(mapBtn) {
                     mapBtn.classList.remove('bg-[#2C3E35]', 'text-white', 'shadow-md');
                     mapBtn.classList.add('bg-white', 'text-[#2C3E35]', 'border', 'border-[#E2DDD5]');
@@ -2183,11 +2355,13 @@
             }
 
             if (tabId.startsWith('d')) {
+                setTopNavActive('day');
                 const match = tabId.match(/d(\d+)-/);
                 if (match) {
                     const dayNum = parseInt(match[1]);
                     if (dayNum !== currentDayNum) {
                         currentDayNum = dayNum;
+                        updateCompactDayPicker(dayNum);
                         updateDayMenuUI(dayNum);
                     }
                 }
@@ -2583,6 +2757,7 @@ function addLastDanceEasterEgg() {
     function setAchievementState(id, unlocked, hiddenMeta) {
         const card = document.getElementById(id);
         if (!card) return;
+
         const icon = card.querySelector('.ach-icon');
         const title = card.querySelector('.ach-title');
         const desc = card.querySelector('.ach-desc');
@@ -2591,11 +2766,26 @@ function addLastDanceEasterEgg() {
         card.classList.toggle('unlocked', unlocked);
         if (lock) lock.textContent = unlocked ? '✨' : '🔒';
 
+        const oldLink = card.querySelector('.achievement-jump-link');
+        if (oldLink) oldLink.remove();
+
         if (hiddenMeta) {
             if (unlocked) {
                 if (icon) icon.textContent = hiddenMeta.icon;
                 if (title) title.textContent = hiddenMeta.title;
                 if (desc) desc.textContent = hiddenMeta.desc;
+
+                if (hiddenMeta.target && desc) {
+                    const link = document.createElement('button');
+                    link.type = 'button';
+                    link.className = 'achievement-jump-link';
+                    link.textContent = hiddenMeta.linkLabel || '查看相關內容 →';
+                    link.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        navigateAchievementTarget(hiddenMeta.target);
+                    });
+                    desc.insertAdjacentElement('afterend', link);
+                }
             } else {
                 if (icon) icon.textContent = '🔒';
                 if (title) title.textContent = '？？？';
@@ -2629,9 +2819,109 @@ function addLastDanceEasterEgg() {
         reveal('ach-log-3', publicStates['ach-log-2']);
     }
 
+
+    let achievementRuntimeState = null;
+
+    const ACHIEVEMENT_PUBLIC_META = {
+        'ach-food-1': { icon:'🍜', title:'初級台灣胃', desc:'吃滿 5 樣台灣美食' },
+        'ach-food-2': { icon:'👵🏻', title:'邵奶奶開始融入', desc:'吃滿 10 樣台灣美食' },
+        'ach-food-3': { icon:'🥢', title:'這不是旅遊，是進食', desc:'吃滿 18 樣台灣美食' },
+        'ach-food-4': { icon:'🏆', title:'台灣胃永久居民', desc:'吃滿 25 樣台灣美食' },
+        'ach-spend-1': { icon:'💸', title:'台灣經濟熱身中', desc:'累計記帳超過 NT$5,000' },
+        'ach-spend-2': { icon:'💸', title:'台灣經濟推進器', desc:'累計記帳超過 NT$15,000' },
+        'ach-spend-3': { icon:'💸', title:'GDP 有你一份', desc:'累計記帳超過 NT$20,000' },
+        'ach-log-1': { icon:'🧾', title:'有在記喔', desc:'新增 6 筆記帳' },
+        'ach-log-2': { icon:'🧾', title:'邵奶奶的流水帳', desc:'新增 15 筆記帳' },
+        'ach-log-3': { icon:'🧾', title:'每一塊錢都有紀錄', desc:'新增 25 筆記帳' }
+    };
+
+    function showAchievementUnlockModal(meta) {
+        if (!meta) return;
+        const modal = document.getElementById('achievement-unlock-modal');
+        if (!modal) return;
+
+        document.getElementById('achievement-modal-icon').textContent = meta.icon || '🏆';
+        document.getElementById('achievement-modal-title').textContent = meta.title || '成就解鎖';
+        document.getElementById('achievement-modal-desc').textContent = meta.desc || '';
+
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+
+        if (typeof triggerSingleEmojiRain === 'function') {
+            triggerSingleEmojiRain();
+        }
+    }
+
+    function closeAchievementUnlockModal() {
+        const modal = document.getElementById('achievement-unlock-modal');
+        if (!modal) return;
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+    }
+
+    function navigateAchievementTarget(target) {
+        closeAchievementUnlockModal();
+
+        if (target === 'food') {
+            switchTab('food');
+            setTimeout(() => document.getElementById('food-checklist')?.scrollIntoView({behavior:'smooth', block:'start'}), 120);
+            return;
+        }
+        if (target === 'map') {
+            switchTab('map');
+            return;
+        }
+        if (target.startsWith('day')) {
+            const dayNum = Number(target.replace('day',''));
+            if (dayNum) changeDay(dayNum);
+        }
+    }
+
+    function detectNewAchievementUnlocks(nextState, metaMap) {
+        if (achievementRuntimeState === null) {
+            achievementRuntimeState = { ...nextState };
+            return;
+        }
+
+        const newlyUnlocked = Object.keys(nextState).filter(key =>
+            nextState[key] === true && achievementRuntimeState[key] !== true
+        );
+
+        achievementRuntimeState = { ...nextState };
+
+        // 一次若跨過多個門檻，依序顯示第一個；其餘排隊
+        if (newlyUnlocked.length) {
+            queueAchievementUnlocks(newlyUnlocked.map(key => metaMap[key]).filter(Boolean));
+        }
+    }
+
+    let achievementUnlockQueue = [];
+    let achievementUnlockQueueRunning = false;
+
+    function queueAchievementUnlocks(items) {
+        achievementUnlockQueue.push(...items);
+        if (!achievementUnlockQueueRunning) showNextQueuedAchievement();
+    }
+
+    function showNextQueuedAchievement() {
+        if (!achievementUnlockQueue.length) {
+            achievementUnlockQueueRunning = false;
+            return;
+        }
+        achievementUnlockQueueRunning = true;
+        const item = achievementUnlockQueue.shift();
+        showAchievementUnlockModal(item);
+    }
+
+    // 關閉一張後，若同時達成多個成就，繼續顯示下一張
+    const _closeAchievementUnlockModalBase = closeAchievementUnlockModal;
+    closeAchievementUnlockModal = function() {
+        _closeAchievementUnlockModalBase();
+        setTimeout(showNextQueuedAchievement, 120);
+    };
+
 function updateAchievementWall() {
         const food = getFoodCheckedCount();
-        const foodTotal = document.querySelectorAll('#food-checklist input[type="checkbox"]').length;
         const expenses = getExpenseSummary();
 
         const pub = {
@@ -2650,28 +2940,86 @@ function updateAchievementWall() {
         Object.entries(pub).forEach(([id,state]) => setAchievementState(id,state));
         updatePublicAchievementVisibility(pub);
 
-        if (getDessertCheckedCount() >= 5) localStorage.setItem(ACH_KEYS.dessert,'true');
+        if (getDessertCheckedCount() >= 5) {
+            localStorage.setItem(ACH_KEYS.dessert,'true');
+        }
 
-        const hidden = [
-            ['ach-hidden-dessert', ACH_KEYS.dessert, {icon:'🍰',title:'甜的有另一個胃',desc:'正餐吃不下不代表甜點吃不下'}],
-            ['ach-hidden-music', ACH_KEYS.music, {icon:'🎧',title:'想見你的人',desc:'有些歌一響起，就開始穿越'}],
-            ['ach-hidden-east', ACH_KEYS.east, {icon:'🔐',title:'你真的很想去花東',desc:'好啦好啦，下次真的去'}],
-            ['ach-hidden-night', ACH_KEYS.night, {icon:'🌌',title:'凌晨三點的邵奶奶',desc:'凌晨上武嶺的人真的存在'}],
-            ['ach-hidden-solo', ACH_KEYS.solo, {icon:'👣',title:'獨旅模式通關',desc:'前三天單人副本完成｜方向感、行動力、體力全部合格'}],
-            ['ach-hidden-week', ACH_KEYS.week, {icon:'👵🏻🏝️',title:'台灣一周目達成',desc:'在台灣生存滿七天｜已成功融入，副作用是變胖'}],
-            ['ach-hidden-final', ACH_KEYS.final, {icon:'👵🏻🏝️',title:'邵奶奶台灣制霸',desc:'恭喜完成這趟台灣生日之旅｜10 個公開成就＋7 個隱藏成就｜10＋7，生日密碼配對成功 🎂'}]
+        const hiddenDefs = [
+            ['ach-hidden-dessert', ACH_KEYS.dessert, {
+                icon:'🍰',
+                title:'甜的有另一個胃',
+                desc:'正餐吃不下不代表甜點吃不下',
+                target:'food',
+                linkLabel:'查看美食清單 →'
+            }],
+            ['ach-hidden-music', ACH_KEYS.music, {
+                icon:'🎧',
+                title:'想見你的人',
+                desc:'有些歌一響起，就開始穿越',
+                target:'day6',
+                linkLabel:'回到 Day 6 →'
+            }],
+            ['ach-hidden-east', ACH_KEYS.east, {
+                icon:'🔐',
+                title:'你真的很想去花東',
+                desc:'好啦好啦，下次真的去',
+                target:'map',
+                linkLabel:'回到台灣地圖 →'
+            }],
+            ['ach-hidden-night', ACH_KEYS.night, {
+                icon:'🌌',
+                title:'凌晨三點的邵奶奶',
+                desc:'凌晨上武嶺的人真的存在',
+                target:'day6',
+                linkLabel:'查看 Day 6 →'
+            }],
+            ['ach-hidden-solo', ACH_KEYS.solo, {
+                icon:'👣',
+                title:'獨旅模式通關',
+                desc:'前三天單人副本完成｜方向感、行動力、體力全部合格',
+                target:'day4',
+                linkLabel:'前往 Day 4 →'
+            }],
+            ['ach-hidden-week', ACH_KEYS.week, {
+                icon:'👵🏻🏝️',
+                title:'台灣一周目達成',
+                desc:'在台灣生存滿七天｜已成功融入，副作用是變胖',
+                target:'day7',
+                linkLabel:'回到 Day 7 →'
+            }],
+            ['ach-hidden-final', ACH_KEYS.final, {
+                icon:'👵🏻🏝️',
+                title:'邵奶奶台灣制霸',
+                desc:'恭喜完成這趟台灣生日之旅｜10 個公開成就＋7 個隱藏成就｜10＋7，生日密碼配對成功 🎂',
+                target:'day10',
+                linkLabel:'查看旅程完成頁 →'
+            }]
         ];
 
-        let hc = 0;
-        hidden.forEach(([id,key,meta]) => {
+        const hiddenState = {};
+        const hiddenMetaById = {};
+
+        hiddenDefs.forEach(([id,key,meta]) => {
             const on = localStorage.getItem(key) === 'true';
-            if (on) hc++;
+            hiddenState[id] = on;
+            hiddenMetaById[id] = meta;
             setAchievementState(id,on,meta);
         });
 
-        const pc = Object.values(pub).filter(Boolean).length;
-        const counter = document.getElementById('achievement-count');
-        if (counter) counter.textContent = pc + hc;
+        // 成就頁只顯示進度條，不公開總數
+        const allState = { ...pub, ...hiddenState };
+        const unlockedCount = Object.values(allState).filter(Boolean).length;
+        const totalCount = Object.keys(allState).length;
+        const progressBar = document.getElementById('achievement-progress-bar');
+        if (progressBar) {
+            progressBar.style.width = `${totalCount ? (unlockedCount / totalCount) * 100 : 0}%`;
+        }
+
+        // 首次載入只建立基準；之後任何 false -> true 都會跳出解鎖頁
+        detectNewAchievementUnlocks(
+            allState,
+            { ...ACHIEVEMENT_PUBLIC_META, ...hiddenMetaById }
+        );
     }
 
     let eastTaiwanTapCount = 0;
@@ -2783,18 +3131,40 @@ function updateAchievementWall() {
 
         if (titleEl) titleEl.textContent = currentTitle;
 
-        if (allowPopup) {
-            let milestone = null;
-            if (checked === 5) milestone = { emoji:'🍜', title:'初級台灣胃' };
-            else if (checked === 10) milestone = { emoji:'👵🏻', title:'邵奶奶開始融入' };
-            else if (checked === 18) milestone = { emoji:'🥢', title:'這不是旅遊，是進食' };
-            else if (checked === 25) milestone = { emoji:'🏆', title:'台灣胃永久居民' };
-            if (milestone) showFoodAchievement(milestone.emoji, milestone.title);
+        if (typeof updateAchievementWall === 'function') {
+            updateAchievementWall();
         }
-
-        if (typeof updateAchievementWall === 'function') updateAchievementWall();
     }
 
+
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const hash = window.location.hash.replace('#','');
+            const match = hash.match(/^d(\d+)-/);
+            if (match) {
+                updateCompactDayPicker(Number(match[1]));
+            } else if (hash && ['tips','food','achievements','budget','sos','map'].includes(hash)) {
+                setTopNavActive(hash);
+            } else {
+                setTopNavActive('map');
+            }
+        });
+
 </script>
+
+<div id="achievement-unlock-modal" class="fixed inset-0 z-[160] hidden items-center justify-center p-5 bg-black/45 backdrop-blur-sm">
+    <div class="relative max-w-sm w-full bg-[#FFFDF9] rounded-[2rem] shadow-2xl border border-[#E2DDD5] overflow-hidden">
+        <div class="absolute inset-x-0 top-0 h-1.5 bg-[#C66914]"></div>
+        <div class="p-8 text-center">
+            <div id="achievement-modal-icon" class="text-6xl mb-4">🏆</div>
+            <div class="text-[10px] tracking-[0.28em] font-bold text-[#C66914] mb-2">ACHIEVEMENT UNLOCKED</div>
+            <h3 id="achievement-modal-title" class="text-2xl font-bold text-[#2C3E35]"></h3>
+            <p id="achievement-modal-desc" class="text-sm text-gray-600 leading-relaxed mt-3"></p>
+            <div class="mt-5 text-xs font-bold text-[#C66914]">✨ UNLOCKED</div>
+            <button type="button" onclick="closeAchievementUnlockModal()" class="mt-6 w-full bg-[#2C3E35] text-white py-3 rounded-xl text-xs font-bold hover:bg-[#C66914] transition">收下成就</button>
+        </div>
+    </div>
+</div>
+
 </body>
 </html>
