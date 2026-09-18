@@ -1806,15 +1806,15 @@
                         <h3 class="text-2xl font-bold">旅程完成</h3>
                         <p class="text-sm text-[#D1D8D2] mt-3">10 天・北中南制霸・<span id="final-food-count">0</span> 樣美食・約 1,000+ 公里</p>
                         <div class="h-px bg-white/20 my-5"></div>
-                        <p class="text-xl font-bold">邵奶奶台灣制霸</p>
+                        <p class="text-xl font-bold">西台灣制霸證書🏆</p>
                         <p class="text-sm text-[#D1D8D2] mt-2">恭喜完成這趟台灣生日之旅 🎂</p>
                         <div class="mt-5 bg-white/10 rounded-2xl p-4 border border-white/10">
                             <p class="text-xs text-[#D1D8D2]">TAIWAN CHAPTER COMPLETE</p>
-                            <p class="text-lg font-bold mt-1">十天山海縱走任務完成</p>
-                            <p class="text-2xl font-bold mt-1">台灣篇・收官 🇹🇼</p>
-                            <p class="text-xs text-[#D1D8D2] mt-2">下一站：10/7 壽星模式 🎂</p>
+                            <p class="text-lg font-bold mt-1">恭喜邵奶奶完成這趟台灣之旅 🎉</p>
+                            <p class="text-2xl font-bold mt-1">西台灣制霸證書🏆</p>
+                            <p class="text-xs text-[#D1D8D2] mt-2">東台灣，等待下一次解鎖 🔒</p>
                         </div>
-                        <p class="text-xs text-[#D1D8D2] mt-5">東台灣，等待下一次解鎖 🔒</p>
+                        <p class="text-xs text-[#D1D8D2] mt-5">下一站：10/7 壽星模式 🎂</p>
                     </div>
                 </div>
 </div>
@@ -2350,11 +2350,12 @@
     <!-- JavaScript 邏輯 -->
     <script>
 
-        function resetAchievementTestStateOnce() {
-            const RESET_VERSION = 'achievement_reset_20260918_v2';
-            if (localStorage.getItem(RESET_VERSION) === 'done') return;
+        function resetTestStateForThisHtmlOnce() {
+            const BUILD_KEY = 'html_build_d0c3ad02e5';
+            const marker = `opened_${BUILD_KEY}`;
+            if (sessionStorage.getItem(marker) === 'yes') return;
 
-            // 隱藏／旅程成就
+            // A genuinely new HTML build should start like first launch.
             [
                 'ach_hidden_dessert_v1',
                 'ach_hidden_music_v1',
@@ -2364,26 +2365,26 @@
                 'ach_hidden_week_v1',
                 'ach_hidden_final_v1',
                 'taiwan_trip_finished_v1',
-                'visited_days_v2'
+                'visited_days_v2',
+                'travel_expenses_v2'
             ].forEach(key => localStorage.removeItem(key));
 
-            // 測試用美食勾選全部歸零，避免公開美食成就一打開就完成
-            for (let i = 1; i <= 60; i++) {
+            for (let i = 1; i <= 80; i++) {
                 localStorage.removeItem(`food-v3-${i}`);
                 localStorage.removeItem(`food-${i}`);
             }
 
-            // 測試用記帳清空，避免消費／記帳成就沿用舊測試資料
-            localStorage.removeItem('travel_expenses_v2');
-
-            localStorage.setItem(RESET_VERSION, 'done');
+            sessionStorage.setItem(marker, 'yes');
         }
 
+        resetTestStateForThisHtmlOnce();
+
+
+
+        
+
         // 必須在任何 checkbox / expense / 成就狀態讀取前先執行
-        resetAchievementTestStateOnce();
-
-
-        const emojis = ['🍠', '🧋', '👵🏻', '🏝️'];
+const emojis = ['🍠', '🧋', '👵🏻', '🏝️'];
         let currentDayNum = 1;
         let currentTabId = 'map';
 
@@ -2877,6 +2878,8 @@
                 });
             });
 
+            if (typeof updateFoodAchievement === 'function') updateFoodAchievement(false);
+
             renderExpenses();
 
             const allDetails = document.querySelectorAll('details');
@@ -3313,8 +3316,8 @@ function updateAchievementWall() {
             }],
             ['ach-hidden-final', ACH_KEYS.final, {
                 icon:'👵🏻🏝️',
-                title:'邵奶奶台灣制霸',
-                desc:'恭喜完成這趟台灣生日之旅｜10 個公開成就＋7 個隱藏成就｜10＋7，生日密碼配對成功 🎂',
+                title:'西台灣制霸證書',
+                desc:'恭喜完成這趟台灣生日之旅｜10 個公開成就＋7 個隱藏成就｜生日密碼配對成功🎂',
                 target:'day10',
                 linkLabel:'查看旅程完成頁 →'
             }]
@@ -3349,7 +3352,7 @@ function updateAchievementWall() {
     let eastTaiwanTapCount = 0;
     function handleEastTaiwanTap() {
         eastTaiwanTapCount++;
-        if (eastTaiwanTapCount >= 3) {
+        if (eastTaiwanTapCount >= 5) {
             unlockHiddenAchievement(ACH_KEYS.east);
             eastTaiwanTapCount = 0;
         }
