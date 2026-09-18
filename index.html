@@ -373,6 +373,49 @@
             border-color: #3A4A42 !important;
         }
 
+    
+        /* 深色模式：台灣地圖四區卡片 */
+        body.dark-mode #tab-map .bg-gradient-to-br {
+            background: #202B26 !important;
+            border-color: #46584F !important;
+            opacity: 1 !important;
+        }
+        body.dark-mode #tab-map .bg-gradient-to-br:hover {
+            border-color: #F1A15B !important;
+            background: #25312B !important;
+        }
+        body.dark-mode #tab-map h3 {
+            color: #F3EFE8 !important;
+        }
+        body.dark-mode #tab-map p {
+            color: #BCC8C1 !important;
+        }
+        body.dark-mode #tab-map .text-\[\#2C3E35\] {
+            color: #F3EFE8 !important;
+        }
+        body.dark-mode #tab-map .text-gray-700,
+        body.dark-mode #tab-map .text-gray-600,
+        body.dark-mode #tab-map .text-gray-500 {
+            color: #BCC8C1 !important;
+        }
+
+        /* 深色模式：今日特殊備註 */
+        body.dark-mode .bg-orange-50 {
+            background: #33261D !important;
+            border-color: #765037 !important;
+        }
+        body.dark-mode .text-orange-950,
+        body.dark-mode .text-orange-900 {
+            color: #FFD8B5 !important;
+        }
+        body.dark-mode .border-orange-200 {
+            border-color: #765037 !important;
+        }
+        body.dark-mode [class*="bg-orange-200"] {
+            background: #4A3426 !important;
+            color: #FFD8B5 !important;
+        }
+
     </style>
 </head>
 <body class="min-h-screen flex flex-col justify-between selection:bg-[#E89344] selection:text-white">
@@ -1766,10 +1809,10 @@
                         <p class="text-xl font-bold">邵奶奶台灣制霸</p>
                         <p class="text-sm text-[#D1D8D2] mt-2">恭喜完成這趟台灣生日之旅 🎂</p>
                         <div class="mt-5 bg-white/10 rounded-2xl p-4 border border-white/10">
-                            <p class="text-xs text-[#D1D8D2]">最後一個生日彩蛋</p>
-                            <p class="text-lg font-bold mt-1">10 個公開成就＋7 個隱藏成就</p>
-                            <p class="text-2xl font-bold mt-1">10＋7 🎂</p>
-                            <p class="text-xs text-[#D1D8D2] mt-2">生日密碼配對成功</p>
+                            <p class="text-xs text-[#D1D8D2]">TAIWAN CHAPTER COMPLETE</p>
+                            <p class="text-lg font-bold mt-1">十天山海縱走任務完成</p>
+                            <p class="text-2xl font-bold mt-1">台灣篇・收官 🇹🇼</p>
+                            <p class="text-xs text-[#D1D8D2] mt-2">下一站：10/7 壽星模式 🎂</p>
                         </div>
                         <p class="text-xs text-[#D1D8D2] mt-5">東台灣，等待下一次解鎖 🔒</p>
                     </div>
@@ -2466,6 +2509,7 @@
         }
 
         function openMobileDaySheet() {
+            if (typeof triggerSingleEmojiRain === 'function') triggerSingleEmojiRain();
             closeMobileSheets();
             document.getElementById('mobile-day-sheet-backdrop')?.classList.remove('hidden');
             document.getElementById('mobile-day-sheet')?.classList.remove('translate-y-full');
@@ -2476,6 +2520,7 @@
 
         
         function openMobileMoreSheet() {
+            if (typeof triggerSingleEmojiRain === 'function') triggerSingleEmojiRain();
             closeMobileSheets();
             document.getElementById('mobile-day-sheet-backdrop')?.classList.remove('hidden');
             document.getElementById('mobile-more-sheet')?.classList.remove('translate-y-full');
@@ -2483,6 +2528,7 @@
         }
 
         function mobileMoreTo(tabId) {
+            if (typeof triggerSingleEmojiRain === 'function') triggerSingleEmojiRain();
             closeMobileSheets();
             switchTab(tabId);
         }
@@ -2511,6 +2557,7 @@
         
 
         function mobileNavTo(tabId) {
+            if (typeof triggerSingleEmojiRain === 'function') triggerSingleEmojiRain();
             closeMobileSheets();
             switchTab(tabId);
         }
