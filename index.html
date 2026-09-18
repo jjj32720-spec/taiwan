@@ -416,6 +416,144 @@
             color: #FFD8B5 !important;
         }
 
+    
+        @keyframes heartFullScreenFall {
+            0% {
+                transform: translate3d(0, -12vh, 0) rotate(0deg) scale(.7);
+                opacity: 0;
+            }
+            8% { opacity: 1; }
+            85% { opacity: 1; }
+            100% {
+                transform: translate3d(var(--heart-drift), 112vh, 0) rotate(var(--heart-rot)) scale(var(--heart-scale));
+                opacity: 0;
+            }
+        }
+        .heart-explosion-piece {
+            position: fixed;
+            top: -12vh;
+            z-index: 99999;
+            pointer-events: none;
+            user-select: none;
+            will-change: transform, opacity;
+            animation: heartFullScreenFall var(--heart-duration) linear forwards;
+            filter: drop-shadow(0 4px 8px rgba(198, 64, 87, .16));
+        }
+
+    
+        .easter-highlight-btn {
+            width: 40px;
+            height: 40px;
+            flex: 0 0 40px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 9999px;
+            background: #C66914;
+            color: #fff;
+            box-shadow: 0 4px 10px rgba(198,105,20,.18);
+            font-size: 1rem;
+            transition: transform .2s ease, background .2s ease;
+        }
+        .easter-highlight-btn:active {
+            transform: scale(.9);
+        }
+
+        @keyframes lanternFloatUp {
+            0% { transform: translateY(105vh) translateX(0) scale(.75); opacity: 0; }
+            8% { opacity: 1; }
+            100% { transform: translateY(-25vh) translateX(var(--drift)) scale(var(--scale)); opacity: 0; }
+        }
+        .lantern-piece {
+            position: fixed;
+            bottom: -15vh;
+            z-index: 99999;
+            pointer-events: none;
+            animation: lanternFloatUp var(--dur) ease-in forwards;
+            filter: drop-shadow(0 4px 7px rgba(180,90,20,.22));
+        }
+
+        .lake-ripple-layer {
+            position: fixed;
+            inset: 0;
+            z-index: 99998;
+            pointer-events: none;
+            overflow: hidden;
+        }
+        .lake-ripple {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: 24px;
+            height: 24px;
+            border: 3px solid rgba(128,195,214,.8);
+            border-radius: 50%;
+            transform: translate(-50%,-50%);
+            animation: lakeRippleExpand 2.6s ease-out forwards;
+        }
+        @keyframes lakeRippleExpand {
+            from { width: 20px; height: 20px; opacity: .9; }
+            to { width: 150vw; height: 150vw; opacity: 0; }
+        }
+
+        @keyframes oceanSwimRight {
+            from { transform: translateX(-25vw) translateY(0); }
+            to { transform: translateX(125vw) translateY(var(--swim-y)); }
+        }
+        @keyframes oceanSwimLeft {
+            from { transform: translateX(125vw) translateY(0) scaleX(-1); }
+            to { transform: translateX(-25vw) translateY(var(--swim-y)) scaleX(-1); }
+        }
+        .ocean-swimmer {
+            position: fixed;
+            left: 0;
+            z-index: 99999;
+            pointer-events: none;
+            animation-duration: var(--dur);
+            animation-timing-function: linear;
+            animation-fill-mode: forwards;
+        }
+
+        .sunset-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 99997;
+            pointer-events: none;
+            overflow: hidden;
+            background: linear-gradient(to bottom, rgba(255,177,94,.10), rgba(255,116,78,.14), rgba(35,84,95,.10));
+            animation: sunsetFade 4.4s ease forwards;
+        }
+        .sunset-sun {
+            position: absolute;
+            left: 50%;
+            top: 18%;
+            transform: translateX(-50%);
+            font-size: 70px;
+            animation: sunSink 4s ease-in-out forwards;
+        }
+        .sunset-wave {
+            position: absolute;
+            bottom: 8%;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            font-size: 30px;
+            letter-spacing: 8px;
+            white-space: nowrap;
+        }
+        @keyframes sunSink {
+            from { top: 18%; transform: translateX(-50%) scale(1); }
+            to { top: 68%; transform: translateX(-50%) scale(.7); }
+        }
+        @keyframes sunsetFade {
+            0%, 80% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+
+        body.dark-mode .easter-highlight-btn {
+            background: #D77E2D;
+        }
+
     </style>
 </head>
 <body class="min-h-screen flex flex-col justify-between selection:bg-[#E89344] selection:text-white">
@@ -755,7 +893,10 @@
                         <span class="summary-arrow text-xs font-medium bg-[#C66914]/10 px-2.5 py-1 rounded">展開 ▼</span>
                     </summary>
                     <div class="mt-3 text-xs text-gray-700 leading-relaxed pt-2 border-t border-[#FAD6B8]">
-                        <p><b>北台灣經典山海景色＋九份山城＋十分天燈</b></p>
+                        <div class="flex items-center justify-between gap-3">
+                            <p><b>北台灣經典山海景色＋九份山城＋十分天燈</b></p>
+                            <button type="button" onclick="triggerLanternSky()" class="easter-highlight-btn" aria-label="天燈彩蛋">🏮</button>
+                        </div>
                     </div>
                 </details>
 
@@ -885,7 +1026,10 @@
                         <span class="summary-arrow text-xs font-medium bg-[#C66914]/10 px-2.5 py-1 rounded">展開 ▼</span>
                     </summary>
                     <div class="mt-3 text-xs text-gray-700 leading-relaxed pt-2 border-t border-[#FAD6B8]">
-                        <p><b>跟我吃飯 ❤️</b></p>
+                        <div class="flex items-center justify-between gap-3">
+                            <p><b>跟我吃飯</b></p>
+                            <button type="button" onclick="triggerHeartExplosion()" class="flex items-center justify-center bg-[#C66914] text-white w-10 h-10 rounded-full text-base hover:bg-[#B05B11] shadow transition shrink-0" aria-label="愛心彩蛋">❤️</button>
+                        </div>
                     </div>
                 </details>
 
@@ -1017,7 +1161,10 @@
                         <span class="summary-arrow text-xs font-medium bg-[#C66914]/10 px-2.5 py-1 rounded">展開 ▼</span>
                     </summary>
                     <div class="mt-3 text-xs text-gray-700 leading-relaxed pt-2 border-t border-[#FAD6B8]">
-                        <p><b>特別安排少奶奶專屬的烹飪行程 🍰</b></p>
+                        <div class="flex items-center justify-between gap-3">
+                            <p><b>特別安排少奶奶專屬的烹飪行程 🍰</b></p>
+                            <button type="button" onclick="triggerLakeRipple()" class="easter-highlight-btn" aria-label="日月潭水波彩蛋">🌊</button>
+                        </div>
                     </div>
                 </details>
 
@@ -1536,7 +1683,10 @@
                         <span class="summary-arrow text-xs font-medium bg-[#C66914]/10 px-2.5 py-1 rounded">展開 ▼</span>
                     </summary>
                     <div class="mt-3 text-xs text-gray-700 leading-relaxed pt-2 border-t border-[#FAD6B8]">
-                        <p><b>夜宿海生館（與海洋生物共眠的兩天一夜深度體驗）。</b></p>
+                        <div class="flex items-center justify-between gap-3">
+                            <p><b>夜宿海生館（與海洋生物共眠的兩天一夜深度體驗）。</b></p>
+                            <button type="button" onclick="triggerOceanSwim()" class="easter-highlight-btn" aria-label="海生館彩蛋">🐠</button>
+                        </div>
                     </div>
                 </details>
 
@@ -1660,7 +1810,10 @@
                         <span class="summary-arrow text-xs font-medium bg-[#C66914]/10 px-2.5 py-1 rounded">展開 ▼</span>
                     </summary>
                     <div class="mt-3 text-xs text-gray-700 leading-relaxed pt-2 border-t border-[#FAD6B8]">
-                        <p><b>西子灣與高雄港夕陽 ＆ 旗鼓渡輪港都體驗。</b></p>
+                        <div class="flex items-center justify-between gap-3">
+                            <p><b>西子灣與高雄港夕陽 ＆ 旗鼓渡輪港都體驗。</b></p>
+                            <button type="button" onclick="triggerSunsetScene()" class="easter-highlight-btn" aria-label="夕陽彩蛋">🌅</button>
+                        </div>
                     </div>
                 </details>
 
@@ -1807,14 +1960,31 @@
                         <p class="text-sm text-[#D1D8D2] mt-3">10 天・北中南制霸・<span id="final-food-count">0</span> 樣美食・約 1,000+ 公里</p>
                         <div class="h-px bg-white/20 my-5"></div>
                         <p class="text-xl font-bold">西台灣制霸證書🏆</p>
-                        <p class="text-sm text-[#D1D8D2] mt-2">恭喜完成這趟台灣生日之旅 🎂</p>
-                        <div class="mt-5 bg-white/10 rounded-2xl p-4 border border-white/10">
-                            <p class="text-xs text-[#D1D8D2]">TAIWAN CHAPTER COMPLETE</p>
-                            <p class="text-lg font-bold mt-1">恭喜邵奶奶完成這趟台灣之旅 🎉</p>
-                            <p class="text-2xl font-bold mt-1">西台灣制霸證書🏆</p>
-                            <p class="text-xs text-[#D1D8D2] mt-2">東台灣，等待下一次解鎖 🔒</p>
+                        
+                        <div class="mt-5 bg-white/10 rounded-2xl p-5 border border-white/10 text-left">
+                            <div class="text-center">
+                                <p class="text-[10px] tracking-[0.22em] text-[#D1D8D2]">CERTIFICATE OF ACHIEVEMENT</p>
+                                <div class="h-px bg-white/20 my-4"></div>
+                            </div>
+                            <p class="text-xs text-[#D1D8D2]">本證書正式授予</p>
+                            <p class="text-xl font-bold mt-1">邵一玎 女士</p>
+
+                            <div class="mt-5 space-y-1.5 text-sm leading-relaxed">
+                                <p>恭喜完成西台灣十日山海縱走</p>
+                                <p>成功通關北・中・南地區</p>
+                                <p>城市、山景、湖泊、古都與海岸線全數達成</p>
+                            </div>
+
+                            <div class="mt-5 pt-4 border-t border-white/15">
+                                <p class="text-xs text-[#D1D8D2]">認證結果</p>
+                                <p class="text-lg font-bold mt-1 tracking-wide">WEST TAIWAN — CLEARED ✓</p>
+                            </div>
+
+                            <div class="mt-5 pt-4 border-t border-white/15 text-xs text-[#D1D8D2] space-y-1.5">
+                                <p>完成日期｜2026.10.06</p>
+                                <p>未解鎖區域｜東台灣 🔒</p>
+                            </div>
                         </div>
-                        <p class="text-xs text-[#D1D8D2] mt-5">下一站：10/7 壽星模式 🎂</p>
                     </div>
                 </div>
 </div>
@@ -2343,7 +2513,7 @@
 
     <!-- 頁尾 Footer -->
     <footer class="bg-[#2C3E35] text-[#D1D8D2] text-center py-8 mt-12 text-sm">
-        <p>邵奶奶快樂遊台灣👵🏻🏝️ • Taiwan Grand Traverse Web App</p>
+        <p>SYD’S TAIWAN GRAND TRAVERSE APP 2026</p>
         <p class="text-xs mt-1 text-gray-400">Designed by Chechen Wu 🚀</p>
     </footer>
 
@@ -3503,6 +3673,117 @@ function updateAchievementWall() {
             const savedDark = localStorage.getItem('taiwan_dark_mode_v1') === 'true';
             applyDarkMode(savedDark);
         });
+
+
+
+        function triggerHeartExplosion() {
+            const hearts = ['❤️','🩷','💕','💗','💖','💞','💓'];
+            const count = 130;
+
+            for (let i = 0; i < count; i++) {
+                setTimeout(() => {
+                    const heart = document.createElement('span');
+                    heart.className = 'heart-explosion-piece';
+                    heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+
+                    const size = 18 + Math.random() * 28;
+                    const left = Math.random() * 100;
+                    const drift = `${-80 + Math.random() * 160}px`;
+                    const rot = `${-220 + Math.random() * 440}deg`;
+                    const scale = (0.75 + Math.random() * 0.8).toFixed(2);
+                    const duration = (2.2 + Math.random() * 2.4).toFixed(2) + 's';
+
+                    heart.style.left = `${left}vw`;
+                    heart.style.fontSize = `${size}px`;
+                    heart.style.setProperty('--heart-drift', drift);
+                    heart.style.setProperty('--heart-rot', rot);
+                    heart.style.setProperty('--heart-scale', scale);
+                    heart.style.setProperty('--heart-duration', duration);
+
+                    document.body.appendChild(heart);
+                    setTimeout(() => heart.remove(), 5200);
+                }, Math.random() * 900);
+            }
+
+            if (navigator.vibrate) {
+                navigator.vibrate([30, 40, 30]);
+            }
+        }
+
+
+
+        function triggerLanternSky() {
+            const total = 34;
+            for (let i = 0; i < total; i++) {
+                setTimeout(() => {
+                    const el = document.createElement('span');
+                    el.className = 'lantern-piece';
+                    el.textContent = '🏮';
+                    el.style.left = `${Math.random() * 92}vw`;
+                    el.style.fontSize = `${22 + Math.random() * 26}px`;
+                    el.style.setProperty('--drift', `${-50 + Math.random() * 100}px`);
+                    el.style.setProperty('--scale', (0.7 + Math.random() * 0.8).toFixed(2));
+                    el.style.setProperty('--dur', `${3.2 + Math.random() * 3}s`);
+                    document.body.appendChild(el);
+                    setTimeout(() => el.remove(), 6800);
+                }, Math.random() * 1000);
+            }
+        }
+
+        function triggerLakeRipple() {
+            const layer = document.createElement('div');
+            layer.className = 'lake-ripple-layer';
+
+            for (let i = 0; i < 5; i++) {
+                const ripple = document.createElement('div');
+                ripple.className = 'lake-ripple';
+                ripple.style.animationDelay = `${i * 0.28}s`;
+                layer.appendChild(ripple);
+            }
+
+            document.body.appendChild(layer);
+            setTimeout(() => layer.remove(), 4100);
+        }
+
+        function triggerOceanSwim() {
+            const swimmers = ['🐠','🐟','🐡','🪼','🐬','🐢'];
+            const total = 30;
+
+            for (let i = 0; i < total; i++) {
+                setTimeout(() => {
+                    const el = document.createElement('span');
+                    const right = Math.random() > .45;
+                    el.className = 'ocean-swimmer';
+                    el.textContent = swimmers[Math.floor(Math.random() * swimmers.length)];
+                    el.style.top = `${12 + Math.random() * 72}vh`;
+                    el.style.fontSize = `${22 + Math.random() * 30}px`;
+                    el.style.setProperty('--swim-y', `${-40 + Math.random() * 80}px`);
+                    el.style.setProperty('--dur', `${3 + Math.random() * 3.5}s`);
+                    el.style.animationName = right ? 'oceanSwimRight' : 'oceanSwimLeft';
+                    document.body.appendChild(el);
+                    setTimeout(() => el.remove(), 7000);
+                }, Math.random() * 1000);
+            }
+        }
+
+        function triggerSunsetScene() {
+            const overlay = document.createElement('div');
+            overlay.className = 'sunset-overlay';
+
+            const sun = document.createElement('div');
+            sun.className = 'sunset-sun';
+            sun.textContent = '🌅';
+
+            const waves = document.createElement('div');
+            waves.className = 'sunset-wave';
+            waves.textContent = '🌊 🌊 🌊 🌊 🌊';
+
+            overlay.appendChild(sun);
+            overlay.appendChild(waves);
+            document.body.appendChild(overlay);
+
+            setTimeout(() => overlay.remove(), 4600);
+        }
 
 </script>
 
