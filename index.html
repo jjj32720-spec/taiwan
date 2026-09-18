@@ -275,7 +275,27 @@
         <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:16px_16px]"></div>
     </header>
 
-    <!-- 手機版主導覽改為底部固定列 -->
+    <!-- 頂部主選單導覽列：保留地圖＋Day 1-10＋全程提醒 -->
+    <nav class="sticky top-0 z-50 bg-[#F7F5F0]/95 backdrop-blur-md border-b border-[#E2DDD5] py-3 px-4 shadow-sm">
+        <div class="max-w-7xl mx-auto flex overflow-x-auto space-x-2 no-scrollbar py-1">
+            <button onclick="switchTab('map')" class="tab-btn px-4 py-2 rounded-lg text-xs font-semibold transition shrink-0 bg-[#2C3E35] text-white shadow-md" id="btn-map">🗺️ 台灣地圖導覽</button>
+
+            <button onclick="changeDay(1)" class="day-main-btn px-4 py-2 rounded-lg text-xs font-semibold transition shrink-0 bg-white text-[#2C3E35] hover:bg-[#E2DDD5] border border-[#E2DDD5]" id="main-btn-1">📍 Day 1 台北</button>
+            <button onclick="changeDay(2)" class="day-main-btn px-4 py-2 rounded-lg text-xs font-semibold transition shrink-0 bg-white text-[#2C3E35] hover:bg-[#E2DDD5] border border-[#E2DDD5]" id="main-btn-2">📍 Day 2 北海岸</button>
+            <button onclick="changeDay(3)" class="day-main-btn px-4 py-2 rounded-lg text-xs font-semibold transition shrink-0 bg-white text-[#2C3E35] hover:bg-[#E2DDD5] border border-[#E2DDD5]" id="main-btn-3">📍 Day 3 故宮陽明</button>
+            <button onclick="changeDay(4)" class="day-main-btn px-4 py-2 rounded-lg text-xs font-semibold transition shrink-0 bg-white text-[#2C3E35] hover:bg-[#E2DDD5] border border-[#E2DDD5]" id="main-btn-4">📍 Day 4 南投日月潭</button>
+            <button onclick="changeDay(5)" class="day-main-btn px-4 py-2 rounded-lg text-xs font-semibold transition shrink-0 bg-white text-[#2C3E35] hover:bg-[#E2DDD5] border border-[#E2DDD5]" id="main-btn-5">📍 Day 5 南投➔台中</button>
+            <button onclick="changeDay(6)" class="day-main-btn px-4 py-2 rounded-lg text-xs font-semibold transition shrink-0 bg-white text-[#2C3E35] hover:bg-[#E2DDD5] border border-[#E2DDD5]" id="main-btn-6">📍 Day 6 武嶺台南</button>
+            <button onclick="changeDay(7)" class="day-main-btn px-4 py-2 rounded-lg text-xs font-semibold transition shrink-0 bg-white text-[#2C3E35] hover:bg-[#E2DDD5] border border-[#E2DDD5]" id="main-btn-7">📍 Day 7 台南</button>
+            <button onclick="changeDay(8)" class="day-main-btn px-4 py-2 rounded-lg text-xs font-semibold transition shrink-0 bg-white text-[#2C3E35] hover:bg-[#E2DDD5] border border-[#E2DDD5]" id="main-btn-8">📍 Day 8 屏東墾丁</button>
+            <button onclick="changeDay(9)" class="day-main-btn px-4 py-2 rounded-lg text-xs font-semibold transition shrink-0 bg-white text-[#2C3E35] hover:bg-[#E2DDD5] border border-[#E2DDD5]" id="main-btn-9">📍 Day 9 高雄</button>
+            <button onclick="changeDay(10)" class="day-main-btn px-4 py-2 rounded-lg text-xs font-semibold transition shrink-0 bg-white text-[#2C3E35] hover:bg-[#E2DDD5] border border-[#E2DDD5]" id="main-btn-10">📍 Day 10 賦歸</button>
+
+            <button onclick="switchTab('tips')" class="tab-btn px-4 py-2 rounded-lg text-xs font-semibold transition shrink-0 bg-[#C66914] text-white shadow-md" id="btn-tips">📌 全程提醒</button>
+        </div>
+    </nav>
+
+    
     <!-- 子選單導覽列（只在 Day 畫面顯示） -->
     <div id="sub-nav-container" class="bg-[#EFECE6] border-b border-[#E2DDD5] py-2 px-4 shadow-inner">
         <div class="max-w-7xl mx-auto flex overflow-x-auto space-x-2 no-scrollbar py-1 items-center" id="sub-nav-buttons">
@@ -2171,6 +2191,40 @@
 
     <!-- JavaScript 邏輯 -->
     <script>
+
+        function resetAchievementTestStateOnce() {
+            const RESET_VERSION = 'achievement_reset_20260918_v2';
+            if (localStorage.getItem(RESET_VERSION) === 'done') return;
+
+            // 隱藏／旅程成就
+            [
+                'ach_hidden_dessert_v1',
+                'ach_hidden_music_v1',
+                'ach_hidden_east_v1',
+                'ach_hidden_night_v1',
+                'ach_hidden_solo_v1',
+                'ach_hidden_week_v1',
+                'ach_hidden_final_v1',
+                'taiwan_trip_finished_v1',
+                'visited_days_v2'
+            ].forEach(key => localStorage.removeItem(key));
+
+            // 測試用美食勾選全部歸零，避免公開美食成就一打開就完成
+            for (let i = 1; i <= 60; i++) {
+                localStorage.removeItem(`food-v3-${i}`);
+                localStorage.removeItem(`food-${i}`);
+            }
+
+            // 測試用記帳清空，避免消費／記帳成就沿用舊測試資料
+            localStorage.removeItem('travel_expenses_v2');
+
+            localStorage.setItem(RESET_VERSION, 'done');
+        }
+
+        // 必須在任何 checkbox / expense / 成就狀態讀取前先執行
+        resetAchievementTestStateOnce();
+
+
         const emojis = ['🍠', '🧋', '👵🏻', '🏝️'];
         let currentDayNum = 1;
         let currentTabId = 'map';
@@ -2292,8 +2346,7 @@
         
         function closeMobileSheets() {
             document.getElementById('mobile-day-sheet')?.classList.add('translate-y-full');
-            document.getElementById('mobile-more-sheet')?.classList.add('translate-y-full');
-            document.getElementById('mobile-day-sheet-backdrop')?.classList.add('hidden');
+                        document.getElementById('mobile-day-sheet-backdrop')?.classList.add('hidden');
         }
 
         function openMobileDaySheet() {
@@ -2303,22 +2356,14 @@
             setMobileNavActive('day');
         }
 
-        function openMobileMoreSheet() {
-            closeMobileSheets();
-            document.getElementById('mobile-day-sheet-backdrop')?.classList.remove('hidden');
-            document.getElementById('mobile-more-sheet')?.classList.remove('translate-y-full');
-            setMobileNavActive('more');
-        }
+        
 
         function mobileSelectDay(dayNum) {
             closeMobileSheets();
             changeDay(dayNum);
         }
 
-        function mobileMoreTo(tabId) {
-            closeMobileSheets();
-            switchTab(tabId);
-        }
+        
 
         function mobileNavTo(tabId) {
             closeMobileSheets();
@@ -2330,10 +2375,11 @@
 
             let id = null;
             if (type === 'day') id = 'mobile-nav-day';
-            else if (type === 'more' || ['tips','budget','sos'].includes(type)) id = 'mobile-nav-more';
-            else id = 'mobile-nav-' + type;
+            else if (type === 'food') id = 'mobile-nav-food';
+            else if (type === 'budget') id = 'mobile-nav-budget';
+            else if (type === 'achievements') id = 'mobile-nav-achievements';
 
-            document.getElementById(id)?.classList.add('mobile-nav-active');
+            if (id) document.getElementById(id)?.classList.add('mobile-nav-active');
         }
 
         function updateMobileDayNav(dayNum) {
@@ -2406,8 +2452,7 @@
             const subNavContainer = document.getElementById('sub-nav-container');
 
             if (tabId === 'map') {
-                setMobileNavActive('map');
-                setTopNavActive('map');
+                                setTopNavActive('map');
                 if(mapBtn) {
                     mapBtn.classList.remove('bg-white', 'text-[#2C3E35]', 'border', 'border-[#E2DDD5]');
                     mapBtn.classList.add('bg-[#2C3E35]', 'text-white', 'shadow-md');
@@ -3241,14 +3286,18 @@ function updateAchievementWall() {
         document.addEventListener('DOMContentLoaded', () => {
             const hash = window.location.hash.replace('#','');
             const match = hash.match(/^d(\d+)-/);
+
             if (match) {
                 updateMobileDayNav(Number(match[1]));
-            } else if (hash && ['map','food','achievements'].includes(hash)) {
-                setMobileNavActive(hash);
-            } else if (hash && ['tips','budget','sos'].includes(hash)) {
-                setMobileNavActive('more');
+            } else if (hash === 'food') {
+                setMobileNavActive('food');
+            } else if (hash === 'budget') {
+                setMobileNavActive('budget');
+            } else if (hash === 'achievements') {
+                setMobileNavActive('achievements');
             } else {
-                setMobileNavActive('map');
+                // 地圖／提醒／急救包不佔底部四顆按鈕的 active 狀態
+                setMobileNavActive(null);
             }
         });
 
@@ -3271,11 +3320,7 @@ function updateAchievementWall() {
 
 <!-- ==================== 📱 手機底部主導覽 ==================== -->
 <div id="mobile-bottom-nav" class="fixed bottom-0 left-0 right-0 z-[100] bg-[#FFFDF9]/95 backdrop-blur-xl border-t border-[#E2DDD5] shadow-[0_-6px_24px_rgba(44,62,53,0.10)] px-2 pb-[max(env(safe-area-inset-bottom),8px)] pt-2">
-    <div class="grid grid-cols-5 gap-1">
-        <button onclick="mobileNavTo('map')" id="mobile-nav-map" class="mobile-nav-item mobile-nav-active">
-            <span class="text-xl leading-none">🗺️</span>
-            <span class="mobile-nav-label">地圖</span>
-        </button>
+    <div class="grid grid-cols-4 gap-1">
         <button onclick="openMobileDaySheet()" id="mobile-nav-day" class="mobile-nav-item">
             <span class="text-xl leading-none">📅</span>
             <span id="mobile-current-day-label" class="mobile-nav-label">行程</span>
@@ -3284,13 +3329,13 @@ function updateAchievementWall() {
             <span class="text-xl leading-none">🍜</span>
             <span class="mobile-nav-label">美食</span>
         </button>
+        <button onclick="mobileNavTo('budget')" id="mobile-nav-budget" class="mobile-nav-item">
+            <span class="text-xl leading-none">💰</span>
+            <span class="mobile-nav-label">記帳</span>
+        </button>
         <button onclick="mobileNavTo('achievements')" id="mobile-nav-achievements" class="mobile-nav-item">
             <span class="text-xl leading-none">🏆</span>
             <span class="mobile-nav-label">成就</span>
-        </button>
-        <button onclick="openMobileMoreSheet()" id="mobile-nav-more" class="mobile-nav-item">
-            <span class="text-xl leading-none">☰</span>
-            <span class="mobile-nav-label">更多</span>
         </button>
     </div>
 </div>
@@ -3320,22 +3365,7 @@ function updateAchievementWall() {
     </div>
 </div>
 
-<!-- More bottom sheet -->
-<div id="mobile-more-sheet" class="fixed left-0 right-0 bottom-0 z-[110] translate-y-full transition-transform duration-300 ease-out bg-[#FFFDF9] rounded-t-[1.8rem] border-t border-[#E2DDD5] shadow-2xl pb-[max(env(safe-area-inset-bottom),18px)]">
-    <div class="w-10 h-1 bg-[#D6D1C8] rounded-full mx-auto mt-3 mb-4"></div>
-    <div class="px-5 pb-3 flex items-center justify-between">
-        <div>
-            <div class="text-[10px] tracking-[0.2em] text-gray-400 font-bold">MORE</div>
-            <div class="text-lg font-bold text-[#2C3E35]">更多功能</div>
-        </div>
-        <button onclick="closeMobileSheets()" class="w-9 h-9 rounded-full bg-[#F0EDEA] text-[#2C3E35] font-bold">✕</button>
-    </div>
-    <div class="px-4 space-y-2">
-        <button onclick="mobileMoreTo('tips')" class="mobile-more-item"><span>📌</span><span>全程提醒</span><span>›</span></button>
-        <button onclick="mobileMoreTo('budget')" class="mobile-more-item"><span>💰</span><span>預算與記帳</span><span>›</span></button>
-        <button onclick="mobileMoreTo('sos')" class="mobile-more-item"><span>📦</span><span>交通急救包</span><span>›</span></button>
-    </div>
-</div>
+
 
 </body>
 </html>
