@@ -573,6 +573,233 @@ to { width: 150vw; height: 150vw; opacity: 0; }
             border-color: rgba(241,161,91,.62);
         }
 
+    
+        /* ===== 2026-09 UX refinement ===== */
+
+        /* 2. Previous / next day navigator */
+        .day-edge-nav {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            align-items: center;
+            gap: 8px;
+            margin-top: 22px;
+            padding-top: 16px;
+            border-top: 1px solid #E2DDD5;
+        }
+        .day-edge-nav button {
+            min-height: 44px;
+            padding: 10px 12px;
+            border: 1px solid #D8D2C9;
+            border-radius: 14px;
+            background: #FFFDF9;
+            color: #2C3E35;
+            font-size: 11px;
+            font-weight: 700;
+            line-height: 1.2;
+            box-shadow: 0 4px 12px rgba(44,62,53,.05);
+            -webkit-tap-highlight-color: transparent;
+        }
+        .day-edge-nav button:active {
+            transform: scale(.97);
+        }
+        .day-edge-nav .day-edge-next {
+            justify-self: stretch;
+            text-align: right;
+        }
+        .day-edge-nav .day-edge-prev {
+            justify-self: stretch;
+            text-align: left;
+        }
+        .day-edge-nav .day-edge-label {
+            min-width: 48px;
+            font-size: 9px;
+            font-weight: 800;
+            letter-spacing: .12em;
+            color: #9B938A;
+            text-align: center;
+        }
+        .day-edge-nav .day-edge-empty {
+            min-height: 44px;
+        }
+
+        /* 5. Transport cards */
+        .transport-route-card {
+            position: relative;
+            margin: 8px 0 !important;
+            padding: 12px 13px 12px 15px !important;
+            border: 1px solid #E2DDD5;
+            border-left: 3px solid #C66914;
+            border-radius: 12px;
+            background: #FFFDF9;
+            box-shadow: 0 4px 12px rgba(44,62,53,.04);
+            line-height: 1.65;
+        }
+        .transport-route-card.transport-route-total {
+            border-left-color: #4A6B5D;
+            background: #F7F5F0;
+            color: #6B7280;
+            font-size: 11px;
+        }
+
+        /* 6. Better map viewer */
+        #imageModal {
+            background: rgba(5, 8, 7, .94) !important;
+            overscroll-behavior: contain;
+        }
+        .map-viewer-shell {
+            position: relative;
+            width: min(96vw, 900px);
+            height: min(88vh, 900px);
+            overflow: hidden;
+            border-radius: 18px;
+            background: #0B0F0D;
+            box-shadow: 0 24px 60px rgba(0,0,0,.45);
+        }
+        .map-viewer-header {
+            position: absolute;
+            inset: 0 0 auto 0;
+            z-index: 5;
+            min-height: 52px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 9px 52px 9px 14px;
+            background: linear-gradient(to bottom, rgba(0,0,0,.68), rgba(0,0,0,0));
+            color: white;
+            pointer-events: none;
+        }
+        .map-viewer-close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            z-index: 8;
+            width: 38px;
+            height: 38px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 999px;
+            background: rgba(255,255,255,.16);
+            backdrop-filter: blur(10px);
+            color: white;
+            font-size: 18px;
+            font-weight: 700;
+            border: 1px solid rgba(255,255,255,.15);
+        }
+        .map-viewer-stage {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            touch-action: none;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+        #modalImg {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            transform-origin: center center;
+            will-change: transform;
+            transition: transform .12s ease-out;
+            -webkit-user-drag: none;
+        }
+        .map-viewer-hint {
+            position: absolute;
+            z-index: 6;
+            left: 50%;
+            bottom: 12px;
+            transform: translateX(-50%);
+            padding: 6px 10px;
+            border-radius: 999px;
+            background: rgba(0,0,0,.52);
+            color: rgba(255,255,255,.84);
+            font-size: 9px;
+            white-space: nowrap;
+            pointer-events: none;
+            backdrop-filter: blur(8px);
+        }
+
+        /* 8. Stronger mobile nav active state */
+        .mobile-nav-item {
+            position: relative;
+        }
+        .mobile-nav-item > span:first-child {
+            transition: transform .2s ease;
+        }
+        .mobile-nav-item.mobile-nav-active > span:first-child {
+            transform: translateY(-1px) scale(1.12);
+        }
+        .mobile-nav-item.mobile-nav-active::after {
+            content: "";
+            position: absolute;
+            bottom: 4px;
+            width: 4px;
+            height: 4px;
+            border-radius: 999px;
+            background: #C66914;
+        }
+
+        /* 10. Expense summary */
+        .expense-quick-summary {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 9px;
+        }
+        .expense-summary-card {
+            padding: 13px 14px;
+            border: 1px solid #E2DDD5;
+            border-radius: 14px;
+            background: #F9F8F6;
+        }
+        .expense-summary-label {
+            font-size: 9px;
+            font-weight: 800;
+            letter-spacing: .08em;
+            color: #8A8178;
+        }
+        .expense-summary-value {
+            margin-top: 4px;
+            font-size: 17px;
+            line-height: 1.1;
+            font-weight: 800;
+            color: #2C3E35;
+        }
+        .expense-summary-card.today .expense-summary-value {
+            color: #C66914;
+        }
+        .expense-summary-date {
+            margin-top: 4px;
+            font-size: 9px;
+            color: #9CA3AF;
+        }
+
+        body.dark-mode .day-edge-nav {
+            border-color: #3A4A42;
+        }
+        body.dark-mode .day-edge-nav button,
+        body.dark-mode .transport-route-card,
+        body.dark-mode .expense-summary-card {
+            background: #202B26;
+            color: #EAE7E0;
+            border-color: #3A4A42;
+        }
+        body.dark-mode .transport-route-card.transport-route-total {
+            background: #18211D;
+            color: #A9B5AE;
+        }
+        body.dark-mode .expense-summary-value {
+            color: #F1EEE8;
+        }
+        body.dark-mode .expense-summary-card.today .expense-summary-value {
+            color: #F1A15B;
+        }
+        body.dark-mode .mobile-nav-item.mobile-nav-active::after {
+            background: #F1A15B;
+        }
+
     </style>
 </head>
 <body class="min-h-screen flex flex-col justify-between selection:bg-[#E89344] selection:text-white">
@@ -592,7 +819,7 @@ to { width: 150vw; height: 150vw; opacity: 0; }
 
     <!-- 頂部主選單導覽列：保留地圖＋Day 1-10＋全程提醒 -->
     <nav class="sticky top-0 z-50 bg-[#F7F5F0]/95 backdrop-blur-md border-b border-[#E2DDD5] py-3 px-4 shadow-sm">
-        <div class="max-w-7xl mx-auto flex overflow-x-auto space-x-2 no-scrollbar py-1">
+        <div id="top-day-scroll" class="max-w-7xl mx-auto flex overflow-x-auto space-x-2 no-scrollbar py-1">
             <button onclick="switchTab('map')" class="tab-btn px-4 py-2 rounded-lg text-xs font-semibold transition shrink-0 bg-[#2C3E35] text-white shadow-md" id="btn-map">🗺️ 台灣地圖導覽</button>
 
             <button onclick="changeDay(1)" class="day-main-btn px-4 py-2 rounded-lg text-xs font-semibold transition shrink-0 bg-white text-[#2C3E35] hover:bg-[#E2DDD5] border border-[#E2DDD5]" id="main-btn-1">📍 Day 1 台北</button>
@@ -2444,6 +2671,19 @@ to { width: 150vw; height: 150vw; opacity: 0; }
                         <div class="text-sm font-bold text-[#C66914]" id="total-expense">總計支出：NT$ 0</div>
                     </div>
 
+                    <div class="expense-quick-summary">
+                        <div class="expense-summary-card today">
+                            <div class="expense-summary-label">TODAY · 今日支出</div>
+                            <div id="today-expense" class="expense-summary-value">NT$ 0</div>
+                            <div id="today-expense-date" class="expense-summary-date"></div>
+                        </div>
+                        <div class="expense-summary-card">
+                            <div class="expense-summary-label">TRIP TOTAL · 全程累積</div>
+                            <div id="trip-expense-total" class="expense-summary-value">NT$ 0</div>
+                            <div class="expense-summary-date">本趟旅程目前記帳</div>
+                        </div>
+                    </div>
+
                     <!-- 圓餅圖與比例視覺化區域 -->
                     <div class="bg-[#F9F8F6] p-4 rounded-xl border border-[#E2DDD5] flex flex-col md:flex-row items-center justify-around gap-4">
                         <div id="pie-chart-container" class="relative w-36 h-36 rounded-full flex items-center justify-center bg-gray-200 shadow-inner" style="background: conic-gradient(#E2DDD5 0deg 360deg);">
@@ -2521,15 +2761,19 @@ to { width: 150vw; height: 150vw; opacity: 0; }
     </main>
 
     <!-- 圖片放大 Modal 彈窗 -->
-    <div id="imageModal" class="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4 hidden" onclick="closeImageModal()">
-        <div class="relative max-w-5xl max-h-[90vh] overflow-auto bg-white rounded-2xl p-3 shadow-2xl" onclick="event.stopPropagation()">
-            <button onclick="closeImageModal()" class="absolute top-3 right-3 bg-gray-200 hover:bg-gray-300 text-gray-800 rounded-full w-8 h-8 flex items-center justify-center font-bold text-lg transition z-10">✕</button>
-            <h3 id="modalTitle" class="text-center font-bold text-sm text-[#2C3E35] mb-2"></h3>
-            <img id="modalImg" src="" alt="放大地圖" class="w-full h-auto max-h-[80vh] object-contain rounded-lg">
+    <div id="imageModal" class="fixed inset-0 z-[120] flex items-center justify-center p-2 hidden" onclick="closeImageModal()">
+        <div class="map-viewer-shell" onclick="event.stopPropagation()">
+            <div class="map-viewer-header">
+                <h3 id="modalTitle" class="text-center font-bold text-xs"></h3>
+            </div>
+            <button type="button" onclick="closeImageModal()" class="map-viewer-close" aria-label="關閉地圖">✕</button>
+            <div id="mapViewerStage" class="map-viewer-stage">
+                <img id="modalImg" src="" alt="放大地圖" draggable="false">
+            </div>
+            <div class="map-viewer-hint">雙指縮放・拖曳查看・點外側關閉</div>
         </div>
     </div>
-
-    <!-- 隱藏音樂元素：《想見你》Last Dance -->
+<!-- 隱藏音樂元素：《想見你》Last Dance -->
     <audio id="bgm-audio" src="China_Blue_-_Last_Dance_(mp3.pm).mp3" preload="auto"></audio>
 
     <!-- 頁尾 Footer -->
@@ -2542,7 +2786,7 @@ to { width: 150vw; height: 150vw; opacity: 0; }
     <script>
 
         function resetTestStateForThisHtmlOnce() {
-            const BUILD_KEY = 'html_build_d0c3ad02e5';
+            const BUILD_KEY = 'html_build_8071d99130';
             const marker = `opened_${BUILD_KEY}`;
             if (sessionStorage.getItem(marker) === 'yes') return;
 
@@ -2694,10 +2938,11 @@ const emojis = ['🍠', '🧋', '👵🏻', '🏝️'];
         });
 
         
-        function closeMobileSheets() {
+        function closeMobileSheets(restoreActive = true) {
             document.getElementById('mobile-day-sheet')?.classList.add('translate-y-full');
             document.getElementById('mobile-more-sheet')?.classList.add('translate-y-full');
             document.getElementById('mobile-day-sheet-backdrop')?.classList.add('hidden');
+            if (restoreActive) setTimeout(syncMobileNavToCurrentTab, 0);
         }
 
         function openMobileDaySheet() {
@@ -2721,7 +2966,7 @@ const emojis = ['🍠', '🧋', '👵🏻', '🏝️'];
 
         function mobileMoreTo(tabId) {
             if (typeof triggerSingleEmojiRain === 'function') triggerSingleEmojiRain();
-            closeMobileSheets();
+            closeMobileSheets(false);
             switchTab(tabId);
         }
 
@@ -2742,7 +2987,7 @@ const emojis = ['🍠', '🧋', '👵🏻', '🏝️'];
         }
 
         function mobileSelectDay(dayNum) {
-            closeMobileSheets();
+            closeMobileSheets(false);
             changeDay(dayNum);
         }
 
@@ -2750,7 +2995,7 @@ const emojis = ['🍠', '🧋', '👵🏻', '🏝️'];
 
         function mobileNavTo(tabId) {
             if (typeof triggerSingleEmojiRain === 'function') triggerSingleEmojiRain();
-            closeMobileSheets();
+            closeMobileSheets(false);
             switchTab(tabId);
         }
 
@@ -2765,6 +3010,15 @@ const emojis = ['🍠', '🧋', '👵🏻', '🏝️'];
             else if (type === 'more' || type === 'sos') id = 'mobile-nav-more';
 
             if (id) document.getElementById(id)?.classList.add('mobile-nav-active');
+        }
+
+        function syncMobileNavToCurrentTab() {
+            if (currentTabId && currentTabId.startsWith('d')) setMobileNavActive('day');
+            else if (currentTabId === 'food') setMobileNavActive('food');
+            else if (currentTabId === 'budget') setMobileNavActive('budget');
+            else if (currentTabId === 'achievements') setMobileNavActive('achievements');
+            else if (currentTabId === 'sos') setMobileNavActive('more');
+            else setMobileNavActive(null);
         }
 
         function updateMobileDayNav(dayNum) {
@@ -2802,6 +3056,7 @@ const emojis = ['🍠', '🧋', '👵🏻', '🏝️'];
                 activeMain.classList.remove('bg-white', 'text-[#2C3E35]', 'border', 'border-[#E2DDD5]');
                 activeMain.classList.add('bg-[#2C3E35]', 'text-white', 'shadow-md');
             }
+            requestAnimationFrame(() => centerActiveDayNav(dayNum));
 
             const mapBtn = document.getElementById('btn-map');
             if(mapBtn) {
@@ -2837,7 +3092,8 @@ const emojis = ['🍠', '🧋', '👵🏻', '🏝️'];
             const subNavContainer = document.getElementById('sub-nav-container');
 
             if (tabId === 'map') {
-                                setTopNavActive('map');
+                setMobileNavActive(null);
+                setTopNavActive('map');
                 if(mapBtn) {
                     mapBtn.classList.remove('bg-white', 'text-[#2C3E35]', 'border', 'border-[#E2DDD5]');
                     mapBtn.classList.add('bg-[#2C3E35]', 'text-white', 'shadow-md');
@@ -2903,6 +3159,169 @@ const emojis = ['🍠', '🧋', '👵🏻', '🏝️'];
             }
         }
 
+
+        // ===== Mobile itinerary UX refinements =====
+
+        function centerActiveDayNav(dayNum, behavior = 'smooth') {
+            const scroller = document.getElementById('top-day-scroll');
+            const active = document.getElementById('main-btn-' + dayNum);
+            if (!scroller || !active) return;
+
+            const targetLeft = active.offsetLeft - (scroller.clientWidth / 2) + (active.offsetWidth / 2);
+            const maxLeft = Math.max(0, scroller.scrollWidth - scroller.clientWidth);
+            scroller.scrollTo({
+                left: Math.max(0, Math.min(targetLeft, maxLeft)),
+                behavior
+            });
+        }
+
+        function addDayEdgeNavigation() {
+            for (let day = 1; day <= 10; day++) {
+                ['time', 'trans', 'link'].forEach(section => {
+                    const tab = document.getElementById(`tab-d${day}-${section}`);
+                    if (!tab || tab.querySelector('.day-edge-nav')) return;
+
+                    const card = tab.querySelector('.taiwan-card');
+                    if (!card) return;
+
+                    const nav = document.createElement('div');
+                    nav.className = 'day-edge-nav';
+
+                    const prev = day > 1
+                        ? `<button type="button" class="day-edge-prev" onclick="changeDay(${day - 1})">← DAY ${day - 1}</button>`
+                        : `<div class="day-edge-empty"></div>`;
+
+                    const next = day < 10
+                        ? `<button type="button" class="day-edge-next" onclick="changeDay(${day + 1})">DAY ${day + 1} →</button>`
+                        : `<div class="day-edge-empty"></div>`;
+
+                    nav.innerHTML = `${prev}<div class="day-edge-label">DAY ${day}</div>${next}`;
+                    card.appendChild(nav);
+                });
+            }
+        }
+
+        function enhanceTransportCards() {
+            for (let day = 1; day <= 10; day++) {
+                const tab = document.getElementById(`tab-d${day}-trans`);
+                if (!tab) continue;
+
+                const detailsList = [...tab.querySelectorAll('details')];
+                const routeDetails = detailsList.find(det => {
+                    const summary = det.querySelector('summary');
+                    return summary && summary.textContent.includes('車程攻略');
+                });
+                if (!routeDetails) continue;
+
+                const summary = routeDetails.querySelector('summary');
+                const routeBody = summary ? summary.nextElementSibling : null;
+                if (!routeBody) continue;
+
+                [...routeBody.children].forEach(el => {
+                    if (el.tagName !== 'P') return;
+                    el.classList.add('transport-route-card');
+                    if (el.textContent.includes('總車程') || el.classList.contains('text-xs')) {
+                        el.classList.add('transport-route-total');
+                    }
+                });
+            }
+        }
+
+        function getLocalExpenseDate() {
+            const now = new Date();
+            const y = now.getFullYear();
+            const m = String(now.getMonth() + 1).padStart(2, '0');
+            const d = String(now.getDate()).padStart(2, '0');
+            return `${y}-${m}-${d}`;
+        }
+
+        // Map viewer: pinch zoom + drag while zoomed
+        let mapViewerScale = 1;
+        let mapViewerX = 0;
+        let mapViewerY = 0;
+        let mapViewerStartDistance = 0;
+        let mapViewerStartScale = 1;
+        let mapViewerStartX = 0;
+        let mapViewerStartY = 0;
+        let mapViewerTouchX = 0;
+        let mapViewerTouchY = 0;
+        let mapViewerLastTap = 0;
+
+        function applyMapViewerTransform(animate = false) {
+            const img = document.getElementById('modalImg');
+            if (!img) return;
+            img.style.transition = animate ? 'transform .22s ease' : 'none';
+            img.style.transform = `translate(${mapViewerX}px, ${mapViewerY}px) scale(${mapViewerScale})`;
+        }
+
+        function resetMapViewer(animate = false) {
+            mapViewerScale = 1;
+            mapViewerX = 0;
+            mapViewerY = 0;
+            applyMapViewerTransform(animate);
+        }
+
+        function initMapViewerGestures() {
+            const stage = document.getElementById('mapViewerStage');
+            if (!stage || stage.dataset.gesturesReady === 'true') return;
+            stage.dataset.gesturesReady = 'true';
+
+            const distance = (a, b) => Math.hypot(a.clientX - b.clientX, a.clientY - b.clientY);
+
+            stage.addEventListener('touchstart', e => {
+                if (e.touches.length === 2) {
+                    mapViewerStartDistance = distance(e.touches[0], e.touches[1]);
+                    mapViewerStartScale = mapViewerScale;
+                } else if (e.touches.length === 1) {
+                    mapViewerTouchX = e.touches[0].clientX;
+                    mapViewerTouchY = e.touches[0].clientY;
+                    mapViewerStartX = mapViewerX;
+                    mapViewerStartY = mapViewerY;
+
+                    const now = Date.now();
+                    if (now - mapViewerLastTap < 280) {
+                        if (mapViewerScale > 1.05) {
+                            resetMapViewer(true);
+                        } else {
+                            mapViewerScale = 2;
+                            applyMapViewerTransform(true);
+                        }
+                        mapViewerLastTap = 0;
+                    } else {
+                        mapViewerLastTap = now;
+                    }
+                }
+            }, { passive: false });
+
+            stage.addEventListener('touchmove', e => {
+                if (e.touches.length === 2) {
+                    e.preventDefault();
+                    const currentDistance = distance(e.touches[0], e.touches[1]);
+                    if (!mapViewerStartDistance) return;
+                    mapViewerScale = Math.max(1, Math.min(4, mapViewerStartScale * (currentDistance / mapViewerStartDistance)));
+                    if (mapViewerScale <= 1.01) {
+                        mapViewerX = 0;
+                        mapViewerY = 0;
+                    }
+                    applyMapViewerTransform(false);
+                } else if (e.touches.length === 1 && mapViewerScale > 1.01) {
+                    e.preventDefault();
+                    const dx = e.touches[0].clientX - mapViewerTouchX;
+                    const dy = e.touches[0].clientY - mapViewerTouchY;
+                    const maxX = stage.clientWidth * (mapViewerScale - 1) * .48;
+                    const maxY = stage.clientHeight * (mapViewerScale - 1) * .48;
+                    mapViewerX = Math.max(-maxX, Math.min(maxX, mapViewerStartX + dx));
+                    mapViewerY = Math.max(-maxY, Math.min(maxY, mapViewerStartY + dy));
+                    applyMapViewerTransform(false);
+                }
+            }, { passive: false });
+
+            stage.addEventListener('touchend', () => {
+                mapViewerStartDistance = 0;
+                if (mapViewerScale < 1.05) resetMapViewer(true);
+            }, { passive: true });
+        }
+
         function convertCurrency(type) {
             const twdInput = document.getElementById('twd-input');
             const cnyInput = document.getElementById('cny-input');
@@ -2941,11 +3360,16 @@ const emojis = ['🍠', '🧋', '👵🏻', '🏝️'];
             const legendEl = document.getElementById('category-legend');
             const pieContainer = document.getElementById('pie-chart-container');
             const centerText = document.getElementById('chart-center-text');
+            const todayEl = document.getElementById('today-expense');
+            const todayDateEl = document.getElementById('today-expense-date');
+            const tripTotalEl = document.getElementById('trip-expense-total');
 
             tbody.innerHTML = '';
             legendEl.innerHTML = '';
 
             let total = 0;
+            let todayTotal = 0;
+            const todayKey = getLocalExpenseDate();
             let categoryTotals = {
                 '餐飲美食': 0,
                 '交通車資': 0,
@@ -2957,6 +3381,7 @@ const emojis = ['🍠', '🧋', '👵🏻', '🏝️'];
 
             expenses.forEach((item, index) => {
                 total += item.cost;
+                if (item.date === todayKey) todayTotal += item.cost;
                 if (categoryTotals[item.category] !== undefined) {
                     categoryTotals[item.category] += item.cost;
                 } else {
@@ -2977,6 +3402,9 @@ const emojis = ['🍠', '🧋', '👵🏻', '🏝️'];
             });
 
             totalEl.textContent = `總計支出：NT$ ${total.toLocaleString()}`;
+            if (todayEl) todayEl.textContent = `NT$ ${todayTotal.toLocaleString()}`;
+            if (tripTotalEl) tripTotalEl.textContent = `NT$ ${total.toLocaleString()}`;
+            if (todayDateEl) todayDateEl.textContent = todayKey.replaceAll('-', '.');
 
             if (total === 0) {
                 pieContainer.style.background = '#E2DDD5';
@@ -3030,7 +3458,7 @@ const emojis = ['🍠', '🧋', '👵🏻', '🏝️'];
                 return;
             }
 
-            expenses.push({ name, category, cost });
+            expenses.push({ name, category, cost, date: getLocalExpenseDate() });
             nameInput.value = '';
             costInput.value = '';
             if (typeof updateFoodAchievement === 'function') updateFoodAchievement(false);
@@ -3045,16 +3473,26 @@ const emojis = ['🍠', '🧋', '👵🏻', '🏝️'];
 
         function openImageModal(imgSrc, title) {
             const modal = document.getElementById('imageModal');
-            document.getElementById('modalImg').src = imgSrc;
+            const img = document.getElementById('modalImg');
             document.getElementById('modalTitle').textContent = title;
+            resetMapViewer(false);
+            img.src = imgSrc;
             modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+            initMapViewerGestures();
         }
 
         function closeImageModal() {
             document.getElementById('imageModal').classList.add('hidden');
+            document.body.style.overflow = '';
+            resetMapViewer(false);
         }
 
         window.addEventListener('DOMContentLoaded', () => {
+            addDayEdgeNavigation();
+            enhanceTransportCards();
+            initMapViewerGestures();
+
             const checkboxes = document.querySelectorAll('#food-checklist input[type="checkbox"]');
             checkboxes.forEach(chk => {
                 const id = chk.getAttribute('data-id');
