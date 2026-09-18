@@ -117,7 +117,7 @@
 
         #last-dance-marquee {
             display: none;
-            width: 96px;
+            width: 3.4em;
             overflow: hidden;
             position: relative;
             white-space: nowrap;
@@ -512,7 +512,20 @@
     <div class="text-xs tracking-widest text-[#C66914] font-bold mb-2">FINAL CHAPTER</div>
     <h3 class="text-xl font-bold text-[#2C3E35]">💌 準備完成這趟台灣旅程了嗎？</h3>
     <p class="text-xs text-gray-600 mt-2">搭上回程班機後，按下這顆按鈕解鎖最後的通關畫面。</p>
-    <button id="finish-trip-btn" type="button" onclick="finishTaiwanTrip()" class="mt-4 bg-[#2C3E35] text-white px-5 py-2.5 rounded-xl text-xs font-bold hover:bg-[#C66914] transition shadow">完成旅程 ✨</button>
+    <div class="mt-4 flex flex-wrap justify-center gap-2">
+                        <button id="finish-trip-btn"
+                                type="button"
+                                onclick="finishTaiwanTrip()"
+                                class="bg-[#2C3E35] text-white px-5 py-2.5 rounded-xl text-xs font-bold hover:bg-[#C66914] transition shadow">
+                            完成旅程 ✨
+                        </button>
+                        <button id="reset-trip-btn"
+                                type="button"
+                                onclick="resetTaiwanTripCompletion()"
+                                class="hidden bg-white text-[#2C3E35] border border-[#2C3E35]/20 px-4 py-2.5 rounded-xl text-xs font-bold hover:bg-[#F0EDEA] transition">
+                            取消完成
+                        </button>
+                    </div>
 
     <div id="trip-finale-card" class="hidden mt-5 bg-[#2C3E35] text-[#F7F5F0] rounded-2xl p-6 overflow-hidden relative">
         <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:14px_14px]"></div>
@@ -1165,24 +1178,41 @@
         if (barEl) barEl.style.width = `${total ? (checked / total) * 100 : 0}%`;
 
         let currentTitle = '邵奶奶尚未開吃';
-        if (checked >= 18) currentTitle = '🏆 台灣胃永久居民';
-        else if (checked >= 12) currentTitle = '🌊 胃容量突破海峽中線';
-        else if (checked >= 8) currentTitle = '👵🏻 邵奶奶開始融入';
-        else if (checked >= 3) currentTitle = '🍜 初級台灣胃';
-        else if (checked > 0) currentTitle = '🥢 台灣胃載入中...';
+
+        if (checked >= total && total > 0) {
+            currentTitle = '🏆 台灣胃永久居民';
+        } else if (checked >= 30) {
+            currentTitle = '🥢 這不是旅遊，是進食';
+        } else if (checked >= 18) {
+            currentTitle = '👵🏻 邵奶奶開始融入';
+        } else if (checked >= 8) {
+            currentTitle = '🍜 初級台灣胃';
+        } else if (checked > 0) {
+            currentTitle = '🥢 台灣胃載入中...';
+        }
 
         if (titleEl) titleEl.textContent = currentTitle;
+
         if (!allowPopup) return;
 
-        const milestones = {
-            3:  { emoji: '🍜', title: '初級台灣胃' },
-            8:  { emoji: '👵🏻', title: '邵奶奶開始融入' },
-            12: { emoji: '🌊', title: '胃容量突破海峽中線' },
-            18: { emoji: '🏆', title: '台灣胃永久居民' }
-        };
+        let milestone = null;
 
-        if (milestones[checked]) {
-            showFoodAchievement(milestones[checked].emoji, milestones[checked].title);
+        if (checked === 8) {
+            milestone = { emoji: '🍜', title: '初級台灣胃' };
+        } else if (checked === 18) {
+            milestone = { emoji: '👵🏻', title: '邵奶奶開始融入' };
+        } else if (checked === 30) {
+            milestone = { emoji: '🥢', title: '這不是旅遊，是進食' };
+        } else if (checked === total && total > 0) {
+            milestone = { emoji: '🏆', title: '台灣胃永久居民' };
+        }
+
+        if (milestone) {
+            showFoodAchievement(milestone.emoji, milestone.title);
+        }
+
+        if (typeof updateAchievementWall === 'function') {
+            updateAchievementWall();
         }
     }
 
@@ -1548,6 +1578,9 @@
             btn.classList.add('bg-[#C66914]');
         }
 
+        
+        const resetBtn = document.getElementById('reset-trip-btn');
+        if (resetBtn) resetBtn.classList.remove('hidden');
         updateAchievementWall();
         if (typeof triggerSingleEmojiRain === 'function') {
             triggerSingleEmojiRain();
@@ -1803,11 +1836,48 @@
     }
 
     document.addEventListener('DOMContentLoaded', () => {
+
+        const finalDone = localStorage.getItem(ACH_KEYS.final) === 'true';
+        const finale = document.getElementById('trip-finale-card');
+        const finishBtn = document.getElementById('finish-trip-btn');
+        const resetBtn = document.getElementById('reset-trip-btn');
+
+        if (finalDone) {
+            if (finale) finale.classList.remove('hidden');
+            if (finishBtn) {
+                finishBtn.textContent = '已完成旅程 ✓';
+                finishBtn.classList.remove('bg-[#2C3E35]');
+                finishBtn.classList.add('bg-[#C66914]');
+            }
+            if (resetBtn) resetBtn.classList.remove('hidden');
+        }
+
         updateAchievementWall();
         document.querySelectorAll('#food-checklist input[type="checkbox"]').forEach(chk => {
             chk.addEventListener('change', updateAchievementWall);
         });
     });
+
+
+    function resetTaiwanTripCompletion() {
+        localStorage.removeItem(ACH_KEYS.final);
+
+        const finale = document.getElementById('trip-finale-card');
+        const btn = document.getElementById('finish-trip-btn');
+        const resetBtn = document.getElementById('reset-trip-btn');
+
+        if (finale) finale.classList.add('hidden');
+
+        if (btn) {
+            btn.textContent = '完成旅程 ✨';
+            btn.classList.add('bg-[#2C3E35]');
+            btn.classList.remove('bg-[#C66914]');
+        }
+
+        if (resetBtn) resetBtn.classList.add('hidden');
+
+        updateAchievementWall();
+    }
 
 </script>
 
