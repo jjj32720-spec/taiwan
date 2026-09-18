@@ -151,6 +151,32 @@
             }
         }
 
+    
+        .achievement-card {
+            background: #F3F4F6;
+            border: 1px solid #E5E7EB;
+            border-radius: 1rem;
+            padding: 1rem;
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            align-items: center;
+            gap: 0.8rem;
+            opacity: 0.58;
+            filter: grayscale(1);
+            transition: all 0.35s ease;
+        }
+        .achievement-card.unlocked {
+            background: #FFF8F1;
+            border-color: #F3CBA8;
+            opacity: 1;
+            filter: grayscale(0);
+            box-shadow: 0 6px 18px rgba(198, 105, 20, 0.08);
+        }
+        .ach-icon { font-size: 1.6rem; }
+        .ach-title { font-size: 0.875rem; font-weight: 700; color: #2C3E35; }
+        .ach-desc { font-size: 0.68rem; color: #6B7280; margin-top: 0.2rem; line-height: 1.45; }
+        .achievement-lock { font-size: 1.05rem; }
+
     </style>
 </head>
 <body class="min-h-screen flex flex-col justify-between selection:bg-[#E89344] selection:text-white">
@@ -275,7 +301,7 @@
             </div>
 
             <div class="bg-gradient-to-br from-[#F9F8F6] to-[#EFECE6] border border-[#E2DDD5] p-6 rounded-2xl opacity-80">
-                <div class="flex justify-between items-start mb-3">
+                <div class="flex justify-between items-start mb-3" onclick="handleEastTaiwanTap()">
                     <span class="text-2xl">🌊</span>
                     <span class="text-xs font-bold bg-gray-400 text-white px-2.5 py-1 rounded-lg">等你解鎖🔒</span>
                 </div>
@@ -496,8 +522,8 @@
             <h3 class="text-2xl font-bold">旅程完成</h3>
             <p class="text-sm text-[#D1D8D2] mt-3">10天・北中南制霸・<span id="final-food-count">0</span>樣美食・約 1,000+ 公里</p>
             <div class="h-px bg-white/20 my-5"></div>
-            <p class="text-lg font-bold">邵奶奶台灣一周目通關 👵🏻🏝️</p>
-            <p class="text-sm text-[#D1D8D2] mt-2">東台灣，等你下次解鎖。</p>
+            <p class="text-lg font-bold">邵奶奶台灣制霸 👵🏻🏝️</p>
+            <p class="text-sm text-[#D1D8D2] mt-2">10 個公開成就＋7 個隱藏成就＝10＋7 🎂</p>
         </div>
     </div>
 </div>
@@ -709,52 +735,47 @@
 <!-- 預算與記帳 -->
 
 <div id="tab-achievements" class="tab-content hidden fade-in space-y-6">
-    <div class="taiwan-card rounded-2xl overflow-hidden p-6 md:p-8 border-t-4 border-[#C66914] space-y-5">
+    <div class="taiwan-card rounded-2xl overflow-hidden p-6 md:p-8 border-t-4 border-[#C66914] space-y-6">
         <div>
             <span class="text-xs bg-[#C66914]/20 text-[#C66914] px-3 py-1 rounded-md font-bold">ACHIEVEMENTS</span>
             <h2 class="text-3xl font-bold mt-2 text-[#2C3E35]">🏆 邵奶奶台灣成就牆</h2>
-            <p class="text-sm text-gray-600 mt-1">旅途中慢慢解鎖，未完成的成就會保持灰色與上鎖狀態。</p>
+            <p class="text-sm text-gray-600 mt-1">10 個公開成就＋7 個隱藏成就。隱藏成就解鎖前不顯示條件。</p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-3" id="achievement-grid">
-            <div id="achievement-food-3" class="achievement-card bg-gray-100 border border-gray-200 p-4 rounded-2xl opacity-55 grayscale transition-all duration-500">
-                <div class="flex items-center justify-between gap-3">
-                    <div><div class="text-2xl mb-2">🍜</div><div class="font-bold text-sm">初級台灣胃</div><div class="text-[11px] text-gray-500 mt-1">吃到 3 樣台灣美食</div></div>
-                    <span class="achievement-lock text-xl">🔒</span>
-                </div>
-            </div>
+        <div class="flex items-center justify-between bg-[#F0EDEA] rounded-xl p-4">
+            <span class="text-xs text-gray-600">目前已解鎖</span>
+            <span class="text-sm font-bold text-[#C66914]"><span id="achievement-count">0</span> / 17</span>
+        </div>
 
-            <div id="achievement-food-8" class="achievement-card bg-gray-100 border border-gray-200 p-4 rounded-2xl opacity-55 grayscale transition-all duration-500">
-                <div class="flex items-center justify-between gap-3">
-                    <div><div class="text-2xl mb-2">👵🏻</div><div class="font-bold text-sm">邵奶奶開始融入</div><div class="text-[11px] text-gray-500 mt-1">吃到 8 樣台灣美食</div></div>
-                    <span class="achievement-lock text-xl">🔒</span>
-                </div>
-            </div>
+        <div>
+            <h3 class="font-bold text-base text-[#2C3E35] mb-3">公開成就</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                <div id="ach-food-1" class="achievement-card"><div class="ach-icon">🍜</div><div><div class="ach-title">初級台灣胃</div><div class="ach-desc">吃滿 8 樣台灣美食</div></div><div class="achievement-lock">🔒</div></div>
+                <div id="ach-food-2" class="achievement-card"><div class="ach-icon">👵🏻</div><div><div class="ach-title">邵奶奶開始融入</div><div class="ach-desc">吃滿 18 樣台灣美食</div></div><div class="achievement-lock">🔒</div></div>
+                <div id="ach-food-3" class="achievement-card"><div class="ach-icon">🥢</div><div><div class="ach-title">這不是旅遊，是進食</div><div class="ach-desc">吃滿 30 樣台灣美食</div></div><div class="achievement-lock">🔒</div></div>
+                <div id="ach-food-4" class="achievement-card"><div class="ach-icon">🏆</div><div><div class="ach-title">台灣胃永久居民</div><div class="ach-desc">吃完全部美食清單</div></div><div class="achievement-lock">🔒</div></div>
 
-            <div id="achievement-mountain-sea" class="achievement-card bg-gray-100 border border-gray-200 p-4 rounded-2xl opacity-55 grayscale transition-all duration-500">
-                <div class="flex items-center justify-between gap-3">
-                    <div><div class="text-2xl mb-2">⛰️🌊</div><div class="font-bold text-sm">從 3275m 到海平面</div><div class="text-[11px] text-gray-500 mt-1">打開 Day 6 與 Day 8／9</div></div>
-                    <span class="achievement-lock text-xl">🔒</span>
-                </div>
-            </div>
+                <div id="ach-spend-1" class="achievement-card"><div class="ach-icon">💸</div><div><div class="ach-title">台灣經濟熱身中</div><div class="ach-desc">累計記帳超過 NT$5,000</div></div><div class="achievement-lock">🔒</div></div>
+                <div id="ach-spend-2" class="achievement-card"><div class="ach-icon">💸</div><div><div class="ach-title">台灣經濟推進器</div><div class="ach-desc">累計記帳超過 NT$20,000</div></div><div class="achievement-lock">🔒</div></div>
+                <div id="ach-spend-3" class="achievement-card"><div class="ach-icon">💸</div><div><div class="ach-title">GDP 有你一份</div><div class="ach-desc">累計記帳超過 NT$40,000</div></div><div class="achievement-lock">🔒</div></div>
 
-            <div id="achievement-west" class="achievement-card bg-gray-100 border border-gray-200 p-4 rounded-2xl opacity-55 grayscale transition-all duration-500">
-                <div class="flex items-center justify-between gap-3">
-                    <div><div class="text-2xl mb-2">🗺️</div><div class="font-bold text-sm">北中南制霸</div><div class="text-[11px] text-gray-500 mt-1">北・中・南三區都曾打開</div></div>
-                    <span class="achievement-lock text-xl">🔒</span>
-                </div>
-            </div>
-
-            <div id="achievement-finish" class="achievement-card md:col-span-2 bg-gray-100 border border-gray-200 p-4 rounded-2xl opacity-55 grayscale transition-all duration-500">
-                <div class="flex items-center justify-between gap-3">
-                    <div><div class="text-2xl mb-2">👵🏻🏝️</div><div class="font-bold text-sm">台灣一周目通關</div><div class="text-[11px] text-gray-500 mt-1">完成 Day 10 最後的通關儀式</div></div>
-                    <span class="achievement-lock text-xl">🔒</span>
-                </div>
+                <div id="ach-log-1" class="achievement-card"><div class="ach-icon">🧾</div><div><div class="ach-title">有在記喔</div><div class="ach-desc">新增 8 筆記帳</div></div><div class="achievement-lock">🔒</div></div>
+                <div id="ach-log-2" class="achievement-card"><div class="ach-icon">🧾</div><div><div class="ach-title">邵奶奶的流水帳</div><div class="ach-desc">新增 20 筆記帳</div></div><div class="achievement-lock">🔒</div></div>
+                <div id="ach-log-3" class="achievement-card"><div class="ach-icon">🧾</div><div><div class="ach-title">每一塊錢都有紀錄</div><div class="ach-desc">新增 35 筆記帳</div></div><div class="achievement-lock">🔒</div></div>
             </div>
         </div>
 
-        <div class="bg-[#F0EDEA] rounded-xl p-4 text-xs text-gray-600">
-            已解鎖 <span id="achievement-count" class="font-bold text-[#C66914]">0</span> / 5
+        <div>
+            <h3 class="font-bold text-base text-[#2C3E35] mb-3">隱藏成就</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                <div id="ach-hidden-dessert" class="achievement-card"><div class="ach-icon">🔒</div><div><div class="ach-title">？？？</div><div class="ach-desc">隱藏成就</div></div><div class="achievement-lock">🔒</div></div>
+                <div id="ach-hidden-music" class="achievement-card"><div class="ach-icon">🔒</div><div><div class="ach-title">？？？</div><div class="ach-desc">隱藏成就</div></div><div class="achievement-lock">🔒</div></div>
+                <div id="ach-hidden-east" class="achievement-card"><div class="ach-icon">🔒</div><div><div class="ach-title">？？？</div><div class="ach-desc">隱藏成就</div></div><div class="achievement-lock">🔒</div></div>
+                <div id="ach-hidden-night" class="achievement-card"><div class="ach-icon">🔒</div><div><div class="ach-title">？？？</div><div class="ach-desc">隱藏成就</div></div><div class="achievement-lock">🔒</div></div>
+                <div id="ach-hidden-solo" class="achievement-card"><div class="ach-icon">🔒</div><div><div class="ach-title">？？？</div><div class="ach-desc">隱藏成就</div></div><div class="achievement-lock">🔒</div></div>
+                <div id="ach-hidden-week" class="achievement-card"><div class="ach-icon">🔒</div><div><div class="ach-title">？？？</div><div class="ach-desc">隱藏成就</div></div><div class="achievement-lock">🔒</div></div>
+                <div id="ach-hidden-final" class="achievement-card md:col-span-2"><div class="ach-icon">🔒</div><div><div class="ach-title">？？？</div><div class="ach-desc">隱藏成就</div></div><div class="achievement-lock">🔒</div></div>
+            </div>
         </div>
     </div>
 </div>
@@ -1272,6 +1293,7 @@
         }
 
         localStorage.setItem('travel_expenses_v2', JSON.stringify(expenses));
+        if (typeof updateAchievementWall === 'function') updateAchievementWall();
     }
 
     function addExpense() {
@@ -1368,11 +1390,11 @@
 
         const copy1 = document.createElement('span');
         copy1.className = 'last-dance-copy';
-        copy1.textContent = '穿越回1998⋯';
+        copy1.textContent = '穿越中⋯';
 
         const copy2 = document.createElement('span');
         copy2.className = 'last-dance-copy';
-        copy2.textContent = '穿越回1998⋯';
+        copy2.textContent = '穿越中⋯';
 
         track.appendChild(copy1);
         track.appendChild(copy2);
@@ -1404,6 +1426,7 @@
                 audio.play().then(() => {
                     icon.textContent = '🔙';
                     btn.classList.add('playing');
+                    unlockHiddenAchievement(ACH_KEYS.music);
 
                     // 每次重新播放時，讓跑馬燈從頭開始
                     track.style.animation = 'none';
@@ -1570,6 +1593,220 @@
     document.addEventListener('DOMContentLoaded', () => {
         updateAchievementWall();
         restoreTripFinale();
+    });
+
+
+    // ==================== 🏆 17 成就系統（最終版） ====================
+    const ACH_KEYS = {
+        dessert: 'ach_hidden_dessert_v1',
+        music: 'ach_hidden_music_v1',
+        east: 'ach_hidden_east_v1',
+        night: 'ach_hidden_night_v1',
+        solo: 'ach_hidden_solo_v1',
+        week: 'ach_hidden_week_v1',
+        final: 'ach_hidden_final_v1'
+    };
+
+    function unlockHiddenAchievement(key) {
+        localStorage.setItem(key, 'true');
+        updateAchievementWall();
+    }
+
+    function getVisitedDays() {
+        try { return JSON.parse(localStorage.getItem('visited_days_v2') || '[]'); }
+        catch (e) { return []; }
+    }
+
+    function getTaiwanTimeParts() {
+        const parts = new Intl.DateTimeFormat('en-CA', {
+            timeZone: 'Asia/Taipei',
+            year: 'numeric', month: '2-digit', day: '2-digit',
+            hour: '2-digit', minute: '2-digit',
+            hourCycle: 'h23'
+        }).formatToParts(new Date());
+        const obj = {};
+        parts.forEach(p => obj[p.type] = p.value);
+        return {
+            date: `${obj.year}-${obj.month}-${obj.day}`,
+            hour: Number(obj.hour),
+            minute: Number(obj.minute)
+        };
+    }
+
+    function markDayVisited(dayNum) {
+        const days = getVisitedDays();
+        if (!days.includes(dayNum)) {
+            days.push(dayNum);
+            days.sort((a,b) => a-b);
+            localStorage.setItem('visited_days_v2', JSON.stringify(days));
+        }
+        checkTimedHiddenAchievements(dayNum);
+        updateAchievementWall();
+    }
+
+    function checkTimedHiddenAchievements(dayNum) {
+        const t = getTaiwanTimeParts();
+
+        // 10/2 凌晨限定：Day 6
+        if (dayNum === 6 && t.date === '2026-10-02' && t.hour >= 0 && t.hour < 5) {
+            unlockHiddenAchievement(ACH_KEYS.night);
+            showNightOwlEasterEgg();
+        }
+
+        // 9/30 15:30 後：Day 1-3 都開過，再開 Day 4
+        if (dayNum === 4 && t.date === '2026-09-30') {
+            const after1530 = t.hour > 15 || (t.hour === 15 && t.minute >= 30);
+            const visited = getVisitedDays();
+            if (after1530 && [1,2,3].every(d => visited.includes(d))) {
+                unlockHiddenAchievement(ACH_KEYS.solo);
+            }
+        }
+
+        // 10/3 第七天：打開 Day 7
+        if (dayNum === 7 && t.date === '2026-10-03') {
+            unlockHiddenAchievement(ACH_KEYS.week);
+        }
+    }
+
+    // 覆蓋舊版半夜判斷：只有上面的指定日期時間才觸發
+    function maybeShowNightOwlEasterEgg(dayNum) {
+        checkTimedHiddenAchievements(dayNum);
+    }
+
+    function getFoodCheckedCount() {
+        return [...document.querySelectorAll('#food-checklist input[type="checkbox"]')].filter(chk => chk.checked).length;
+    }
+
+    function getDessertCheckedCount() {
+        const dessertKeywords = ['芋圓','豆花','芒果冰','地瓜球','剉冰','冰淇淋','綠豆沙','麻糬','奶酥'];
+        return [...document.querySelectorAll('#food-checklist label')].filter(label => {
+            const chk = label.querySelector('input[type="checkbox"]');
+            return chk && chk.checked && dessertKeywords.some(k => label.textContent.includes(k));
+        }).length;
+    }
+
+    function getExpenseSummary() {
+        let data = [];
+        try { data = JSON.parse(localStorage.getItem('travel_expenses_v2') || '[]'); } catch (e) {}
+        return {
+            count: data.length,
+            total: data.reduce((sum, item) => sum + Number(item.cost || 0), 0)
+        };
+    }
+
+    function setAchievementState(id, unlocked, hiddenMeta) {
+        const card = document.getElementById(id);
+        if (!card) return;
+        const icon = card.querySelector('.ach-icon');
+        const title = card.querySelector('.ach-title');
+        const desc = card.querySelector('.ach-desc');
+        const lock = card.querySelector('.achievement-lock');
+
+        card.classList.toggle('unlocked', unlocked);
+        if (lock) lock.textContent = unlocked ? '✨' : '🔒';
+
+        if (hiddenMeta) {
+            if (unlocked) {
+                if (icon) icon.textContent = hiddenMeta.icon;
+                if (title) title.textContent = hiddenMeta.title;
+                if (desc) desc.textContent = hiddenMeta.desc;
+            } else {
+                if (icon) icon.textContent = '🔒';
+                if (title) title.textContent = '？？？';
+                if (desc) desc.textContent = '隱藏成就';
+            }
+        }
+    }
+
+    function updateAchievementWall() {
+        const food = getFoodCheckedCount();
+        const foodTotal = document.querySelectorAll('#food-checklist input[type="checkbox"]').length;
+        const expenses = getExpenseSummary();
+
+        const publicStates = {
+            'ach-food-1': food >= 8,
+            'ach-food-2': food >= 18,
+            'ach-food-3': food >= 30,
+            'ach-food-4': foodTotal > 0 && food === foodTotal,
+            'ach-spend-1': expenses.total >= 5000,
+            'ach-spend-2': expenses.total >= 20000,
+            'ach-spend-3': expenses.total >= 40000,
+            'ach-log-1': expenses.count >= 8,
+            'ach-log-2': expenses.count >= 20,
+            'ach-log-3': expenses.count >= 35
+        };
+
+        Object.entries(publicStates).forEach(([id, state]) => setAchievementState(id, state));
+
+        if (getDessertCheckedCount() >= 5) localStorage.setItem(ACH_KEYS.dessert, 'true');
+
+        const hiddenStates = [
+            ['ach-hidden-dessert', ACH_KEYS.dessert, {icon:'🍰', title:'甜的有另一個胃', desc:'正餐吃不下不代表甜點吃不下'}],
+            ['ach-hidden-music', ACH_KEYS.music, {icon:'🎧', title:'想見你的人', desc:'有些歌一響起，就開始穿越'}],
+            ['ach-hidden-east', ACH_KEYS.east, {icon:'🔐', title:'你真的很想去花東', desc:'好啦好啦，下次真的去'}],
+            ['ach-hidden-night', ACH_KEYS.night, {icon:'🌌', title:'凌晨三點的邵奶奶', desc:'凌晨上武嶺的人真的存在'}],
+            ['ach-hidden-solo', ACH_KEYS.solo, {icon:'👣', title:'獨旅模式通關', desc:'前三天單人副本完成｜方向感、行動力、體力全部合格'}],
+            ['ach-hidden-week', ACH_KEYS.week, {icon:'👵🏻🏝️', title:'台灣一周目達成', desc:'在台灣生存滿七天｜已成功融入，副作用是變胖'}],
+            ['ach-hidden-final', ACH_KEYS.final, {icon:'👵🏻🏝️', title:'邵奶奶台灣制霸', desc:'恭喜完成這趟台灣生日之旅｜10 個公開成就＋7 個隱藏成就｜10＋7，生日密碼配對成功 🎂'}]
+        ];
+
+        let hiddenUnlocked = 0;
+        hiddenStates.forEach(([id, key, meta]) => {
+            const state = localStorage.getItem(key) === 'true';
+            if (state) hiddenUnlocked++;
+            setAchievementState(id, state, meta);
+        });
+
+        const publicUnlocked = Object.values(publicStates).filter(Boolean).length;
+        const counter = document.getElementById('achievement-count');
+        if (counter) counter.textContent = publicUnlocked + hiddenUnlocked;
+    }
+
+    let eastTaiwanTapCount = 0;
+    function handleEastTaiwanTap() {
+        eastTaiwanTapCount++;
+        if (eastTaiwanTapCount >= 3) {
+            unlockHiddenAchievement(ACH_KEYS.east);
+            eastTaiwanTapCount = 0;
+        }
+    }
+
+    function showNightOwlEasterEgg() {
+        const modal = document.getElementById('night-owl-easter-egg');
+        if (!modal) return;
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+    }
+
+    function finishTaiwanTrip() {
+        localStorage.setItem(ACH_KEYS.final, 'true');
+        const finale = document.getElementById('trip-finale-card');
+        const food = document.getElementById('final-food-count');
+        const btn = document.getElementById('finish-trip-btn');
+
+        if (food) food.textContent = getFoodCheckedCount();
+        if (finale) {
+            finale.classList.remove('hidden');
+            finale.classList.add('fade-in');
+        }
+        if (btn) {
+            btn.textContent = '已完成旅程 ✓';
+            btn.classList.remove('bg-[#2C3E35]');
+            btn.classList.add('bg-[#C66914]');
+        }
+        updateAchievementWall();
+
+        if (typeof triggerSingleEmojiRain === 'function') {
+            triggerSingleEmojiRain();
+            setTimeout(() => triggerSingleEmojiRain(), 450);
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        updateAchievementWall();
+        document.querySelectorAll('#food-checklist input[type="checkbox"]').forEach(chk => {
+            chk.addEventListener('change', updateAchievementWall);
+        });
     });
 
 </script>
