@@ -85,12 +85,14 @@
         }
     
 
-        /* Last Dance 低調音樂彩蛋 */
+
+        /* Last Dance 低調音樂彩蛋：橫向無縫跑馬燈 */
         #last-dance-wrapper {
             margin-left: auto;
             display: inline-flex;
             justify-content: flex-end;
             align-items: center;
+            flex-shrink: 0;
         }
 
         #last-dance-btn {
@@ -99,7 +101,6 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 6px;
             border-radius: 9999px;
             transition: all 0.25s ease;
             overflow: hidden;
@@ -107,39 +108,46 @@
         }
 
         #last-dance-btn.playing {
-            padding: 0 12px;
+            padding: 0 10px;
+            gap: 7px;
             background: #C66914;
             color: white;
             border-color: #C66914;
         }
 
-        #last-dance-message-text {
-            display: inline-flex;
-            align-items: center;
-            gap: 0;
+        #last-dance-marquee {
+            display: none;
+            width: 96px;
+            overflow: hidden;
+            position: relative;
+            white-space: nowrap;
+        }
+
+        #last-dance-btn.playing #last-dance-marquee {
+            display: block;
+        }
+
+        #last-dance-track {
+            display: flex;
+            width: max-content;
+            will-change: transform;
+            animation: lastDanceSeamlessMarquee 5.2s linear infinite;
+        }
+
+        .last-dance-copy {
+            display: inline-block;
+            padding-right: 28px;
             font-size: 11px;
             font-weight: 700;
-            letter-spacing: 0.02em;
+            letter-spacing: 0.03em;
         }
 
-        #last-dance-message-text .ld-char {
-            display: inline-block;
-            opacity: 1;
-            animation: lastDanceCharCycle 3.8s ease-in-out infinite;
-        }
-
-        @keyframes lastDanceCharCycle {
-            0%, 12% {
-                opacity: 1;
-                transform: translateY(0);
+        @keyframes lastDanceSeamlessMarquee {
+            from {
+                transform: translateX(0);
             }
-            28%, 42% {
-                opacity: 0;
-                transform: translateY(-2px);
-            }
-            58%, 100% {
-                opacity: 1;
-                transform: translateY(0);
+            to {
+                transform: translateX(-50%);
             }
         }
 
@@ -175,6 +183,7 @@
         <button onclick="switchTab('tips')" class="tab-btn px-4 py-2 rounded-lg text-xs font-semibold transition shrink-0 bg-[#C66914] text-white shadow-md" id="btn-tips">📌 全程提醒</button>
         <button onclick="switchTab('food')" class="tab-btn px-4 py-2 rounded-lg text-xs font-semibold transition shrink-0 bg-[#C66914] text-white shadow-md" id="btn-food">🍜 美食清單</button>
         <button onclick="switchTab('budget')" class="tab-btn px-4 py-2 rounded-lg text-xs font-semibold transition shrink-0 bg-[#C66914] text-white shadow-md" id="btn-budget">💰 預算與記帳</button>
+            <button onclick="switchTab('achievements')" class="tab-btn px-4 py-2 rounded-lg text-xs font-semibold transition shrink-0 bg-[#C66914] text-white shadow-md" id="btn-achievements">🏆 成就</button>
         <button onclick="switchTab('sos')" class="tab-btn px-4 py-2 rounded-lg text-xs font-semibold transition shrink-0 bg-[#2C3E35] text-white shadow-md" id="btn-sos">📦 交通急救包</button>
     </div>
 </nav>
@@ -472,6 +481,26 @@
 <div id="tab-d10-time" class="tab-content hidden fade-in space-y-6"><div class="taiwan-card rounded-2xl overflow-hidden p-6 md:p-8 space-y-6"><div><span class="text-xs bg-[#E89344]/20 text-[#C66914] px-3 py-1 rounded-md font-bold">10/6（二）｜高雄 → 小港機場 → 香港</span><h2 class="text-3xl font-bold mt-2 text-[#2C3E35]">第十天：賦歸香港・完美收尾</h2></div>
 <details class="bg-[#F9F8F6] border border-[#E2DDD5] rounded-xl p-4 shadow-sm"><summary class="cursor-pointer font-bold text-[#2C3E35] flex justify-between items-center select-none"><span>🗺️ 【今日小地圖】（點擊展開/收合，點圖片可放大）</span><span class="text-xs text-[#C66914] font-medium bg-[#E89344]/10 px-2.5 py-1 rounded">展開 ▼</span></summary><div class="mt-4 space-y-4 pt-3 border-t border-[#E2DDD5]"><div class="rounded-xl overflow-hidden shadow-md border border-gray-200 bg-white p-2 cursor-pointer relative group" onclick="openImageModal('10.PNG', 'DAY 10 小地圖')"><img src="10.PNG" alt="DAY 10 行程地圖" class="w-full h-auto object-contain rounded-lg transition group-hover:opacity-95"><div class="absolute bottom-4 right-4 bg-black/60 text-white text-xs px-2.5 py-1 rounded-md flex items-center gap-1 shadow">🔍 點擊放大</div></div><div class="text-sm bg-white p-4 rounded-lg border border-[#E2DDD5] leading-relaxed"><p>高雄住宿 ➔ 美麗島站 ➔ 高雄捷運紅線・往小港 ➔ 高雄國際機場站 ➔ 高雄國際機場 ➔ 香港</p></div></div></details>
 <div class="bg-[#F0EDEA] p-5 rounded-xl space-y-3"><h3 class="font-bold text-base text-[#2C3E35]">🕒 今日時間軸</h3><div class="space-y-2 text-sm text-gray-700"><div><b>06:30</b> 起床</div><div><b>06:45-07:00</b> 退房離開住宿</div><div><b>07:10-07:30</b> 美麗島站 ➔ 高雄國際機場站</div><div><b>07:30</b> 抵達高雄國際機場，報到／托運行李／出境</div><div><b>10:15</b> 香港快運航班起飛 ➔ 返回香港</div></div></div>
+
+<div class="bg-gradient-to-br from-[#FFF8F1] to-white border border-[#F3CBA8] rounded-2xl p-5 text-center shadow-sm">
+    <div class="text-xs tracking-widest text-[#C66914] font-bold mb-2">FINAL CHAPTER</div>
+    <h3 class="text-xl font-bold text-[#2C3E35]">💌 準備完成這趟台灣旅程了嗎？</h3>
+    <p class="text-xs text-gray-600 mt-2">搭上回程班機後，按下這顆按鈕解鎖最後的通關畫面。</p>
+    <button id="finish-trip-btn" type="button" onclick="finishTaiwanTrip()" class="mt-4 bg-[#2C3E35] text-white px-5 py-2.5 rounded-xl text-xs font-bold hover:bg-[#C66914] transition shadow">完成旅程 ✨</button>
+
+    <div id="trip-finale-card" class="hidden mt-5 bg-[#2C3E35] text-[#F7F5F0] rounded-2xl p-6 overflow-hidden relative">
+        <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:14px_14px]"></div>
+        <div class="relative z-10">
+            <div class="text-xs tracking-[0.25em] text-[#D1D8D2] mb-3">TRIP COMPLETE</div>
+            <div class="text-4xl mb-3">👵🏻🏝️</div>
+            <h3 class="text-2xl font-bold">旅程完成</h3>
+            <p class="text-sm text-[#D1D8D2] mt-3">10天・北中南制霸・<span id="final-food-count">0</span>樣美食・約 1,000+ 公里</p>
+            <div class="h-px bg-white/20 my-5"></div>
+            <p class="text-lg font-bold">邵奶奶台灣一周目通關 👵🏻🏝️</p>
+            <p class="text-sm text-[#D1D8D2] mt-2">東台灣，等你下次解鎖。</p>
+        </div>
+    </div>
+</div>
 <details class="bg-[#FEF6EE] border border-[#FAD6B8] rounded-xl p-4 shadow-sm"><summary class="cursor-pointer font-bold text-[#C66914] flex justify-between items-center select-none text-sm"><span>✨ 【今日亮點】（點擊展開）</span><span class="text-xs font-medium bg-[#C66914]/10 px-2.5 py-1 rounded">展開 ▼</span></summary><div class="mt-3 text-xs text-gray-700 leading-relaxed pt-2 border-t border-[#FAD6B8]"><p><b>無正式景點，以輕鬆準時搭機、平安返回香港為完美收尾。</b></p></div></details>
 <details class="bg-orange-50 border border-orange-200 rounded-xl p-4 shadow-sm"><summary class="cursor-pointer font-bold text-orange-950 flex justify-between items-center select-none text-sm"><span>⚠️ 【今日特殊備註】（點擊展開）</span><span class="text-xs font-medium bg-orange-200/60 text-orange-900 px-2.5 py-1 rounded">展開 ▼</span></summary><div class="mt-3 text-xs text-orange-900 leading-relaxed pt-2 border-t border-orange-200 space-y-1.5"><p>・住宿選美麗島附近的主要優點：最後一天不需轉線，直達機場。</p><p>・07:30 抵達機場可預留約 2 小時 45 分鐘，從容不迫。</p></div></details>
 </div></div>
@@ -678,6 +707,58 @@
 
 
 <!-- 預算與記帳 -->
+
+<div id="tab-achievements" class="tab-content hidden fade-in space-y-6">
+    <div class="taiwan-card rounded-2xl overflow-hidden p-6 md:p-8 border-t-4 border-[#C66914] space-y-5">
+        <div>
+            <span class="text-xs bg-[#C66914]/20 text-[#C66914] px-3 py-1 rounded-md font-bold">ACHIEVEMENTS</span>
+            <h2 class="text-3xl font-bold mt-2 text-[#2C3E35]">🏆 邵奶奶台灣成就牆</h2>
+            <p class="text-sm text-gray-600 mt-1">旅途中慢慢解鎖，未完成的成就會保持灰色與上鎖狀態。</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-3" id="achievement-grid">
+            <div id="achievement-food-3" class="achievement-card bg-gray-100 border border-gray-200 p-4 rounded-2xl opacity-55 grayscale transition-all duration-500">
+                <div class="flex items-center justify-between gap-3">
+                    <div><div class="text-2xl mb-2">🍜</div><div class="font-bold text-sm">初級台灣胃</div><div class="text-[11px] text-gray-500 mt-1">吃到 3 樣台灣美食</div></div>
+                    <span class="achievement-lock text-xl">🔒</span>
+                </div>
+            </div>
+
+            <div id="achievement-food-8" class="achievement-card bg-gray-100 border border-gray-200 p-4 rounded-2xl opacity-55 grayscale transition-all duration-500">
+                <div class="flex items-center justify-between gap-3">
+                    <div><div class="text-2xl mb-2">👵🏻</div><div class="font-bold text-sm">邵奶奶開始融入</div><div class="text-[11px] text-gray-500 mt-1">吃到 8 樣台灣美食</div></div>
+                    <span class="achievement-lock text-xl">🔒</span>
+                </div>
+            </div>
+
+            <div id="achievement-mountain-sea" class="achievement-card bg-gray-100 border border-gray-200 p-4 rounded-2xl opacity-55 grayscale transition-all duration-500">
+                <div class="flex items-center justify-between gap-3">
+                    <div><div class="text-2xl mb-2">⛰️🌊</div><div class="font-bold text-sm">從 3275m 到海平面</div><div class="text-[11px] text-gray-500 mt-1">打開 Day 6 與 Day 8／9</div></div>
+                    <span class="achievement-lock text-xl">🔒</span>
+                </div>
+            </div>
+
+            <div id="achievement-west" class="achievement-card bg-gray-100 border border-gray-200 p-4 rounded-2xl opacity-55 grayscale transition-all duration-500">
+                <div class="flex items-center justify-between gap-3">
+                    <div><div class="text-2xl mb-2">🗺️</div><div class="font-bold text-sm">北中南制霸</div><div class="text-[11px] text-gray-500 mt-1">北・中・南三區都曾打開</div></div>
+                    <span class="achievement-lock text-xl">🔒</span>
+                </div>
+            </div>
+
+            <div id="achievement-finish" class="achievement-card md:col-span-2 bg-gray-100 border border-gray-200 p-4 rounded-2xl opacity-55 grayscale transition-all duration-500">
+                <div class="flex items-center justify-between gap-3">
+                    <div><div class="text-2xl mb-2">👵🏻🏝️</div><div class="font-bold text-sm">台灣一周目通關</div><div class="text-[11px] text-gray-500 mt-1">完成 Day 10 最後的通關儀式</div></div>
+                    <span class="achievement-lock text-xl">🔒</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-[#F0EDEA] rounded-xl p-4 text-xs text-gray-600">
+            已解鎖 <span id="achievement-count" class="font-bold text-[#C66914]">0</span> / 5
+        </div>
+    </div>
+</div>
+
 <div id="tab-budget" class="tab-content hidden fade-in space-y-6">
     <div class="taiwan-card rounded-2xl overflow-hidden p-6 md:p-8 border-t-4 border-[#C66914] space-y-6">
         <div>
@@ -871,6 +952,8 @@
 
     function changeDay(dayNum) {
         triggerSingleEmojiRain();
+        markDayVisited(dayNum);
+        maybeShowNightOwlEasterEgg(dayNum);
         currentDayNum = dayNum;
         currentTabId = 'd' + dayNum + '-time';
         updateDayMenuUI(dayNum);
@@ -1265,33 +1348,38 @@
 
         const wrapper = document.createElement('span');
         wrapper.id = 'last-dance-wrapper';
-        wrapper.className = 'shrink-0';
 
         const btn = document.createElement('button');
         btn.id = 'last-dance-btn';
         btn.type = 'button';
-        btn.className = 'bg-[#C66914]/10 text-[#C66914] border border-[#C66914]/20 hover:bg-[#C66914] hover:text-white shadow-sm';
+        btn.className = 'bg-[#C66914]/10 text-[#C66914] border border-[#C66914]/20 hover:bg-[#C66914] hover:text-white shadow-sm transition';
         btn.title = '';
 
         const icon = document.createElement('span');
         icon.id = 'play-icon';
         icon.textContent = '🎧';
+        icon.className = 'shrink-0';
 
-        const message = document.createElement('span');
-        message.id = 'last-dance-message-text';
-        message.className = 'hidden';
+        const marquee = document.createElement('span');
+        marquee.id = 'last-dance-marquee';
 
-        const messageText = '穿越回1998⋯';
-        [...messageText].forEach((char, index) => {
-            const span = document.createElement('span');
-            span.className = 'ld-char';
-            span.textContent = char;
-            span.style.animationDelay = `${index * 0.16}s`;
-            message.appendChild(span);
-        });
+        const track = document.createElement('span');
+        track.id = 'last-dance-track';
+
+        const copy1 = document.createElement('span');
+        copy1.className = 'last-dance-copy';
+        copy1.textContent = '穿越回1998⋯';
+
+        const copy2 = document.createElement('span');
+        copy2.className = 'last-dance-copy';
+        copy2.textContent = '穿越回1998⋯';
+
+        track.appendChild(copy1);
+        track.appendChild(copy2);
+        marquee.appendChild(track);
 
         btn.appendChild(icon);
-        btn.appendChild(message);
+        btn.appendChild(marquee);
         wrapper.appendChild(btn);
 
         if (highlightRow) {
@@ -1306,7 +1394,6 @@
         const reset = () => {
             icon.textContent = '🎧';
             btn.classList.remove('playing');
-            message.classList.add('hidden');
         };
 
         btn.addEventListener('click', event => {
@@ -1317,7 +1404,11 @@
                 audio.play().then(() => {
                     icon.textContent = '🔙';
                     btn.classList.add('playing');
-                    message.classList.remove('hidden');
+
+                    // 每次重新播放時，讓跑馬燈從頭開始
+                    track.style.animation = 'none';
+                    void track.offsetWidth;
+                    track.style.animation = '';
                 }).catch(err => {
                     console.log('播放失敗：', err);
                     reset();
@@ -1357,7 +1448,142 @@
             switchTab('map', false);
         }
     };
+
+    // ==================== 🏆 成就 / Day 10 / 半夜彩蛋 ====================
+    function getVisitedDays() {
+        try { return JSON.parse(localStorage.getItem('visited_days_v1') || '[]'); }
+        catch (e) { return []; }
+    }
+
+    function markDayVisited(day) {
+        const days = getVisitedDays();
+        if (!days.includes(day)) {
+            days.push(day);
+            days.sort((a, b) => a - b);
+            localStorage.setItem('visited_days_v1', JSON.stringify(days));
+        }
+        updateAchievementWall();
+    }
+
+    function getFoodCheckedCount() {
+        return [...document.querySelectorAll('#food-checklist input[type="checkbox"]')].filter(chk => chk.checked).length;
+    }
+
+    function unlockAchievementCard(id, unlocked) {
+        const card = document.getElementById(id);
+        if (!card) return;
+        const lock = card.querySelector('.achievement-lock');
+
+        if (unlocked) {
+            card.classList.remove('bg-gray-100','border-gray-200','opacity-55','grayscale');
+            card.classList.add('bg-[#FFF8F1]','border-[#F3CBA8]','shadow-sm');
+            if (lock) lock.textContent = '✨';
+        } else {
+            card.classList.add('bg-gray-100','border-gray-200','opacity-55','grayscale');
+            card.classList.remove('bg-[#FFF8F1]','border-[#F3CBA8]','shadow-sm');
+            if (lock) lock.textContent = '🔒';
+        }
+    }
+
+    function updateAchievementWall() {
+        const foodCount = getFoodCheckedCount();
+        const visited = getVisitedDays();
+        const finished = localStorage.getItem('taiwan_trip_finished_v1') === 'true';
+
+        const food3 = foodCount >= 3;
+        const food8 = foodCount >= 8;
+        const mountainSea = visited.includes(6) && (visited.includes(8) || visited.includes(9));
+        const west = visited.some(d => [1,2,3].includes(d))
+                  && visited.some(d => [4,5,6].includes(d))
+                  && visited.some(d => [7,8,9].includes(d));
+
+        unlockAchievementCard('achievement-food-3', food3);
+        unlockAchievementCard('achievement-food-8', food8);
+        unlockAchievementCard('achievement-mountain-sea', mountainSea);
+        unlockAchievementCard('achievement-west', west);
+        unlockAchievementCard('achievement-finish', finished);
+
+        const count = [food3, food8, mountainSea, west, finished].filter(Boolean).length;
+        const el = document.getElementById('achievement-count');
+        if (el) el.textContent = count;
+    }
+
+    function finishTaiwanTrip() {
+        localStorage.setItem('taiwan_trip_finished_v1', 'true');
+        const finale = document.getElementById('trip-finale-card');
+        const food = document.getElementById('final-food-count');
+        const btn = document.getElementById('finish-trip-btn');
+
+        if (food) food.textContent = getFoodCheckedCount();
+        if (finale) {
+            finale.classList.remove('hidden');
+            finale.classList.add('fade-in');
+        }
+        if (btn) {
+            btn.textContent = '已完成旅程 ✓';
+            btn.classList.remove('bg-[#2C3E35]');
+            btn.classList.add('bg-[#C66914]');
+        }
+
+        updateAchievementWall();
+        if (typeof triggerSingleEmojiRain === 'function') {
+            triggerSingleEmojiRain();
+            setTimeout(() => triggerSingleEmojiRain(), 450);
+        }
+    }
+
+    function restoreTripFinale() {
+        if (localStorage.getItem('taiwan_trip_finished_v1') !== 'true') return;
+        const finale = document.getElementById('trip-finale-card');
+        const food = document.getElementById('final-food-count');
+        const btn = document.getElementById('finish-trip-btn');
+        if (food) food.textContent = getFoodCheckedCount();
+        if (finale) finale.classList.remove('hidden');
+        if (btn) {
+            btn.textContent = '已完成旅程 ✓';
+            btn.classList.remove('bg-[#2C3E35]');
+            btn.classList.add('bg-[#C66914]');
+        }
+    }
+
+    let nightOwlShownThisLoad = false;
+
+    function maybeShowNightOwlEasterEgg(day) {
+        if (day !== 6 || nightOwlShownThisLoad) return;
+        const hour = new Date().getHours();
+        if (hour >= 2 && hour < 5) {
+            const modal = document.getElementById('night-owl-easter-egg');
+            if (!modal) return;
+            nightOwlShownThisLoad = true;
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+    }
+
+    function closeNightOwlEasterEgg() {
+        const modal = document.getElementById('night-owl-easter-egg');
+        if (!modal) return;
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        updateAchievementWall();
+        restoreTripFinale();
+    });
+
 </script>
+
+
+<div id="night-owl-easter-egg" class="fixed inset-0 z-[120] hidden items-center justify-center p-5 bg-black/35 backdrop-blur-sm" onclick="closeNightOwlEasterEgg()">
+    <div class="bg-[#17231E] text-white rounded-3xl p-7 shadow-2xl max-w-sm w-full text-center border border-white/10" onclick="event.stopPropagation()">
+        <div class="text-5xl mb-3">🌌</div>
+        <div class="text-xs tracking-[0.24em] text-[#D1D8D2] mb-2">NIGHT OWL MODE</div>
+        <div class="text-xl font-bold">夜貓模式啟動</div>
+        <div class="text-sm text-[#D1D8D2] mt-2">邵奶奶真的在半夜上山 👵🏻⛰️</div>
+        <button onclick="closeNightOwlEasterEgg()" class="mt-5 bg-white/10 border border-white/20 px-4 py-2 rounded-xl text-xs font-bold hover:bg-white/20 transition">出發看星星 ✨</button>
+    </div>
+</div>
 
 </body>
 </html>
