@@ -84,38 +84,63 @@
             box-shadow: 0 10px 25px -8px rgba(44, 62, 53, 0.22);
         }
     
+
         /* Last Dance 低調音樂彩蛋 */
-        @keyframes lastDanceMarqueeIn {
-            0% {
+        #last-dance-wrapper {
+            margin-left: auto;
+            display: inline-flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
+
+        #last-dance-btn {
+            min-width: 36px;
+            height: 36px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            border-radius: 9999px;
+            transition: all 0.25s ease;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        #last-dance-btn.playing {
+            padding: 0 12px;
+            background: #C66914;
+            color: white;
+            border-color: #C66914;
+        }
+
+        #last-dance-message-text {
+            display: inline-flex;
+            align-items: center;
+            gap: 0;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+        }
+
+        #last-dance-message-text .ld-char {
+            display: inline-block;
+            opacity: 1;
+            animation: lastDanceCharCycle 3.8s ease-in-out infinite;
+        }
+
+        @keyframes lastDanceCharCycle {
+            0%, 12% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            28%, 42% {
                 opacity: 0;
-                transform: translateX(-65px);
-                clip-path: inset(0 100% 0 0);
+                transform: translateY(-2px);
             }
-            30% {
+            58%, 100% {
                 opacity: 1;
+                transform: translateY(0);
             }
-            100% {
-                opacity: 1;
-                transform: translateX(0);
-                clip-path: inset(0 0 0 0);
-            }
-        }
-
-        @keyframes lastDanceIconIn {
-            0% { opacity: 0; transform: translateX(-8px); }
-            100% { opacity: 1; transform: translateX(0); }
-        }
-
-        .last-dance-message-show {
-            display: inline-block !important;
-        }
-
-        .last-dance-message-show .last-dance-message-text {
-            animation: lastDanceMarqueeIn 1.35s ease-out both;
-        }
-
-        .last-dance-back-icon {
-            animation: lastDanceIconIn 0.4s ease-out both;
         }
 
     </style>
@@ -1233,70 +1258,66 @@
         );
         if (!target) return;
 
-        const wrapper = document.createElement('span');
-        wrapper.className = 'ml-2 inline-flex items-center gap-2 align-middle overflow-hidden';
+        const highlightRow = target.closest('div');
+        if (highlightRow) {
+            highlightRow.classList.add('flex', 'items-center', 'justify-between', 'gap-3');
+        }
 
-        const message = document.createElement('span');
-        message.id = 'last-dance-message';
-        message.className = 'hidden whitespace-nowrap overflow-hidden text-[11px] text-[#C66914] font-medium';
-        message.innerHTML = '<span class="last-dance-message-text">穿越回1998⋯</span>';
+        const wrapper = document.createElement('span');
+        wrapper.id = 'last-dance-wrapper';
+        wrapper.className = 'shrink-0';
 
         const btn = document.createElement('button');
         btn.id = 'last-dance-btn';
         btn.type = 'button';
-        btn.className = 'inline-flex items-center justify-center w-9 h-9 rounded-full bg-[#C66914]/10 text-[#C66914] border border-[#C66914]/20 hover:bg-[#C66914] hover:text-white shadow-sm transition shrink-0';
-        btn.innerHTML = '<span id="play-icon">🎧</span>';
+        btn.className = 'bg-[#C66914]/10 text-[#C66914] border border-[#C66914]/20 hover:bg-[#C66914] hover:text-white shadow-sm';
         btn.title = '';
 
-        wrapper.appendChild(message);
+        const icon = document.createElement('span');
+        icon.id = 'play-icon';
+        icon.textContent = '🎧';
+
+        const message = document.createElement('span');
+        message.id = 'last-dance-message-text';
+        message.className = 'hidden';
+
+        const messageText = '穿越回1998⋯';
+        [...messageText].forEach((char, index) => {
+            const span = document.createElement('span');
+            span.className = 'ld-char';
+            span.textContent = char;
+            span.style.animationDelay = `${index * 0.16}s`;
+            message.appendChild(span);
+        });
+
+        btn.appendChild(icon);
+        btn.appendChild(message);
         wrapper.appendChild(btn);
-        target.insertAdjacentElement('afterend', wrapper);
+
+        if (highlightRow) {
+            highlightRow.appendChild(wrapper);
+        } else {
+            target.insertAdjacentElement('afterend', wrapper);
+        }
 
         const audio = document.getElementById('bgm-audio');
         if (!audio) return;
 
         const reset = () => {
-            const icon = document.getElementById('play-icon');
-            const messageEl = document.getElementById('last-dance-message');
-
-            if (icon) {
-                icon.textContent = '🎧';
-                icon.classList.remove('last-dance-back-icon');
-            }
-
-            if (messageEl) {
-                messageEl.classList.add('hidden');
-                messageEl.classList.remove('last-dance-message-show');
-            }
+            icon.textContent = '🎧';
+            btn.classList.remove('playing');
+            message.classList.add('hidden');
         };
 
         btn.addEventListener('click', event => {
             event.preventDefault();
             event.stopPropagation();
 
-            const icon = document.getElementById('play-icon');
-            const messageEl = document.getElementById('last-dance-message');
-            const messageText = messageEl?.querySelector('.last-dance-message-text');
-
             if (audio.paused) {
                 audio.play().then(() => {
-                    if (icon) {
-                        icon.textContent = '🔙';
-                        icon.classList.remove('last-dance-back-icon');
-                        void icon.offsetWidth;
-                        icon.classList.add('last-dance-back-icon');
-                    }
-
-                    if (messageEl) {
-                        messageEl.classList.remove('hidden');
-                        messageEl.classList.add('last-dance-message-show');
-                    }
-
-                    if (messageText) {
-                        messageText.style.animation = 'none';
-                        void messageText.offsetWidth;
-                        messageText.style.animation = '';
-                    }
+                    icon.textContent = '🔙';
+                    btn.classList.add('playing');
+                    message.classList.remove('hidden');
                 }).catch(err => {
                     console.log('播放失敗：', err);
                     reset();
