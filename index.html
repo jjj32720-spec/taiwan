@@ -83,6 +83,41 @@
             border-color: #2C3E35;
             box-shadow: 0 10px 25px -8px rgba(44, 62, 53, 0.22);
         }
+    
+        /* Last Dance 低調音樂彩蛋 */
+        @keyframes lastDanceMarqueeIn {
+            0% {
+                opacity: 0;
+                transform: translateX(-65px);
+                clip-path: inset(0 100% 0 0);
+            }
+            30% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+                clip-path: inset(0 0 0 0);
+            }
+        }
+
+        @keyframes lastDanceIconIn {
+            0% { opacity: 0; transform: translateX(-8px); }
+            100% { opacity: 1; transform: translateX(0); }
+        }
+
+        .last-dance-message-show {
+            display: inline-block !important;
+        }
+
+        .last-dance-message-show .last-dance-message-text {
+            animation: lastDanceMarqueeIn 1.35s ease-out both;
+        }
+
+        .last-dance-back-icon {
+            animation: lastDanceIconIn 0.4s ease-out both;
+        }
+
     </style>
 </head>
 <body class="min-h-screen flex flex-col justify-between selection:bg-[#E89344] selection:text-white">
@@ -366,9 +401,9 @@
 
 <!-- DAY 6 -->
 <div id="tab-d6-time" class="tab-content hidden fade-in space-y-6"><div class="taiwan-card rounded-2xl overflow-hidden p-6 md:p-8 space-y-6"><div><span class="text-xs bg-[#E89344]/20 text-[#C66914] px-3 py-1 rounded-md font-bold">10/2（五）｜武嶺日出 → 台南麻豆</span><h2 class="text-3xl font-bold mt-2 text-[#2C3E35]">第六天：武嶺高山曙光與台南美食之都</h2></div>
-<details class="bg-[#F9F8F6] border border-[#E2DDD5] rounded-xl p-4 shadow-sm"><summary class="cursor-pointer font-bold text-[#2C3E35] flex justify-between items-center select-none"><span>🗺️ 【今日小地圖】（點擊展開/收合，點圖片可放大）</span><span class="text-xs text-[#C66914] font-medium bg-[#E89344]/10 px-2.5 py-1 rounded">展開 ▼</span></summary><div class="mt-4 space-y-4 pt-3 border-t border-[#E2DDD5]"><div class="rounded-xl overflow-hidden shadow-md border border-gray-200 bg-white p-2 cursor-pointer relative group" onclick="openImageModal('0EA1662E-2DDE-4CBA-B09F-330AFAC567E5.png', 'DAY 6 小地圖')"><img src="0EA1662E-2DDE-4CBA-B09F-330AFAC567E5.png" alt="DAY 6 行程地圖" class="w-full h-auto object-contain rounded-lg transition group-hover:opacity-95"><div class="absolute bottom-4 right-4 bg-black/60 text-white text-xs px-2.5 py-1 rounded-md flex items-center gap-1 shadow">🔍 點擊放大</div></div><div class="text-sm bg-white p-4 rounded-lg border border-[#E2DDD5] leading-relaxed"><p>台中住宿 ➔ 武嶺／合歡山 ➔ 台中住宿補眠 ➔ 台南麻豆 ➔ 龍泉冰店 ➔ 鹿耳門天后宮、聖母廟 ➔ 漁光島 ➔ 台南市區住宿</p></div></div></details>
-<div class="bg-[#F0EDEA] p-5 rounded-xl space-y-3"><h3 class="font-bold text-base text-[#2C3E35]">🕒 今日時間軸</h3><div class="space-y-2 text-sm text-gray-700"><div><b>02:30</b> 台中住宿出發（體力允許可以提前上山看星星，台灣追星聖地）</div><div><b>05:20-06:20</b> 武嶺日出 ➔ 下山</div><div><b>09:00-12:00</b> 返回台中住宿休息補眠</div><div><b>13:00-14:50</b> 台中往麻豆</div><div><b>15:00-15:20</b> 龍泉冰店</div><div><b>16:00-17:00</b> 鹿耳門天后宮、聖母廟</div><div><b>17:20-18:15</b> 漁光島</div><div><b>18:30</b> 日落後往台南市區</div></div></div>
-<div class="space-y-3"><h3 class="font-bold text-base text-[#2C3E35]">📍 景點介紹／推薦理由</h3><div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs"><div class="bg-[#F9F8F6] p-3.5 rounded-xl border border-[#E2DDD5]"><b>武嶺／合歡山：</b>台灣公路最高點，海拔3275公尺。</div><div class="bg-[#F9F8F6] p-3.5 rounded-xl border border-[#E2DDD5]"><b>鹿耳門：</b>天后宮、聖母廟，歷史與宗教文化勝地。</div><div class="bg-[#F9F8F6] p-3.5 rounded-xl border border-[#E2DDD5]"><b>漁光島：</b>悠閒的海岸夕陽景點。</div><div class="bg-[#F9F8F6] p-3.5 rounded-xl border border-[#E2DDD5]"><b>台南：</b>100個台灣人裡有101個都認證的美食之都。</div></div></div>
+<details class="bg-[#F9F8F6] border border-[#E2DDD5] rounded-xl p-4 shadow-sm"><summary class="cursor-pointer font-bold text-[#2C3E35] flex justify-between items-center select-none"><span>🗺️ 【今日小地圖】（點擊展開/收合，點圖片可放大）</span><span class="text-xs text-[#C66914] font-medium bg-[#E89344]/10 px-2.5 py-1 rounded">展開 ▼</span></summary><div class="mt-4 space-y-4 pt-3 border-t border-[#E2DDD5]"><div class="rounded-xl overflow-hidden shadow-md border border-gray-200 bg-white p-2 cursor-pointer relative group" onclick="openImageModal('0EA1662E-2DDE-4CBA-B09F-330AFAC567E5.png', 'DAY 6 小地圖')"><img src="0EA1662E-2DDE-4CBA-B09F-330AFAC567E5.png" alt="DAY 6 行程地圖" class="w-full h-auto object-contain rounded-lg transition group-hover:opacity-95"><div class="absolute bottom-4 right-4 bg-black/60 text-white text-xs px-2.5 py-1 rounded-md flex items-center gap-1 shadow">🔍 點擊放大</div></div><div class="text-sm bg-white p-4 rounded-lg border border-[#E2DDD5] leading-relaxed"><p>台中住宿 ➔ 武嶺／合歡山 ➔ 台中住宿補眠 ➔ 宮原眼科 ➔ 台南麻豆 ➔ 龍泉冰店 ➔ 鹿耳門天后宮、聖母廟 ➔ 漁光島 ➔ 台南市區住宿</p></div></div></details>
+<div class="bg-[#F0EDEA] p-5 rounded-xl space-y-3"><h3 class="font-bold text-base text-[#2C3E35]">🕒 今日時間軸</h3><div class="space-y-2 text-sm text-gray-700"><div><b>02:30</b> 台中住宿出發（體力允許可以提前上山看星星，台灣追星聖地）</div><div><b>05:20-06:20</b> 武嶺日出 ➔ 下山</div><div><b>09:00-12:00</b> 返回台中住宿休息補眠</div><div><b>12:30-13:00</b> 宮原眼科</div><div><b>13:00-15:00</b> 台中往麻豆</div><div><b>15:00-15:30</b> 龍泉冰店</div><div><b>16:00-17:00</b> 鹿耳門天后宮、聖母廟</div><div><b>17:20-18:15</b> 漁光島</div><div><b>18:30</b> 台南小吃巡禮</div></div></div>
+<div class="space-y-3"><h3 class="font-bold text-base text-[#2C3E35]">📍 景點介紹／推薦理由</h3><div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs"><div class="bg-[#F9F8F6] p-3.5 rounded-xl border border-[#E2DDD5]"><b>武嶺／合歡山：</b>台灣公路最高點，海拔3275公尺。</div><div class="bg-[#F9F8F6] p-3.5 rounded-xl border border-[#E2DDD5]"><b>宮原眼科：</b>台中代表性伴手禮與冰淇淋景點，保留日治時期建築特色。</div><div class="bg-[#F9F8F6] p-3.5 rounded-xl border border-[#E2DDD5]"><b>鹿耳門：</b>天后宮、聖母廟，歷史與宗教文化勝地。</div><div class="bg-[#F9F8F6] p-3.5 rounded-xl border border-[#E2DDD5]"><b>漁光島：</b>悠閒的海岸夕陽景點。</div><div class="bg-[#F9F8F6] p-3.5 rounded-xl border border-[#E2DDD5]"><b>台南：</b>100個台灣人裡有101個都認證的美食之都。</div></div></div>
 <details class="bg-[#FEF6EE] border border-[#FAD6B8] rounded-xl p-4 shadow-sm"><summary class="cursor-pointer font-bold text-[#C66914] flex justify-between items-center select-none text-sm"><span>✨ 【今日亮點】（點擊展開）</span><span class="text-xs font-medium bg-[#C66914]/10 px-2.5 py-1 rounded">展開 ▼</span></summary><div class="mt-3 text-xs text-gray-700 leading-relaxed pt-2 border-t border-[#FAD6B8]"><p><b>想見你！莫奶奶冰店 🍧</b></p></div></details>
 <details class="bg-orange-50 border border-orange-200 rounded-xl p-4 shadow-sm"><summary class="cursor-pointer font-bold text-orange-950 flex justify-between items-center select-none text-sm"><span>⚠️ 【今日特殊備註】（點擊展開）</span><span class="text-xs font-medium bg-orange-200/60 text-orange-900 px-2.5 py-1 rounded">展開 ▼</span></summary><div class="mt-3 text-xs text-orange-900 leading-relaxed pt-2 border-t border-orange-200 space-y-1.5"><p>・武嶺日出時間：約 05:47 - 06:01</p><p>・高山氣溫極低，請務必準備好<b>外套保暖</b></p><p>・漁光島日落時間：約 17:40 - 17:45</p><p><b>台南必吃推薦：</b>牛肉湯、鼎富發、棺材板、鱔魚意麵</p></div></details>
 </div></div>
@@ -1192,24 +1227,47 @@
     function addLastDanceEasterEgg() {
         const tab = document.getElementById('tab-d6-time');
         if (!tab || document.getElementById('last-dance-btn')) return;
-        const target = [...tab.querySelectorAll('b')].find(el => el.textContent.includes('莫奶奶冰店'));
+
+        const target = [...tab.querySelectorAll('b')].find(el =>
+            el.textContent.includes('莫奶奶冰店')
+        );
         if (!target) return;
+
+        const wrapper = document.createElement('span');
+        wrapper.className = 'ml-2 inline-flex items-center gap-2 align-middle overflow-hidden';
+
+        const message = document.createElement('span');
+        message.id = 'last-dance-message';
+        message.className = 'hidden whitespace-nowrap overflow-hidden text-[11px] text-[#C66914] font-medium';
+        message.innerHTML = '<span class="last-dance-message-text">穿越回1998⋯</span>';
 
         const btn = document.createElement('button');
         btn.id = 'last-dance-btn';
         btn.type = 'button';
-        btn.className = 'ml-2 inline-flex items-center gap-1.5 bg-[#C66914]/10 text-[#C66914] border border-[#C66914]/20 px-3 py-1.5 rounded-full text-[11px] font-bold hover:bg-[#C66914] hover:text-white shadow-sm transition align-middle';
-        btn.innerHTML = '<span id="play-icon">▶</span><span id="play-text">Last Dance</span>';
-        target.insertAdjacentElement('afterend', btn);
+        btn.className = 'inline-flex items-center justify-center w-9 h-9 rounded-full bg-[#C66914]/10 text-[#C66914] border border-[#C66914]/20 hover:bg-[#C66914] hover:text-white shadow-sm transition shrink-0';
+        btn.innerHTML = '<span id="play-icon">🎧</span>';
+        btn.title = '';
+
+        wrapper.appendChild(message);
+        wrapper.appendChild(btn);
+        target.insertAdjacentElement('afterend', wrapper);
 
         const audio = document.getElementById('bgm-audio');
         if (!audio) return;
 
         const reset = () => {
             const icon = document.getElementById('play-icon');
-            const text = document.getElementById('play-text');
-            if (icon) icon.textContent = '▶';
-            if (text) text.textContent = 'Last Dance';
+            const messageEl = document.getElementById('last-dance-message');
+
+            if (icon) {
+                icon.textContent = '🎧';
+                icon.classList.remove('last-dance-back-icon');
+            }
+
+            if (messageEl) {
+                messageEl.classList.add('hidden');
+                messageEl.classList.remove('last-dance-message-show');
+            }
         };
 
         btn.addEventListener('click', event => {
@@ -1217,16 +1275,31 @@
             event.stopPropagation();
 
             const icon = document.getElementById('play-icon');
-            const text = document.getElementById('play-text');
+            const messageEl = document.getElementById('last-dance-message');
+            const messageText = messageEl?.querySelector('.last-dance-message-text');
 
             if (audio.paused) {
                 audio.play().then(() => {
-                    if (icon) icon.textContent = '♫';
-                    if (text) text.textContent = '穿越回 1998...';
+                    if (icon) {
+                        icon.textContent = '🔙';
+                        icon.classList.remove('last-dance-back-icon');
+                        void icon.offsetWidth;
+                        icon.classList.add('last-dance-back-icon');
+                    }
+
+                    if (messageEl) {
+                        messageEl.classList.remove('hidden');
+                        messageEl.classList.add('last-dance-message-show');
+                    }
+
+                    if (messageText) {
+                        messageText.style.animation = 'none';
+                        void messageText.offsetWidth;
+                        messageText.style.animation = '';
+                    }
                 }).catch(err => {
                     console.log('播放失敗：', err);
-                    if (icon) icon.textContent = '▶';
-                    if (text) text.textContent = '再點一次播放';
+                    reset();
                 });
             } else {
                 audio.pause();
