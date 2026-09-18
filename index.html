@@ -449,30 +449,128 @@ to { width: 150vw; height: 150vw; opacity: 0; }
         }
 
     
-        .certificate-signature-wrap {
-            margin-top: 1.15rem;
-            padding-top: 1rem;
-            border-top: 1px solid rgba(255,255,255,.15);
-            text-align: left;
+        
+        .formal-certificate {
+            position: relative;
+            padding: 6px;
+            border: 1px solid rgba(245, 219, 177, .72);
+            border-radius: 14px;
+            background: rgba(255,255,255,.055);
+            box-shadow:
+                inset 0 0 0 3px rgba(245,219,177,.10),
+                0 10px 28px rgba(0,0,0,.12);
+        }
+        .formal-certificate::before {
+            content: "";
+            position: absolute;
+            inset: 10px;
+            border: 1px solid rgba(245,219,177,.26);
+            border-radius: 9px;
+            pointer-events: none;
+        }
+        .formal-certificate-inner {
+            position: relative;
+            z-index: 1;
+            padding: 24px 20px 20px;
+        }
+        .certificate-kicker {
+            font-size: 10px;
+            letter-spacing: .25em;
+            font-weight: 700;
+            color: #E9D6B9;
+        }
+        .certificate-rule {
+            width: 64px;
+            height: 1px;
+            background: rgba(233,214,185,.65);
+            margin: 13px auto 17px;
+        }
+        .certificate-award-label {
+            font-size: 12px;
+            color: #D1D8D2;
+        }
+        .certificate-recipient {
+            margin-top: 5px;
+            font-size: 22px;
+            font-weight: 700;
+            letter-spacing: .04em;
+            color: #FFFDF9;
+        }
+        .certificate-body {
+            margin-top: 22px;
+            text-align: center;
+            font-size: 13px;
+            line-height: 1.9;
+            color: #F1EEE8;
+        }
+        .certificate-meta {
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(255,255,255,.14);
+            font-size: 11px;
+            line-height: 1.75;
+            color: #D1D8D2;
+            text-align: center;
+        }
+        .certificate-signing {
+            margin-top: 24px;
+            padding-top: 18px;
+            border-top: 1px solid rgba(255,255,255,.14);
+            text-align: center;
+        }
+        .certificate-signing-label {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            font-size: 11px;
+            font-weight: 700;
+            color: #E9D6B9;
+        }
+        .certificate-signing-label span:last-child {
+            font-size: 9px;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            color: #BFC9C3;
+            font-weight: 600;
         }
         .certificate-signature {
             display: block;
             width: 170px;
-            max-width: 70%;
+            max-width: 72%;
             height: auto;
-            margin-bottom: 0.2rem;
-            filter: brightness(1.05);
+            margin: 11px auto 0;
+            filter: brightness(0) invert(1);
+            opacity: .94;
+        }
+        .certificate-sign-line {
+            width: 170px;
+            max-width: 72%;
+            height: 1px;
+            background: rgba(255,255,255,.45);
+            margin: 1px auto 8px;
         }
         .certificate-sign-name {
-            font-size: 0.85rem;
+            font-size: 12px;
             font-weight: 700;
-            letter-spacing: 0.06em;
-            margin-top: 0.2rem;
+            letter-spacing: .12em;
+            color: #FFFDF9;
+        }
+        .certificate-sign-title-zh {
+            margin-top: 4px;
+            font-size: 11px;
+            font-weight: 700;
+            color: #E9D6B9;
         }
         .certificate-sign-role {
-            font-size: 0.72rem;
-            color: #D1D8D2;
-            margin-top: 0.12rem;
+            margin-top: 1px;
+            font-size: 9px;
+            letter-spacing: .05em;
+            color: #BFC9C3;
+        }
+
+        body.dark-mode .formal-certificate {
+            background: rgba(255,255,255,.035);
+            border-color: rgba(241,161,91,.62);
         }
 
     </style>
@@ -1860,48 +1958,84 @@ to { width: 150vw; height: 150vw; opacity: 0; }
                         <button id="reset-trip-btn" type="button" onclick="resetTaiwanTripCompletion()" class="hidden bg-white text-[#2C3E35] border border-[#2C3E35]/20 px-4 py-2.5 rounded-xl text-xs font-bold hover:bg-[#F0EDEA] transition">取消完成</button>
                     </div>
                 </div>
-                <div id="trip-finale-card" class="hidden mt-5 bg-[#2C3E35] text-[#F7F5F0] rounded-2xl p-6 overflow-hidden relative">
+                <div id="trip-finale-card" class="hidden mt-5 bg-[#2C3E35] text-[#F7F5F0] rounded-2xl p-5 overflow-hidden relative">
                     <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:14px_14px]"></div>
                     <div class="relative z-10 text-center">
                         <div class="text-xs tracking-[0.25em] text-[#D1D8D2] mb-3">TRIP COMPLETE</div>
                         <div class="text-5xl mb-3">👵🏻🏝️</div>
                         <h3 class="text-2xl font-bold">旅程完成</h3>
                         <p class="text-sm text-[#D1D8D2] mt-3">10 天・北中南制霸・<span id="final-food-count">0</span> 樣美食・約 1,000+ 公里</p>
+
                         <div class="h-px bg-white/20 my-5"></div>
                         <p class="text-xl font-bold">西台灣制霸證書🏆</p>
-                        
-                        <div class="mt-5 bg-white/10 rounded-2xl p-5 border border-white/10 text-left">
-                            <div class="text-center">
-                                <p class="text-[10px] tracking-[0.22em] text-[#D1D8D2]">CERTIFICATE OF ACHIEVEMENT</p>
-                                <div class="h-px bg-white/20 my-4"></div>
-                            </div>
 
-                            <p class="text-xs text-[#D1D8D2]">本證書正式授予</p>
-                            <p class="text-xl font-bold mt-1">邵一玎 女士</p>
+                        <section class="formal-certificate mt-5 text-left">
+                            <div class="formal-certificate-inner">
+                                <header class="text-center">
+                                    <p class="certificate-kicker">CERTIFICATE OF ACHIEVEMENT</p>
+                                    <div class="certificate-rule"></div>
+                                    <p class="certificate-award-label">本證書正式授予</p>
+                                    <h4 class="certificate-recipient">邵一玎 女士</h4>
+                                </header>
 
-                            <div class="mt-5 space-y-1.5 text-sm leading-relaxed">
-                                <p>恭喜完成西台灣十日山海縱走</p>
-                                <p>成功通關北・中・南地區</p>
-                                <p>城市、山景、湖泊、古都與海岸線全數達成</p>
-                            </div>
+                                <div class="certificate-body">
+                                    <p>恭喜完成西台灣十日山海縱走</p>
+                                    <p>成功通關北・中・南地區</p>
+                                    <p>城市、山景、湖泊、古都與海岸線全數達成</p>
+                                </div>
 
-                            <div class="mt-5 pt-4 border-t border-white/15">
-                                <p class="text-xs text-[#D1D8D2]">特此認證</p>
-                                <p class="text-lg font-bold mt-1 tracking-wide">首席台灣主理人</p>
-                            </div>
+                                <div class="certificate-meta">
+                                    <p>完成日期｜2026.10.06</p>
+                                    <p>未解鎖區域｜東台灣 🔒</p>
+                                </div>
 
-                            <div class="mt-5 pt-4 border-t border-white/15 text-xs text-[#D1D8D2] space-y-1.5">
-                                <p>完成日期｜2026.10.06</p>
-                                <p>未解鎖區域｜東台灣 🔒</p>
-                            </div>
+                                <div class="certificate-signing">
+                                    <div class="certificate-signing-label">
+                                        <span>特此認證</span>
+                                        <span>Certified by</span>
+                                    </div>
 
-                            <div class="certificate-signature-wrap">
-                                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA0oAAAFCCAYAAADPFi2pAAAbOklEQVR4nO3da3LrupUGUDl1hqL5j0hzcX6cKEemKfGFx97AWlVdne7ca9MEQOADQPDr+/v7BgAAwD//6X0BAAAA0QhKAAAAC4ISAADAgqAEAACwICgBAAAsCEoAAAALghIAAMCCoAQAALAgKAEAACwISgAAAAuCEgAAwIKgBAAAsCAoAQAALAhKAAAAC4ISAADAgqAEAACwICgBAAAs/Ol9AQBAe/f7/fv5nx+Px1fPawGIyIoSAEzuNTQB8JegBACTWQtGwhLAT4ISAEzkUyASlgD+EZSA8O73+7cBHFynHQHsJygBYQlI0J42B/CXoASE5B0KKEv7AThGUJqQzpLovEMBAPT29f1tzDGqMwNK39Kgt731Vl2F/Y72B9oXgA/ODuV+v38/Ho+vKzPuPkAIMBarsADnWFEaQO1OUGCiBSugUIe2BXCOFaXEWs0SPn+PjpNazHhDHUISwHmCUjI9B5QCEwAAs3DqXSJRZt1924aS1CWoQ9sCuEZQSiJihxfxmgDwfAYoQVAKrsbqzXPr3OPx+Hr+z9mfpTPmiiv1xxZQAKAmp94FViKEXA1Be48bN2jlqN71G0ZlAgKgDIc5BBRlAPm68rR1Xc9QdfV3MgcrkQBAdLbeBXN1AHl1K93Wz/703xv80pJgDr9ZTQIox4pSEFk6tz2rS/CJugMx2RkA8JMVpcRqrh6d/d2ODqcEgzVoT7sD+ElQCiDzl9OjXAc5lArR6h38ZpIKoCxBqaOzqy/RBonvVpZ6XAtx7a0Te09aBP4p8X5rqWsBGIWglEjPrXZbhCUAAEYiKHVyNEREDUivhCXWHFk5zVDPIRrPWYA6BKXGzmy3yzR4FJY4a++JipnaA9Tm+QpQj6AUWOStdp9kvGbqsJIE/W21L+0PYJ2g1NDMM38z/+18dmSQZkAHxzgcBeA8QamRIx1V1pWkV2t/g856LmfKWx2B/bQXgLoEpQZ0Zv+4F7zKPiEAke1pX9ogwHuCUjA6LUZgNQnq2ttetCuA8wSlio4eizxiSLIFj3eW9cIL57CPZyhAG4JSJTqynwxy57Gn7jtGHuryzAW4TlAKYLYObba/dybCDtR1pI35JhnANX96X8CIjp5wV/NaIpnpb53RlW8mCVhQjmctQBlWlDrSmTGK2h+W1Vag7ISCNgWwzYpSQVaSAOjp2bdYpQW4zooScInVJABgRIJSIVaT4Bwz37Dt7GmSAJwnKBUgJMFn6j3UdaSNaY8A+3hHqSGdEyMpseXO8cXw2ZkVV6u0AGVYUbqo9vsZMDMDPtimfwGow4rSBQZxzKrFBIHBHwDQkxWlk7yXBJ9t1XsTDfCZAxwA+hKUKtOJMRoBB+Ly3h9AOYLSCd5Lgs+sJsE1VpMA+hOUKtGBMSIBB+LSPgHKEpQO0hExq5YrqSYamJl+BiAGQekAW+7gsz113yAQrjvTz+ibAI4RlArTETGiluFGG2JmJhIA4hCUdtJ5MSsrqRDLWltz2h1AeYLSDgaK8Fmpuq8NwWfaCEA7glIhOi9GVHol1cosvKd9AMQiKG3QcTErK6kQi7YG0Naf3hcQmYEilGPSAdbVbhv6KIBzrCgBv5gkgDxMQgDUISi9YaAI5expT9oSM9LXAMQlKAE/GLhBLNoaQB/eUVph9ptZ9QpJ2hPUoW0BnGdFacFebwBaKDEpp88CqEdQAm63W73VJAM5OMdqEEBfgtIL72bAZzXqvvbEjFpMIGhbANcISgfpeBhRr1Uf7QnO22q3VnMBrhGU/keHwqxqrqQayMFvreq9iQiAawSlA3Q6zKpW3demmE2rLd7aFsB1gtLNrDbzqln3tSs4p0TI0f4ArhOUdjI7x6zUfYhnKwhptwDXTR+UfFyWWfWu+9oVs+nd5gA4ZvqgBDOyLQfiEZIAYpk6KJndg/eu1H3bguAnkxMA+UwblHRazErdh3hKTh6YiAAoY9qgtIfOhtG0OJpYEIOftAmAnKYMSjotAKI4OjHxqQ8zwQdQzpRBaQ+dDaNp9aHL3j8fImk9MWciEKAcQWmFgRyzulr3DdLgnxoHBjkoBaCd6YKSgRwzilLvDeIAgCymC0owm1Zb7qKEMYjA5ycA8psqKOm4YJ16DwDw01RBCWYTaZVHGGMWvdqdNgZQ1jRByWoSrCtR7yMFMsjgTLvTzgDamiYowWwiTQ6YhGAWwgzAOKYISpEGjNBCy8GagSEcU6O/0YcBlDdFUAJ+M7CCsnpOGpiwACjvT+8LiMCAkVFEHCxpX/DP2fbgQ7MA7Q2/ohRx4Ai9GVRBe9odQC7DB6UtOi5G0WNSwCw3/NWzLWhnAHUMHZSsJsFPj8fjy6AKxqKvA6hj6KAEs4i4mgSz6L2yavIDoI5hg5IjweEn9R3KM2EAMK5hg9IWg0ZGEXWgpo0xulZtL2obBxjdkEFJpwI/lQ4t2hjsY8IAIK/hgpItd8wkamDRxhhdlLanrQHUM1xQ0mnAT9oE9KHtAeT2p/cFlNb79CFoYe9sdo36HmUmHXpp2Qa0N4B+hlpR0qHAP70mBUxGgHYAMIKhgtIWHRcjMCEA/URqf/o0gLqGCUqROi+opeeWuyO/H2YmwACMYZigpGOC/rRDKMfEBEBfQxzmoDNhBlaToK9In58wKQFQ3zArSlt0KsxAPYd+WrY/ExcA9Q2xogSjyzAoEtIYVcT2p70B1Jd+RSnSVgioofeWuyPXACPa07b0MwDjSR+UYGRZAopBIiPr0Q6ztH2AkaUOSlaT4C+rSVCHfgZgXqmDEowswpa7Fj8fOEabBGhDUILEWgyYrCgxK6tJAHMbOijpwMgqUzjRzqCsTO0fYGRpg5KOhFFF2XK351qEJEbVs4/RrgBiSBuUtuhoADij92TFp9+vbwNoJ2VQsprEqHoP0M5cC8xIYAEYX8qgBCOKFJJgViYIAHhKF5ScQgQxaGfMSt0HmEO6oAQjiraaZFYd+tD2AOIYLiiZ6SMbAyOIwY4FAF6lCkoGlMws0mqSwSKj0b8AsJQqKMFoom25a/27IIIo7dB3ywBiSROUzHIzmiiDsyWDNfitRb3XtgBiSROUdCCMJGpIgtlE2nIX6VoASBSUzHIzmx51WjtjNnvqtHoPMKc0QQlGkXnWOPO1w5osdVpYA2gvRVAyy80osm+5i3pdcIZ3XwH4JEVQ2pJlRhAi044AAP4ZIiiZ8SMDq0kQR7SJgWjXA0CCoKTzYATRQ5J2Br9FmRyIch0AswkflLboQAA4IuLEgL4MIJ7QQSliZwZHRV9N2iPytUFpj8fjK9KHnvWFAH2EDkoAUFLG0GGiAqCP1EFJ50F0GVaTHL/PLDKGJAD6CRuUdGhklyEkAT9pjwA8hQ1KW3RmRJYlJJmQYBaR63rkawOYWdqgBNTXO8hBSxHre8RrAphFyKBkdo3MsqwmwSz0KQCcETIobTHAJKpMIcngkRlkapMAxJIyKAH1GTgyi8inTgLQT7igpNMgq0wz19oZM8hezyM8KwBmFi4obdFxAFCKPgWAd/70voBX2Wf/mNOReptlUJblOgEAagm1omRwxsjUb2hnzwSGNgnAJ6GC0lbHplMjmkzvJT1pZxCDXRQAsYUKSpBJxpAEM8gSQDwbAGILE5TMckN9WQaQcFamCQztESC2MEFpq9PSoRBJpsEY8JN2CcAeYYKSFSWyGDkkZbxmeBrpAIcs19mTCVSgtlDHgwP1GFQAI3h9lr3+Z+ESKC3MitInHn5EkXk1aeuaIl4z7GUiAHUAKC3EipKHGxlkDknaGMRsm+y35zl2v9+/lTNQSooVJeAaAwdGlnEiIOM19+R+AT2ED0oGeESQeTXpdnNYCuPK3jbXZLrWFo6GpPv9/i1YASV0D0oeZkR2pMM1uAFK0C/+414APXUPSkBdBhqMatRJjGzXG5VnH3CVoARvHOlkDWwgJm0zL89goLeuQcl7E4wgez3Nfv3AeIQkIAIrSrBilC09tp4wqj11O3r7ZF3JkOQZCFwRNijp4OhllJC0xwh/A/MZefCrTe63vFfuHVBat6A0ckcHQB0jTGR8+htm7xuv/v2Ryx3I50/vC4BIRhiERbO8p+4dvDdz+6j1/L3f798z31fgPEEJ/me0mdwIh6WsXcPz/2fgwlEzTGTMOqgv+fx9PB5foz3Pie/ZdkvX5VI/i3NCBiUVg9ZmGIC1tnVPZx0QUlf2OpX9+s9occKd5w2lfZoIrPk7np6hTL2uq0tQMtMDY9vbxq0uATWszewbVHJWxHHr85psb68r5IoStBTxAXhVhG13RxjAsMVx4GOquZpvCx5nZa43a8FJH3ueoMTUfNSwvLMdjAc5UNvr88nzhqXMAemdtZUndX8/QYlpjRqSMj/ohSXWjLSalLl9ltbi3dBPq0pHnzcGmuOZtT3arrff1/d32zqSbUsQYxo1JN1ufduY034obbSDVvSBf7Uu1yth+92/O0tZjWjWgLSHev2TFSX4wAOjvNd7uvXhzVahTjnHNFpI2jLK3xHRnveVjg6erYDnEi0cvb47FOna9I0/NV1RMpNGBKMPvraOE+31u9/9/tbPBbPDuYzWb/Rsn1H0fAaXHpDOUmZZ9QggvfvZWmat601XlLZSs9kZOK/3jNTZ3/9s85/eI3j9567ofY84RnmNp/dEVenZ++jjlhk/wdD6udH63n76fTX/9lnfa7KixDRGfi/pKfL7SXt+d83rH+lAgBmMWl6zryhFKtdR36mccaxVOxxlPWL7dWtfrS1+2e7JUYISUxCS+h/isPf3lx5IHe0YspZ/byUHEb1XHWqZvQ+MVq6jBaUZ+rmlFqtHo9yrVy2CZc2f31KzrXe2UMC8jjw0j7x0XesdhpEe8rXZL79ftJe2W4oWkl5/19UyiVAXZzmIQjAqY/k3lr6vWevXmjCn3o1yQ4lnxlm2pd6rSUftHVBu7ZmedVDaS4kAq8zIJEKfMfpHvls9EzLci1r2nkZ7xCin54UJStBb5oa8ZwWm19939veeme01yG7LalI5I/5NTxFXk56uHkLT08jPO+GonxoTjpkPFRGUGFrkDrqlWn9fq20QIw8Isqpxguno5Tz633dFhpAUqZ8oOesf5e8SjmJ6nbS82h9nXGUKEZSy3CxymWVQMsPfWepdgiO/i2tqDcCUTy5Rn09C0u+f1/pvbFk3IpVfVs97WGryMktoahKUoj4oGZf3kv7puZpU+nfXXl0avS5Epp8YT6SjwF9lDUklD51Y+1m1D8kp/TP3iFJ2o3l3X6+8L/fp5/YUYkUJShKSxlZrdUldKKtGSC7585hT1v6h9LtUnyadSs309whHkcpsRlf754iBSVBiWpEa4ohq39+RjvYd0ZGtd1aTxhNxNSlrPTtz3a2/adaTZ3g8V0/RixSYugelCDeBccx2eEOvD1hG6jzPBKZRyr+H0m0sUl3qRX2MJ0KZtPooaNY2GKGM2HZly3yEwFQ9KGVtgMB5UWeKdazX9TiFcPRyi3TyWAnRVpNmmkQ5c/1ZThbNXjYzu3rk+NY3E2uqHpSyNEBym6kj7C1aexaS2ipZ/tEG1DVFaze1zPJ31tTj205Rx2qjtH9+KnXMeIv6YUWJ9GYNSb223WXkXsCcsvUPPd9HihCWIpQBbayV9ZmVptp1pvs7StCKB/B10VYAenfqsym5ehetLvU0wt+ZLZAs9b6mHqtIn36ej7/Sw5mwXnt1SVAiNduu2KLsy2i95Y4xRZxI6f2MiBKS1n52jbba+34T29m6V2t1qWtQ0li4YubBVtRtdxEHQZTReluO/iGPLIFkTc9rutKeWl332kv47wayEcuXvM4EphphyYoSKWXf5pFRxmCi7MspVf4Z61EJEd7/6CnqSZi9RFxFOvr7e18Lc+h9jL2gRDpCUkxWk8bVOiSN2G5HrbOZ/65e9SxrSIKe9h4xXnpV6T+lftCazA9QiKrHtrtIbXnmwXYGV++7chuPMv3rfr9/C0lQxqc2UXLM0m1FSaPnDKtJ7KHs44kUtikjaplGe4fz6n3yPIN1Ld6Xs/WONISkuKtJre531IHZKJ5bFkrfZ6uA84pYpi2+vfL6u87+uxHvHUT0Gpgc5sCUhKS4ot3vaNeTwWv7EkbZI2s9yRCQbjfPMTgj1fHgWR+i5KZzmZvyP6bFc9pq0rxmK9MS7Wm2ewbRdVlR8iDgCAOtv3pMPpjwGJeybefTvc723PI8/q1UW5rpnkEWtt4RmsHcfj062SzbWPip1v3ce3zr1r9Hbr3Ls8U3q0r//N73DFhX9XhwuMJ7Scf0egG/hT3lqw7s06pchaR9IrWzLZmutZYrR3yveTweX7O3AYisyoqShylXCUnHlL4HkU66u908U0pwD7kiW/B9t6r0/P/tuc5ap0Du/f1Af1WC0qcHi4cDWwzofnNPPvNciSXboLon96CeT2ORvXVUSIK5Nd96Z8DHJ0frhw6nD6tJubS8h0LSeDKXaaRrss0O8rH1jpRm6my0p89mqgtHta476ir85hkFeTVfUfLA4B2DrHWt24xy4Iwj9VQ/kEfm1aSnXieCWkGC/Jx6RwgOb3hv6960vh+Rtt3NVheOaP1uxQgDan4aqUxbXmOG+wHs4ztKdCckxWE1aQzKEX6r+X0lfROMqXhQ0kFzhJD0WbSX8GcsA/4qUfbqTx4jrSa9el5viWdrtr8dOK54UGrxRWzgr5k76pn/9k9qP3/PPuOV13gyl+ny2n3SBFjTdEXJA4dXo85YZhRxNcmESxxXy14bzmXGtqeOAmuKH+bgYcOW+/3+PWNHfNTs98izJIa1cnDC3bhMYAH8UzwozT64oyyd8Xul7k3E1aTbzep0dMpgXsoemIXjwWnK4Q37mHDgjNL1xpa76zIFfs8dgJ8EJZoRkuKJuprEMTW2s+4p93f/jA9t/pPlPthyB/CboEQTQlJZ7hFPrT8su/bPvv7z6ua4lC0wGx+cpTrbOfIyMIorWrtSV4673+/fEe5btLoEEEWzoBShMyA+9WR70NLyEAfiqVlu2l9bEe63LXcA7xXdemfgxZItd1COkAQA7XhHiWqEpLgc4pCPkJRT5AlEq0kAnxUNSp8eppE7C8oTkqCM2h9o1v7qcn8B8ir6jlKm70VQj1B8Xov3k7KsJj0ej69Z61KJv/u1DJc/L0L50pfVJIBtTr2jKCtJ+UUpl3d1Kcr11VI6JK3938xNSALYxztKFCMkUdK7OjLqKlOJLXY+9AoA5QhKFDHq4LWlFvdQOcVUYxUJ1lhNAtjP1jsuOzrI0wGf0+K+KZu2BKTxRZqcEJIAjhGUuERIyiPSgG12AtI8Zj6UBCA7W+84TUhq5+q9y3LS3dJo7ymVOuo7YllxXMt6bDUJ4DgrSpwiJJWVdeDfwggz8qWuXzsaS7TyjHY9AL0JSlSn8+0r62pSdiXDnfLhrOyTDAA9CUocYiWpPfcwz6pS6WtU9rSirgH8Jiixm5CUz8irSff7/TvKtQtIRJRhcgEgMoc5UIWB3n4GM/us1ane967U4QyvtB1K8AFwgOuKrSh9eih7COen081nxNWktS14LVeWagWzbOVAGRFWRXv/foDIigWlLO8QcIztdnVt3V/387d3Yen535X+fbWfa8qY0hwFDlBGk3eUIsyaUZ8yjmPE1aQ9rgSm1hM9I95/ABiJwxx4y3a7vtzT97ZWsCOvbitXnnrWBfUQYJugxKrIA81R1LrHs6wmZdruO8L9przSuy1suQMoq0lQ8lDOxUoSWUQOS9oGW4QkgNgcD84PUQed7DPLalJkj8fjyz3m1bv64HkLEJutd/yflaQ43N/9nveq96BTmdGL1SSAOpx6x+126z/InE2N+z17GbYOTJ5pRDB7uweoyTtKkzvTySrPnGYpt9e/s+Qgcpb7x5jUX4DjrChNzMdkx2FWed3Z0KSu08qV/tGWO4C6igaldydQeUhDX9qge8BYTI4A1Ff01Lt3D24P9HisJvWzde+P3mvtC+LrcRR46d8LMJuiQendA9mDOo77/f4tJAHkJCQBtGNFaSIObuivdFvw3SSYh5AE0JYPzk5CSIqh1/YboD/PVIBcmmy9oy8hKY7S7ydtUY6Q39Et09o9QBlWlAZ35n0knWx8VpNgHL73BRCToDQwhzbMTXlCPEfapZUkgL6afHCW9oSkeFpvuwNysl0aIAZBaUBC0ticdAe5rX2c/cr2O+0doI7iW+/ePbC9U1GfbyQB5ODZCxBfsxUlnUJdtmqMb28ZK1eYg7YOUFezwxysKNUjJMXX6v0k5Qp5XGmv2jpAfVWCkgd4G2e22t1uyqeHVvfchATkcubZ4BkO0IbjwSejg+3jaoDZe4CD8oV8jrRbbRygHafeJeXQhnEoG2DtJLzlf9/yegBoHJTu9/u3h/01tlbNx3HgMIfXsKRNA/RXLShtzY5xnPeRAMbmmQ0Qh3eUkhCS8royYWCyAQCgj+ZBycDvGCfbzct3kwAA+nGYQ2ACEluUNwBAHVVXlAzizrPyNod3bUT5AwD0ZUUpmLMDZKF0PsocAKCe6u8orQ3mzJavE5K43bQPAIAInHoXhJA0pqPl6gAHAIAYbL3r7MrqgcFybmfLT7kDANTXZEXJ9rt1V1aRDJbHo00AAMRhRakDq0gs2XIHABBLs3eUrCqd/3jsk0Hy3JQ/AEA7TVeUHo/H12zh6ElAYs2s7QEAILrup97NMFAUkrhKPQAAaKt5UJppwGerHZ/MMEkAAJBViMMc7vf79yihoMTgd5R7QRnqAwBAe1/f330mtdcCReYBoYDEmqv1Qp0AAOij2ztKI52CJyTxzpVyVScAAPrpephD9rB09R2kJwNiltQJAIC+QryjtBT5naVSQS7q30d5Mx+LDwCQVbd3lF69G0RGChMlB7qR/i7a2VuH1A8AgP5CBKXb7fMgstfAscYqgEHw3LbqlPoBABBDmKB0u8UYRApH1BRxQgAAgN9SBaWlEgPL2u+OGPyytKxz6ggAQDyhgtLT2fDyHHA+//3lALTlC/UGvwAAkFfIoHS75Tom/JWABAAA+XX9jtKWTKHj8Xh8ZbpeAADgvZDfUbrdcoSkDNcIAAAcF3br3VKUrXjCEQAAjC9NUHrqEZiEIwAAmEu6oPTUIjAJSAAAMKe0QWnpSnASiAAAgFfDBKUt9/v9+/F4fD3/d+/rAQAA4pomKAEAAOwV+jtKAAAAPQhKAAAAC4ISAADAgqAEAACwICgBAAAsCEoAAAALghIAAMCCoAQAALAgKAEAACwISgAAAAuCEgAAwIKgBAAAsCAoAQAALAhKAAAAC4ISAADAgqAEAACwICgBAAAs/BcVhrFkgl8gbAAAAABJRU5ErkJggg==" alt="Chechen Wu signature" class="certificate-signature">
-                                <p class="certificate-sign-name">CHECHEN WU</p>
-                                <p class="certificate-sign-role">Chief Taiwan Curator</p>
+                                    <img src="data:image/png;base64,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" alt="Chechen Wu signature" class="certificate-signature">
+
+                                    <div class="certificate-sign-line"></div>
+                                    <p class="certificate-sign-name">CHECHEN WU</p>
+                                    <p class="certificate-sign-title-zh">首席台灣主理人</p>
+                                    <p class="certificate-sign-role">Chief Taiwan Curator</p>
+                                </div>
                             </div>
+                        </section>
+                    </div>
+                </div>
+</div>
+        </div>
+        <div id="tab-d10-trans" class="tab-content hidden fade-in space-y-6">
+            <div class="taiwan-card rounded-2xl overflow-hidden p-6 md:p-8 space-y-6">
+                <div>
+                    <span class="text-xs bg-[#E89344]/20 text-[#C66914] px-3 py-1 rounded-md font-bold">10/6（二）｜交通方式與住宿</span>
+                    <h2 class="text-3xl font-bold mt-2 text-[#2C3E35]">第十天交通與住宿指南</h2>
+                </div>
+                <details open class="bg-[#F0EDEA] p-5 rounded-xl space-y-3 border border-[#E2DDD5]">
+                    <summary class="cursor-pointer font-bold text-base text-[#2C3E35] flex justify-between items-center select-none">
+                        <span>🚗 車程攻略（點擊可收合）</span>
+                        <span class="summary-arrow text-xs text-gray-500 font-medium">收合 ▲</span>
+                    </summary>
+                    <div class="mt-3 space-y-2 text-sm pt-2 border-t border-[#E2DDD5]/60">
+                        <p>美麗島站搭乘高雄捷運紅線往小港方向直達，約15-20分鐘（全程不需轉線）。</p>
+                    </div>
+
+                    <!-- Google Map 單一地址按鈕區塊 (Day 10) -->
+                    <div class="mt-4 pt-3 border-t border-[#E2DDD5]/60 space-y-2">
+                        <p class="text-xs font-bold text-[#2C3E35]">📍 今日景點 Google Map 單點查詢：</p>
+                        <div class="flex flex-wrap gap-2">
+                            <a href="https://www.google.com/maps/search/?api=1&query=美麗島站" target="_blank" class="bg-white border border-[#2C3E35] text-[#2C3E35] px-3 py-1.5 rounded-lg text-xs font-bold hover:bg-[#C66914] hover:text-white transition shadow-sm">
+                                🚇 美麗島站
+                            </a>
+                            <a href="https://www.google.com/maps/search/?api=1&query=高雄國際機場" target="_blank" class="bg-white border border-[#2C3E35] text-[#2C3E35] px-3 py-1.5 rounded-lg text-xs font-bold hover:bg-[#C66914] hover:text-white transition shadow-sm">
+                                ✈️ 高雄小港機場
+                            </a>
                         </div>
-                    </details>
+                    </div>
+                </details>
                 <details open class="bg-[#EFECE6] p-5 rounded-xl space-y-3 border border-[#E2DDD5]">
                     <summary class="cursor-pointer font-bold text-base text-[#2C3E35] flex justify-between items-center select-none">
                         <span>🏨 推薦住宿區域（點擊展開）</span>
