@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>邵奶奶快樂遊台灣 10 日山海縱走手札</title>
+  <style>
+    body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#F7F5F0;color:#2C3E35}
+    .boot{max-width:720px;margin:80px auto;padding:24px;text-align:center}
+  </style>
+</head>
+<body>
+  <div class="boot">正在載入旅遊手冊…</div>
+
+<script>
+(async function () {
+  // 固定使用你目前 GitHub 最新版本作為底稿，避免日後覆蓋 index.html 後形成遞迴載入。
+  const BASE_URL =
+    'https://raw.githubusercontent.com/jjj32720-spec/m-/bc16703651424fbc822d46be9cb73223210d4b76/index.html';
+
+  const MUSIC_FILE = './China_Blue_-_Last_Dance_(mp3.pm).mp3';
+
+  try {
+    const response = await fetch(BASE_URL, { cache: 'no-store' });
+    if (!response.ok) throw new Error('Base HTML fetch failed: ' + response.status);
+
+    let source = await response.text();
+
+    const enhancement = `
+<script>
+(function () {
+  const MUSIC_FILE = ${JSON.stringify('./China_Blue_-_Last_Dance_(mp3.pm).mp3')};
+
+  function mapsSearch(query) {
+    return 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(query);
+  }
+
+  function mapsDir(origin, destination, travelmode, waypoints) {
+    let url =
+      'https://www.google.com/maps/dir/?api=1' +
+      '&origin=' + encodeURIComponent(origin) +
+      '&destination=' + encodeURIComponent(destination) +
+      '&travelmode=' + encodeURIComponent(travelmode || 'driving');
+
+    if (waypoints && waypoints.length) {
+      url += '&waypoints=' + encodeURIComponent(waypoints.join('|'));
+    }
+    return url;
+  }
+
+  const navByDay = {
+    1: [
+      ['✈️ 機場 → 台北', mapsDir('桃園國際機場', '台北車站', 'transit')],
+      ['🏙️ 台北101', mapsSearch('台北101')]
+    ],
+    2: [
+      ['🌊 野柳', mapsSearch('野柳地質公園')],
+      ['🏮 九份', mapsSearch('九份老街')],
+      ['🎈 十分', mapsSearch('十分老街')]
+    ],
+    3: [
+      ['🏛️ 東門 → 故宮', mapsDir('捷運東門站', '國立故宮博物院', 'transit')],
+      ['🌃 士林 → 屋頂上', mapsDir('捷運士林站', '屋頂上 The Top', 'driving')]
+    ],
+    4: [
+      ['🚄 台北 → 台中高鐵', mapsDir('台北車站', '高鐵台中站', 'transit')],
+      ['🚌 台中高鐵 → 日月潭', mapsDir('高鐵台中站', '日月潭水社遊客中心', 'transit')]
+    ],
+    5: [
+      ['🎡 日月潭 → 九族', mapsDir('日月潭水社碼頭', '九族文化村', 'driving')],
+      ['🚌 日月潭 → 台中', mapsDir('日月潭', '台中干城站', 'transit')],
+      ['🌅 台中 → 高美濕地', mapsDir('台中干城站', '高美濕地', 'driving')]
+    ],
+    6: [
+      ['🌄 台中 → 武嶺', mapsDir('星漾商旅中清館', '武嶺', 'driving')],
+      ['🍧 台中 → 莫奶奶冰店', mapsDir('台中市', '龍泉冰店 台南麻豆', 'driving')],
+      ['🏮 麻豆 → 鹿耳門', mapsDir('龍泉冰店 台南麻豆', '正統鹿耳門聖母廟', 'driving')],
+      ['🌊 鹿耳門 → 漁光島', mapsDir('正統鹿耳門聖母廟', '漁光島', 'driving')]
+    ],
+    7: [
+      ['🛶 台南 → 四草 → 安平', mapsDir('台南市中西區', '安平老街', 'driving', ['四草綠色隧道'])],
+      ['☕ 安平 → 性格咖啡', mapsDir('安平老街', '性格せいかく', 'driving')],
+      ['🎈 性格咖啡 → 月世界', mapsDir('性格せいかく', '田寮月世界', 'driving')],
+      ['🏙️ 月世界 → 高雄', mapsDir('田寮月世界', '美麗島站', 'driving')]
+    ],
+    8: [
+      ['🚌 左營 → 墾丁', mapsDir('高鐵左營站', '墾丁', 'transit')],
+      ['🐟 墾丁 → 海生館', mapsDir('墾丁', '國立海洋生物博物館', 'driving')]
+    ],
+    9: [
+      ['🚌 海生館 → 左營', mapsDir('國立海洋生物博物館', '高鐵左營站', 'transit')],
+      ['🌅 美麗島 → 西子灣', mapsDir('美麗島站', '西子灣', 'transit')],
+      ['⛴️ 鼓山渡輪站', mapsSearch('鼓山輪渡站')]
+    ],
+    10: [
+      ['✈️ 美麗島 → 高雄機場', mapsDir('美麗島站', '高雄國際機場', 'transit')]
+    ]
+  };
+
+  function addNavigationButtons() {
+    Object.entries(navByDay).forEach(([day, links]) => {
+      const transPage = document.getElementById('tab-d' + day + '-trans');
+      if (!transPage) return;
+
+      const carDetails = Array.from(transPage.querySelectorAll('details'))
+        .find(d => {
+          const s = d.querySelector('summary');
+          return s && s.textContent.includes('車程攻略');
+        });
+
+      if (!carDetails || carDetails.querySelector('.google-nav-shortcuts')) return;
+
+      const content = carDetails.querySelector('summary + div');
+      if (!content) return;
+
+      const box = document.createElement('div');
+      box.className = 'google-nav-shortcuts pt-3 mt-3 border-t border-[#E2DDD5]/60';
+
+      const title = document.createElement('p');
+      title.className = 'text-xs font-bold text-[#C66914] mb-2';
+      title.textContent = '🗺️ Google 導航快捷';
+      box.appendChild(title);
+
+      const wrap = document.createElement('div');
+      wrap.className = 'flex flex-wrap gap-2';
+
+      links.forEach(([label, href]) => {
+        const a = document.createElement('a');
+        a.href = href;
+        a.target = '_blank';
+        a.rel = 'noopener noreferrer';
+        a.className =
+          'inline-flex items-center gap-1.5 bg-white border border-[#C66914]/40 ' +
+          'text-[#C66914] px-3 py-2 rounded-xl text-xs font-bold shadow-sm ' +
+          'hover:bg-[#FEF6EE] transition';
+        a.textContent = label;
+        wrap.appendChild(a);
+      });
+
+      box.appendChild(wrap);
+      content.appendChild(box);
+    });
+  }
+
+  function addLastDanceEasterEgg() {
+    const day6 = document.getElementById('tab-d6-time');
+    if (!day6 || document.getElementById('lastDanceBtn')) return;
+
+    const target = Array.from(day6.querySelectorAll('b'))
+      .find(el => el.textContent.includes('莫奶奶冰店'));
+
+    if (!target) return;
+
+    const audio = document.createElement('audio');
+    audio.id = 'lastDanceAudio';
+    audio.preload = 'metadata';
+    audio.src = MUSIC_FILE;
+    document.body.appendChild(audio);
+
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.id = 'lastDanceBtn';
+    btn.setAttribute('aria-label', '播放或暫停 Last Dance');
+    btn.className =
+      'ml-2 inline-flex items-center gap-1 bg-[#C66914]/10 text-[#C66914] ' +
+      'border border-[#C66914]/20 px-2.5 py-1 rounded-full text-[11px] font-bold ' +
+      'hover:bg-[#C66914] hover:text-white transition shadow-sm align-middle';
+
+    btn.innerHTML =
+      '<span id="lastDanceIcon">▶</span>' +
+      '<span id="lastDanceText">Last Dance</span>';
+
+    target.insertAdjacentElement('afterend', btn);
+
+    function resetButton() {
+      const icon = document.getElementById('lastDanceIcon');
+      const text = document.getElementById('lastDanceText');
+      if (icon) icon.textContent = '▶';
+      if (text) text.textContent = 'Last Dance';
+    }
+
+    btn.addEventListener('click', async function (event) {
+      event.preventDefault();
+      event.stopPropagation();
+
+      const icon = document.getElementById('lastDanceIcon');
+      const text = document.getElementById('lastDanceText');
+
+      if (audio.paused) {
+        try {
+          await audio.play();
+          icon.textContent = '♫';
+          text.textContent = '穿越回 1998...';
+        } catch (err) {
+          icon.textContent = '▶';
+          text.textContent = '再點一次播放';
+        }
+      } else {
+        audio.pause();
+        resetButton();
+      }
+    });
+
+    audio.addEventListener('ended', resetButton);
+    audio.addEventListener('error', function () {
+      const text = document.getElementById('lastDanceText');
+      if (text) text.textContent = '音樂載入失敗';
+    });
+  }
+
+  function initEnhancements() {
+    addNavigationButtons();
+    addLastDanceEasterEgg();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initEnhancements);
+  } else {
+    initEnhancements();
+  }
+})();
+<\\/script>`;
+
+    if (!source.includes('</body>')) {
+      throw new Error('Base HTML missing </body>');
+    }
+
+    source = source.replace('</body>', enhancement + '\\n</body>');
+
+    document.open();
+    document.write(source);
+    document.close();
+
+  } catch (err) {
+    console.error(err);
+    document.body.innerHTML =
+      '<main style="max-width:720px;margin:60px auto;padding:24px;font-family:sans-serif">' +
+      '<h2>行程頁面載入失敗</h2>' +
+      '<p>請確認網路連線後重新整理頁面。</p>' +
+      '<p style="font-size:12px;color:#777">' + String(err.message || err) + '</p>' +
+      '</main>';
+  }
+})();
+</script>
+</body>
+</html>
